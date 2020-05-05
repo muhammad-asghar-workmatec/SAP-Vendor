@@ -1,0 +1,268 @@
+﻿BODY {
+    /*background-color: White;
+    color: #002E00;*/
+    /*margin: 0px;*/
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    scrollbar-base-color: #44444;
+    scrollbar-face-color: #777777;
+    scrollbar-arrow-color: #bbbbbb;
+    /*top: 0px;
+    left: 0px;
+    right: 0px;
+    left: 0px;*/
+}
+
+.PageModalButtonCreate {
+    
+    font-weight: bold;
+    font-weight: bold;
+    border: 1px outset;
+    border-color: #FF7D00;
+    background-color: #E0E0F6;
+    color: Navy;
+    cursor: pointer;
+    width: auto;
+}
+
+.RepFilterHD {
+    text-align: left;
+    color: navy;
+    font-weight: bold;
+    
+    letter-spacing: 2;
+    background-color: #F7F7FF;
+}
+
+.RepFilterBG {
+    background-color: white;
+}
+/*.cbo{
+   
+	
+	 }
+input{
+	
+	
+ border: thin groove;
+}*/
+.Topbar1 {
+    /*background-color: #dc1f1b;*/
+}
+
+.TopBar {
+    background-color: #dc1f1b;
+    font-size: 18px;
+    color: White;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+}
+
+.SubBar {
+    background-color: #dc1f1b;
+    font-size: 16px !important;
+    color: White;
+    padding: 8px;
+    -webkit-print-color-adjust: exact;
+}
+
+.AttachmentsBar {
+    clear: both;
+    background-color: whitesmoke;
+    border-bottom: 1px solid;
+    border-bottom-color: lightgray;
+    font-size: 16px !important;
+    padding: 6px;
+    font-weight: normal;
+    height: 30px;
+}
+
+.ActivityBar {
+    clear: both;
+    background-color: #008AE6;
+    border-bottom: 1px solid;
+    border-bottom-color: #daded8;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-weight: normal;
+    color: white;
+}
+.FlowBar {
+    clear: both;
+    background-color: whitesmoke;
+    border-bottom: 1px solid;
+    border-bottom-color: lightgray;
+    font-size: 16px !important;
+    padding: 6px;
+    font-weight: normal;
+    height: 30px;
+}
+.Line {
+    height: 26px;
+    border-top-style: solid;
+    border-top-width: thin;
+    border-top-color: #C0C0C0;
+}
+
+.ContentFrame {
+    display: block;
+    overflow: auto;
+    position: static;
+    text-align: left;
+    background-color: #F4E19F;
+    color: #002E00;
+    margin: 0px;
+}
+
+.PageModalSub2 {
+    text-align: left;
+    color: #3D6D07;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 2;
+}
+
+
+.PageRowHeading {
+    text-align: left;
+    color: #3D6D07;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 2;
+}
+
+.PageModalButtonCreate {
+    
+    font-weight: bold;
+    border: 1px outset #FF7D00;
+    background-color: #18387B;
+    color: white;
+    cursor: pointer;
+    width: auto;
+    height: 19px;
+    margin-left: 0px;
+}
+
+.HMenu {
+    font-weight: bold;
+    color: white;
+    background-color: #00015D;
+    height: 22px;
+    padding-right: 5px;
+}
+
+.SubMenu {
+    font-weight: bold;
+    /*background-color: #3B6B07;
+	color: #FFFFFF;
+    */
+    background-color: #000066;
+    color: #FFFFFF;
+    height: 22px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: green 1px solid;
+    border-top: green 1px solid;
+    border-left: green 1px solid;
+    border-right: green 1px solid;
+}
+
+.HorMenu {
+    font-weight: bold;
+    /*background-color: #C3D182;
+	color: #000000;
+    */
+    background-color: #C3D182;
+    color: #000000;
+    height: 22px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: black 1px solid;
+    border-top: black 1px solid;
+    border-left: black 1px solid;
+    border-right: black 1px solid;
+}
+
+.GridHeader {
+    text-align: left;
+    color: #CEDA9A;
+    /*background:#282828;*/
+    background: #000066 !important;
+    -webkit-print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 2;
+    height: 23px;
+}
+
+    .GridHeader A {
+        text-decoration: none;
+        color: #CEDA9A;
+    }
+
+.GridFooter {
+    /*text-align: left;	
+	background:#282828;
+	background:#000066;*/
+}
+
+.GridARow {
+    background: #EEEEEE !important;
+    -webkit-print-color-adjust: exact;
+}
+
+.TableColumn {
+    padding-right: 4px;
+    font-weight: bold;
+}
+
+.ErrorMessage {
+    border: 0px;
+    empty-cells: hide;
+    caption-side: top;
+    background-color: #FFF7D7;
+}
+
+    .ErrorMessage label {
+        color: #FF0000;
+        padding-left: 10px;
+    }
+
+.Error {
+    display: none;
+    color: black;
+}
+
+.P {
+    line-height: 10px;
+    letter-spacing: 1px;
+}
+.required {
+    color: red !important;-webkit-print-color-adjust: exact;   
+}
+.rank {
+    padding: 8px !important;
+    border-radius: 50px !important;
+    width: 50px !important;
+}
+.size-wide {
+    
+}
+.demo-container {
+    width: 100%;    
+    padding: 5px !important;
+    border-radius: 10px !important;
+    background-color: floralwhite;
+    border-bottom: rgba(0,0,0,.075) 1px solid;
+    border-top: rgba(0,0,0,.075) 1px solid;
+    border-left: rgba(0,0,0,.075) 1px solid;
+    border-right: rgba(0,0,0,.075) 1px solid;
+}
+.demo-container:after {
+        content: "";
+        clear: both;
+        display: block;
+    }

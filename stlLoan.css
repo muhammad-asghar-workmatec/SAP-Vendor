@@ -1,0 +1,239 @@
+﻿BODY 
+{	background-color: White;
+	color: #002E00;
+	margin : 0px;
+	font-family: Verdana, Tahoma, Arial, Verdana CE, Tahoma CE, Arial CE;
+	font-size: 11px;		
+scrollbar-base-color:#44444;
+scrollbar-face-color:#777777;
+scrollbar-arrow-color:#bbbbbb;
+top:0px;
+left:0px;
+right:0px;
+left:0px;
+
+}
+
+.PageModalButtonCreate {
+	font-family: Verdana, Tahoma, Arial, Verdana CE, Tahoma CE, Arial CE;
+	font-size: 11px;
+	font-weight: bold;
+	border: 1px outset;
+	border-color: #FF7D00;
+	background-color: #E0E0F6;
+	color: Navy;
+	cursor: pointer;
+	width: auto;
+}
+.RepFilterHD
+{
+	text-align: left;
+	color: navy;
+	font-weight: bold;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	letter-spacing: 2;
+	background-color: #F7F7FF;
+	
+}
+.RepFilterBG
+{
+	background-color: #F7F7FF;
+}
+.cbo{
+   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	 }
+input{
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+ border: thin groove;
+ text-transform: uppercase;
+}
+.Topbar1{
+	background-color: #009900;
+}
+.TopBar
+{	
+	background-color: #18387B;	
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 18px;	
+	color: White;
+}
+
+.SubBar
+{
+	background-color: white;
+	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	color: navy;
+	font-weight: bold;
+}
+
+.Line
+{
+	height: 22px;
+	border-top-style:solid;
+	border-top-width: thin;
+	border-top-color: #C0C0C0;
+}
+.ContentFrame
+{
+	display: block;
+	overflow:auto;
+	position: static;
+	text-align: left;		
+	background-color: #F4E19F;
+	color: #002E00;
+	margin : 0px;
+}
+
+.PageModalSub2
+{
+	text-align: left;
+	color: #3D6D07;
+	font-weight: bold;
+	font-family: Verdana, Tahoma, Arial;	
+	font-size: 12px;
+	letter-spacing: 2;
+}
+
+
+.PageRowHeading
+{
+	text-align: left;
+	color: #3D6D07;
+	font-weight: bold;
+	font-family: Trebuchet MS, Trebuchet MS CE;
+	font-size: 12px;
+	letter-spacing: 2;
+}
+
+.PageModalButtonCreate
+{
+	font-family: Verdana, Tahoma, Arial, Verdana CE, Tahoma CE, Arial CE;
+	font-size: 11px;
+	font-weight: bold;
+	border: 1px outset #FF7D00;
+	background-color: #18387B;
+	color: white;
+	cursor: pointer;
+	width: auto;
+	height: 19px;
+}
+.HMenu
+{
+	font-weight: bold;
+	font-size: 10px;
+	color: white;
+	font-family: Verdana, 'Arial Black';
+	background-color: #00015D;
+	height: 22px;	
+	padding-right: 5px;
+	
+}
+
+.SubMenu
+{
+	font-weight: bold;
+	font-size: 10px;
+	font-family: Verdana, 'Arial Black';
+	/*background-color: #3B6B07;
+	color: #FFFFFF;
+    */
+	background-color: #000066;
+	color: #FFFFFF;
+	height: 22px;
+	padding-left: 5px;
+	padding-right: 5px;	
+	border-bottom: green 1px solid;
+	border-top: green 1px solid;
+	border-left: green 1px solid;
+	border-right: green 1px solid;
+}
+
+.HorMenu
+{
+	font-weight: bold;
+	font-size: 10px;
+	font-family: Verdana, 'Arial Black';
+	/*background-color: #C3D182;
+	color: #000000;
+    */
+	background-color: #C3D182;
+	color: #000000;
+	height: 22px;
+	padding-left: 5px;
+	padding-right: 5px;		
+	border-bottom: black 1px solid;
+	border-top: black 1px solid;
+	border-left: black 1px solid;
+	border-right: black 1px solid;
+}
+
+.GridHeader
+{
+	text-align: left;
+	color: #CEDA9A;
+	/*background:#282828;*/
+	background:#000066;
+	font-weight: bold;
+	font-family: Trebuchet MS, Trebuchet MS CE;
+	font-size: 12px;
+	letter-spacing: 2;
+	height :23px;
+
+	
+}
+
+.GridHeader A
+{   
+    text-decoration: none;   
+    color: #CEDA9A;
+}
+
+.GridFooter
+{
+	/*text-align: left;	
+	background:#282828;
+	background:#000066;*/
+}
+
+.GridARow
+{	
+	background:#EEEEEE;	
+}
+
+.TableColumn
+{
+	font-family: Verdana, Tahoma, Arial, Verdana CE, Tahoma CE, Arial CE;
+	font-size: 10px;
+	padding-right: 4px;
+	font-weight: bold;
+	
+	}
+	
+.ErrorMessage
+{
+    border: 0px;
+    empty-cells: hide;
+    caption-side: top;
+    background-color: #FFF7D7;
+}
+.ErrorMessage label
+{
+    color: #FF0000;
+    padding-left: 10px;
+}
+.Error
+{
+	display: none;
+	color: black;
+}
+.P
+{
+	font-family: Verdana, Tahoma, Arial, Verdana CE, Tahoma CE, Arial CE;
+	font-size: 10px;
+	line-height: 10px;
+	letter-spacing: 1px;
+}
