@@ -48,6 +48,9 @@ namespace SAP_Vendor.Data
         public string Status { get; set; }
         public string EmailSent { get; set; }
         public Nullable<System.DateTime> EmailSentDate { get; set; }
+        public string SAPVendorID { get; set; }
+        public string IssuedBy { get; set; }
+        public Nullable<System.DateTime> IssuedOn { get; set; }
         public string UserID { get; set; }
         public string UserName { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }

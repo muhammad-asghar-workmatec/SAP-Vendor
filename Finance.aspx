@@ -103,356 +103,247 @@
                                                     <col />
                                                     <col class="TableColumn" />
                                                 </colgroup>
+                                                 
                                                 <tr>
-                                                    <td align="left" style="height: 22px; width: 145px;">
+                                                    <td align="left" style="height: 22px; width: 231px;">
                                                     </td>
                                                     <td class="style1" colspan="3">
                                                         <asp:Label ID="lblError" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label></td>
                                                 </tr>
                                                  <tr>
-                                                    <td align="left" style="height: 24px; width: 145px;">
-                                                        Account Group :</td>
-                                                    <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:Label ID="lblAG" runat="server" Text="VEND"></asp:Label>
+                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                      </td>
+                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                        <asp:RadioButtonList ID="rblOptions" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="New" Value="New" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Change" Value="Change"></asp:ListItem>
+                                                            <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
+                                                            <asp:ListItem Text="Inactive" Value="Inactive"></asp:ListItem>
+                                                        </asp:RadioButtonList>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="height: 24px; width: 145px;">
-                                                                                                                Name 1:
+                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                 *Resion :
                                                     </td>
                                                     <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtName1" runat="server" Width="620px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtResion" runat="server" Width="620px"></asp:TextBox>
                                                         &nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="height: 24px; width: 145px;">
-                                                                                                                Name 2:</td>
+                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                     Business Name :</td>
                                                     <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtName2" runat="server" Width="620px"></asp:TextBox>
+                                                        <asp:TextBox ID="txtBusinessName" runat="server" Width="620px"></asp:TextBox>
                                                         </td>
                                                 </tr>
+                                                 <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        NTN# :</td>
+                                                    <td class="style1" style="width: 186px; height: 24px">
+                                                        <asp:TextBox ID="txtNTN" runat="server" Width="210px"></asp:TextBox></td>
+                                                    <td class="auto-style5">
+                                                        Sale Tax Reg# :</td>
+                                                    <td style="height: 24px">
+                                                        <asp:TextBox ID="txtSaleTaxReg" runat="server" Width="210px"></asp:TextBox>
+                                                    &nbsp;&nbsp;
+                                                        <br />
+                                                        <asp:CheckBox ID="txtNA" runat="server" Text="Not Applicable"></asp:CheckBox>
+                                                    </td>
+                                                   
+                                                </tr>
                                                 <tr>
-                                                    <td align="left" style="height: 22px; width: 145px;">
-                                                                                                                Country :</td>
+                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                        Type :
+                                                      </td>
+                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                        <asp:RadioButtonList ID="rblType" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="Supplier" Value="Supplier" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Vendor Return" Value="Vendor Return"></asp:ListItem>                        
+                                                        </asp:RadioButtonList>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                        Payment Currency:
+                                                      </td>
+                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                        <asp:RadioButtonList ID="rblCurrency" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="PKR" Value="PKR" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="USD" Value="USD"></asp:ListItem>                        
+                                                        </asp:RadioButtonList>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Address :</td>
+                                                  <td class="style1" style="height: 24px;" colspan="3">
+                                                        <asp:TextBox ID="txtAddress" runat="server" Width="620px"></asp:TextBox></td>                                                   
+                                                </tr>
+                                               
+                                                <tr>
+                                                    <td align="left" style="width: 231px; height: 22px">
+                                                        City :</td>
                                                     <td class="style1" style="width: 186px">
-                                                        <asp:DropDownList ID="ddlCountry" runat="server" CssClass="cbo" Width="190px">
-                                                        </asp:DropDownList></td>
+                                                        <asp:TextBox ID="txtCity" runat="server" Width="210px"></asp:TextBox></td>
+                                                    <td class="auto-style2">
+                                                        State :</td>
                                                     <td style="height: 22px">
+                                                        <asp:TextBox ID="txtState" runat="server" Width="210px"></asp:TextBox>
+
+                                                    </td>
+                                                        
+                                                </tr>
+                                                <tr><td style="height: 22px">
                                                         Postal Code :
                                                     </td>
                                                     <td style="height: 22px">
-                                                        <asp:TextBox ID="txtPostalCode" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 22px">
-                                                        City :    <td class="style1" style="width: 186px">
-                                                        <asp:TextBox ID="txtCity" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 22px">
-                                                        &nbsp;</td>
-                                                    <td style="height: 22px">
-                                                        &nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Street &amp; House # :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtHNo" runat="server" Width="210px"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Street&nbsp; :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtStreet" runat="server" Width="250px"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        District :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtDistrict" runat="server" Width="210px"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Region :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtRegion" runat="server" Width="210px"></asp:TextBox>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        PO Box :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtPOBox" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        &nbsp;</td>
-                                                    <td style="height: 24px">
-                                                        &nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Search Term 1 :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtSterm1" runat="server" Width="210px"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Search Term 2 :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtSterm2" runat="server" Width="210px"></asp:TextBox>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Language Key :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtLanguage" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Phone :
-                                                    </td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtPhone" runat="server"></asp:TextBox>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Fax : </td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtFax" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Email :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Tax Code 1 (CNIC):</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtTaxcode1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Tax Code 2 (NTN):</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtTaxCode2" runat="server"></asp:TextBox>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        DUNS Number :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtDunsNumber" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        VAT reg no :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtVAT" runat="server"></asp:TextBox>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Industry Key :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtIndustryKey" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        &nbsp;</td>
-                                                    <td style="height: 24px">
-                                                        &nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        &nbsp;</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        &nbsp;</td>
-                                                    <td style="height: 24px">
-                                                        &nbsp;</td>
-                                                    <td style="height: 24px">
-                                                        &nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        IBAN :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtIBAN1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        IBAN :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtIBAN2" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Bank Country Key :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:DropDownList ID="ddlBankCountry1" runat="server" CssClass="cbo" 
-                                                            Width="190px">
+                                                        <asp:TextBox ID="txtPostalCode" runat="server" Width="210px"></asp:TextBox></td>
+                                                    <td align="left" class="auto-style2">
+                                                                                                                Country :</td>
+                                                    <td class="style1" style="width: 186px">
+                                                        <asp:DropDownList ID="ddlCountry" runat="server" CssClass="cbo" Width="210px">
                                                         </asp:DropDownList></td>
-                                                    <td style="height: 24px">
-                                                        Bank Country Key :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:DropDownList ID="ddlBankCountry2" runat="server" CssClass="cbo" 
-                                                            Width="190px">
-                                                        </asp:DropDownList></td>
+                                                    
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Bank Name :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtBNKName1" runat="server" Width="210px"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Bank Name :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtBNKName2" runat="server" Width="210px"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        City :
-                                                    </td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtBCity1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        City : </td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtBCity2" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        H No St # :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtBHNo1" runat="server" Width="210px"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        H No St # :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtBHNo2" runat="server" Width="210px"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Branch :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtBBranch1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Branch :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtBBranch2" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Bank Key :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtBankKey1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Bank Key :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtBankKey2" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Account # :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtAccount1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Account # :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtAccount2" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Swift Code :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtSwitCode1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Swift Code :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtSwitCode2" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Account Holder Name :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtAHName1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Account Holder Name :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtAHName2" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Additional Bank Info :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtABInfo1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Additional Bank Info :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtABInfo2" runat="server" 
-                                                            ></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Company Code :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtCCode1" runat="server"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Reconciliation Account :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtRecon" runat="server"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        Terms of Payment :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:DropDownList ID="ddlPaymentTerms" runat="server" CssClass="cbo" 
-                                                            Width="190px">
-                                                        </asp:DropDownList></td>
-                                                    <td style="height: 24px">
-                                                        &nbsp;</td>
-                                                    <td style="height: 24px">
-                                                        &nbsp;</td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        LTU :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtLTU" runat="server" Visible="False"></asp:TextBox></td>
-                                                    <td style="height: 24px">
-                                                        Recipient Type : </td>
-                                                    <td style="height: 24px">
-                                                        <asp:DropDownList ID="ddlRecepientType" runat="server" CssClass="cbo" 
-                                                            Width="190px">
-                                                        </asp:DropDownList></td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
-                                                        MM Order Currency :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:DropDownList ID="ddlCurrency" runat="server" CssClass="cbo" Width="190px">
-                                                        </asp:DropDownList></td>
-                                                    <td style="height: 24px">
-                                                        Email Sent :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:Label ID="lblEmail" runat="server"></asp:Label>
-                                                    </td>
-                                                </tr>
-                                                     <tr>
                                                     <td align="left" style="width: 231px; height: 24px">
-                                                        Company Type :</td>
+                                                        Contact No :</td>
                                                     <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtCType" runat="server" Width="210px" ReadOnly="True"></asp:TextBox></td>
+                                                        <asp:TextBox ID="txtContactNo" runat="server" Width="210px"></asp:TextBox></td>
+                                                    <td class="auto-style5">
+                                                        Fax No :</td>
                                                     <td style="height: 24px">
+                                                        <asp:TextBox ID="txtFaxNo" runat="server" Width="210px"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Email :</td>
+                                                    <td class="style1" style="width: 186px; height: 24px" colspan="3">
+                                                        <asp:TextBox ID="txtEmail" runat="server" Width="620px"></asp:TextBox></td>
+                                                    <td class="auto-style1">
                                                         &nbsp;</td>
                                                     <td style="height: 24px">
                                                         &nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 33px">
-                                                        Company Category 1 (Main Product / Service Type)</td>
-                                                    <td class="style1" style="height: 33px" colspan="3">
-                                                    <asp:TextBox ID="txtCCate1" runat="server" Width="594px"></asp:TextBox>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Contact Person :</td>
+                                                    <td class="style1" style="width: 186px; height: 24px" colspan="3">
+                                                        <asp:TextBox ID="txtContactPerson" runat="server" Width="620px"></asp:TextBox></td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Payment Terms :</td>
+                                                    <td class="style1" style="width: 186px; height: 24px" colspan="3">
+                                                        <asp:TextBox ID="txtPaymentTerms" runat="server" Width="620px"></asp:TextBox></td>                                                    
+                                                </tr>
+                                                 <tr>
+                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                        Payment Method :
+                                                      </td>
+                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                        <asp:RadioButtonList ID="rblPaymentMethod" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="Cheque" Value="Cheque" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Wire transfer" Value="Wire transfer"></asp:ListItem>                        
+                                                        </asp:RadioButtonList>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                        Nature of Work :
+                                                      </td>
+                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                        <asp:RadioButtonList ID="rblNaturOfWork" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="Supplies" Value="Supplies" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Services/Contract" Value="Services/Contract"></asp:ListItem> 
+                                                            <asp:ListItem Text="Other" Value="Other"></asp:ListItem> 
+                                                        </asp:RadioButtonList>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 33px">
-                                                        Company Category 2 (Additional Product / Services)</td>
-                                                    <td class="style1" style="height: 33px" colspan="3">
-                                                    <asp:TextBox ID="txtCCate2" runat="server" Width="594px"></asp:TextBox>
+                                                    <td align="left" style="height: 22px; width: 231px;">
+                                                     Witholding Tax Field :</td>
+                                                    <td class="style1" style="width: 186px">
+                                                        <asp:DropDownList ID="ddlWitholdingTaxField" runat="server" CssClass="cbo" Width="190px">
+                                                        </asp:DropDownList>
+                                                    </td>
+                                                    
+                                                </tr>
+                                                 <tr>
+                                                    <td align="left" style="height: 24px;" colspan="2">
+                                                        Pre-qualification Questionnaire Completed and Attached :
+                                                      </td>
+                                                    <td class="style1" style="height: 24px;" colspan="2" align="left">
+                                                        <asp:RadioButtonList ID="rblAttached" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="Yes" Value="Yes" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="No" Value="No"></asp:ListItem>                        
+                                                        </asp:RadioButtonList>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td align="left" style="height: 24px;">
+                                                        Pre-qualification Classification :
+                                                      </td>
+                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                        <asp:RadioButtonList ID="rblClassification" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="High(>$300K)" Value="High(>$300K)" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Medium(>$10K <=$300K)" Value="Medium(>$10K <=$300K)"></asp:ListItem> 
+                                                            <asp:ListItem Text="Low(<=$10K)" Value="Low(<=$10K)"></asp:ListItem>  
+                                                        </asp:RadioButtonList>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 33px">
-                                                        Company Category 3 (Additoinal Product / Services)</td>
-                                                    <td class="style1" style="height: 33px" colspan="3">
-                                                    <asp:TextBox ID="txtCCate3" runat="server" Width="594px"></asp:TextBox>
+                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                        Pre-qualification :
+                                                      </td>
+                                                    <td class="style1" style="height: 24px;" colspan="1" align="left">
+                                                        <asp:RadioButtonList ID="rblQualification" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                            <asp:ListItem Text="Confirmed" Value="Confirmed" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Probation" Value="Probation"></asp:ListItem>                                                                 
+                                                        </asp:RadioButtonList>
+                                                    </td>
+                                                     <td class="auto-style5">
+                                                        Probation Period Upto :</td>
+                                                    <td style="height: 24px">
+                                                        <asp:TextBox ID="txtPeriod" runat="server" Width="210px"></asp:TextBox>
                                                     </td>
                                                 </tr>
+                                               <tr><td colspan="4" style="font-size: medium">Incase of foregion vendors only</td></tr>                                                                                              
+                                                <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Bank Name & Address :</td>
+                                                      <td class="style1" style="height: 24px;" colspan="3">
+                                                        <asp:TextBox ID="txtBankAddress" runat="server" Width="620px"></asp:TextBox></td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Account#/IBAN# :</td>
+                                                   <td class="style1" style="height: 24px;" colspan="3">
+                                                       <asp:TextBox ID="txtIBAN" runat="server" Width="620px"></asp:TextBox></td>                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Routing# :</td>
+                                                    <td class="style1" style="height: 24px;" colspan="3">
+                                                        <asp:TextBox ID="txtRoutingNo" runat="server" Width="620px"></asp:TextBox></td>                                                   
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Swift Code :                                                     </td>
+                                                   <td class="style1" style="height: 24px;" colspan="3">
+                                                        <asp:TextBox ID="txtSwiftCode" runat="server" Width="620px"></asp:TextBox></td>                                                  
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" style="width: 231px; height: 24px">
+                                                        Vendor/Benificary Name :</td>
+                                                       <td class="style1" style="height: 24px;" colspan="3">
+                                                        <asp:TextBox ID="txtBenificaryName" runat="server" Width="620px"></asp:TextBox></td>
+                                                   
+                                                </tr>
+                                              
                                                 <tr>
                                                     <td align="left" style="width: 145px; height: 24px">
                                                         SAP Vendor ID :</td>
@@ -512,12 +403,12 @@
                                                         &nbsp;
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                <td align="left" class="style6">
+                                                 <tr>
+                                                <td align="left" class="style6" style="width: 231px">
                                                     &nbsp;
                                                     Remarks :</td>
                                                 <td align="left" colspan="3">
-                                                    <asp:TextBox ID="txtRemarks" runat="server" Width="594px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtRemarks" runat="server" Rows="4" Width="620px" Height="60px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                                  <tr>
@@ -579,27 +470,10 @@
                                     </tr>
                                 </table>
                                 <asp:HiddenField ID="hidRecordID" runat="server" />
-                                                        <asp:TextBox ID="txtTaxcode3" runat="server" 
-                                    Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtTradingPart" runat="server" 
-                                    Visible="False"></asp:TextBox>
-                                <asp:HiddenField ID="hidIsAdd" runat="server" />
                                 <asp:SqlDataSource ID="dsFlow" runat="server" 
                                     ConnectionString="<%$ appSettings:ConnectionString %>" 
                                     ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
-                                <asp:HiddenField ID="hidRemarks" runat="server" />
-                                                        <asp:TextBox ID="txtMSOrt2PK1" runat="server" 
-                                    Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtMSOrt2PK3" runat="server" 
-                                    Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtWHTType" runat="server" 
-                                    Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtWHTC" runat="server" 
-                                    Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtWHTCode" runat="server" 
-                                    Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtWHTTID" runat="server" 
-                                    Visible="False"></asp:TextBox><asp:HiddenField ID="hidUserID" runat="server" />
+                                <asp:HiddenField ID="hidUserID" runat="server" />
                             </td>
                         </tr>
                     </table>

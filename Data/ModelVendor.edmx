@@ -14,7 +14,7 @@ warning 6002: The table/view 'BPM_Reports.dbo.SAP_VendorCreation' does not have 
           <Property Name="RequestID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RequestType" Type="nvarchar" MaxLength="50" />
           <Property Name="Resion" Type="nvarchar" MaxLength="300" />
-          <Property Name="BussinessName" Type="nvarchar" MaxLength="250" />
+          <Property Name="BusinessName" Type="nvarchar" MaxLength="250" />
           <Property Name="Country" Type="nvarchar" MaxLength="50" />
           <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
           <Property Name="City" Type="nvarchar" MaxLength="50" />
@@ -45,6 +45,9 @@ warning 6002: The table/view 'BPM_Reports.dbo.SAP_VendorCreation' does not have 
           <Property Name="Status" Type="nvarchar" MaxLength="50" />
           <Property Name="EmailSent" Type="nvarchar" MaxLength="50" />
           <Property Name="EmailSentDate" Type="datetime" />
+          <Property Name="SAPVendorID" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssuedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="IssuedOn" Type="datetime" />
           <Property Name="UserID" Type="nvarchar" MaxLength="50" />
           <Property Name="UserName" Type="nvarchar" MaxLength="100" />
           <Property Name="UpdatedDate" Type="datetime" />
@@ -79,7 +82,7 @@ warning 6002: The table/view 'BPM_Reports.dbo.VendorFlow' does not have a primar
     [SAP_VendorCreation].[RequestID] AS [RequestID], 
     [SAP_VendorCreation].[RequestType] AS [RequestType], 
     [SAP_VendorCreation].[Resion] AS [Resion], 
-    [SAP_VendorCreation].[BussinessName] AS [BussinessName], 
+    [SAP_VendorCreation].[BusinessName] AS [BusinessName], 
     [SAP_VendorCreation].[Country] AS [Country], 
     [SAP_VendorCreation].[PostalCode] AS [PostalCode], 
     [SAP_VendorCreation].[City] AS [City], 
@@ -110,6 +113,9 @@ warning 6002: The table/view 'BPM_Reports.dbo.VendorFlow' does not have a primar
     [SAP_VendorCreation].[Status] AS [Status], 
     [SAP_VendorCreation].[EmailSent] AS [EmailSent], 
     [SAP_VendorCreation].[EmailSentDate] AS [EmailSentDate], 
+    [SAP_VendorCreation].[SAPVendorID] AS [SAPVendorID], 
+    [SAP_VendorCreation].[IssuedBy] AS [IssuedBy], 
+    [SAP_VendorCreation].[IssuedOn] AS [IssuedOn], 
     [SAP_VendorCreation].[UserID] AS [UserID], 
     [SAP_VendorCreation].[UserName] AS [UserName], 
     [SAP_VendorCreation].[UpdatedDate] AS [UpdatedDate], 
@@ -200,6 +206,9 @@ warning 6002: The table/view 'BPM_Reports.dbo.VendorFlow' does not have a primar
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EmailSent" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EmailSentDate" Type="DateTime" Precision="3" />
+          <Property Name="SAPVendorID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedOn" Type="DateTime" Precision="3" />
           <Property Name="UserID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
@@ -239,6 +248,9 @@ warning 6002: The table/view 'BPM_Reports.dbo.VendorFlow' does not have a primar
                 <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
+                <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+                <ScalarProperty Name="SAPVendorID" ColumnName="SAPVendorID" />
                 <ScalarProperty Name="EmailSentDate" ColumnName="EmailSentDate" />
                 <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -269,7 +281,7 @@ warning 6002: The table/view 'BPM_Reports.dbo.VendorFlow' does not have a primar
                 <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
                 <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="BusinessName" ColumnName="BussinessName" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
                 <ScalarProperty Name="Resion" ColumnName="Resion" />
                 <ScalarProperty Name="RequestType" ColumnName="RequestType" />
                 <ScalarProperty Name="RequestID" ColumnName="RequestID" />

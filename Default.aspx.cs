@@ -11,6 +11,7 @@ using System.IO;
 using WPClient;
 using SAP_Vendor.Data;
 using Microsoft.Ajax.Utilities;
+using System.Data.Entity.Migrations;
 
 namespace SAP_Vendor
 {
@@ -74,7 +75,7 @@ namespace SAP_Vendor
             WebConfig obj = new WebConfig();
             try
             {
-                query = @"Select Request_ID From SAP_VendorCreation Where User_ID = '" + hidUserID.Value + "' And Status = '0'";
+                query = @"Select RequestID From SAP_VendorCreation Where UserID = '" + hidUserID.Value + "' And Status = '0'";
                 if (db.IsRecordExist(query))
                 {
                     hidRecordID.Value = db.ExecuteScalarDefault(query, "0").ToString();
@@ -85,6 +86,7 @@ namespace SAP_Vendor
                     objMain.UserID = hidUserID.Value;
                     objMain.Status = "0";
                     dbVendor.SAP_VendorCreation.Add(objMain);
+                    dbVendor.SaveChanges();
                     query = @"Select Max(RequestID) From SAP_VendorCreation";
                     hidRecordID.Value = db.ExecuteScalarDefault(query, "0").ToString();
                 }
@@ -162,13 +164,14 @@ namespace SAP_Vendor
         }
         protected void btSubmit_Click(object sender, EventArgs e)
         {
-            SAP_VendorCreation obj = new SAP_VendorCreation();
+            SAP_VendorCreation obj = dbVendor.SAP_VendorCreation.Find(decimal.Parse(hidRecordID.Value));
             try
             {
                 if (!Validation())
                     return;
-                
-                obj.RequestID =decimal.Parse( hidRecordID.Value);
+                if (obj == null)
+                    obj = new SAP_VendorCreation();
+                obj.RequestID =decimal.Parse(hidRecordID.Value);
                 obj.AccountNoIBAN = txtIBAN.Text;
                 obj.Address = txtAddress.Text;
                 obj.BankAddress = txtBankAddress.Text;
@@ -196,7 +199,7 @@ namespace SAP_Vendor
                 obj.Resion =txtResion.Text;
                 obj.RoutingNo =txtRoutingNo.Text;
                 obj.State =txtState.Text;
-                obj.Status ="Active";
+                obj.Status ="1";
                 obj.SwiftCode =txtSwiftCode.Text;
                 obj.TaxRegNo =txtSaleTaxReg.Text;
                 obj.UpdatedDate = DateTime.Now;
@@ -204,8 +207,8 @@ namespace SAP_Vendor
                 obj.UserID = dalBPM.UserID;
                 obj.UserName = dalBPM.UserName;
                 obj.AccountNoIBAN = txtIBAN.Text;
-                obj.WHoldingTax = ddlWitholdingTaxField.SelectedValue;
-                dbVendor.SAP_VendorCreation.Add(obj);
+                obj.WHoldingTax = ddlWitholdingTaxField.SelectedValue;               
+                dbVendor.SaveChanges();
                 db.ClearParameters();
                 AddFlow(hidRecordID.Value);
 

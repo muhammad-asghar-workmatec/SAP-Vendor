@@ -1,4 +1,5 @@
-﻿using SAP_Vendor.Data;
+﻿using Microsoft.AspNet.FriendlyUrls.Resolvers;
+using SAP_Vendor.Data;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,12 +8,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WPClient;
+using WPCommon;
 
 namespace SAP_Vendor
 {
     public partial class DM : System.Web.UI.Page
     {
         BulletSQL db = new BulletSQL(WebConfig.ConnectionString);
+        VendorEntities dbVendor = new SAP_Vendor.Data.VendorEntities();
         string query = "";
         BPMExecution dalBPM = null;
         protected void Page_Load(object sender, EventArgs e)
@@ -92,10 +95,14 @@ namespace SAP_Vendor
                         {
                             int index = Convert.ToInt32(e.CommandArgument);
                             Vendor_Attachment obj = new Vendor_Attachment();
+
                             dgAttachment.SelectedIndex = index;
-                            db.DeleteObject((Vendor_Attachment)obj, Vendor_Attachment.P_ID, dgAttachment.SelectedValue.ToString());
+                            obj.ID = decimal.Parse(dgAttachment.SelectedValue.ToString());
+                            dbVendor.Vendor_Attachment.Remove(obj);
+                            dbVendor.SaveChanges();
                             dgAttachment.SelectedIndex = -1;
                             lblError.Text = "Record successfully deleted.";
+                           
                             BindAttachmentGrid();
                         }
                         catch (Exception ex)
@@ -135,7 +142,7 @@ namespace SAP_Vendor
 
                     AppStatus = "2";
                     _Action = "Disapprove";
-                    dalBPM.SetVarValue("Message", "Your vendor " + txtName1.Text + " request has been disapproved due to  " + txtRemarks.Text);
+                    dalBPM.SetVarValue("Message", "Your vendor " + txtBusinessName.Text + " request has been disapproved due to  " + txtRemarks.Text);
                     dalBPM.SetVarValue("Subject", "Vendor Disapproved");
                 }
                 else
@@ -188,78 +195,49 @@ namespace SAP_Vendor
         {
             try
             {
-                SAP_VendorCreation obj = new SAP_VendorCreation();
-                WebConfig objConfig = new WebConfig();
-                obj = new SAP_VendorCreation(db.GetObject((object)obj, SAP_VendorCreation.P_Request_ID, hidRecordID.Value).Rows[0]);
-                txtName1.Text = obj.Name1;
-                txtName2.Text = obj.Name2;
+                SAP_VendorCreation obj = dbVendor.SAP_VendorCreation.Find(decimal.Parse(dalBPM.RecordID));
+                hidRecordID.Value = obj.RequestID.ToString();
+                txtIBAN.Text =obj.AccountNoIBAN ;
+                txtAddress.Text = obj.Address ;
+                txtBankAddress.Text= obj.BankAddress;
                 txtCountry.Text = obj.Country;
-                txtPostalCode.Text = obj.PostalCode;
+                 txtPostalCode.Text= obj.PostalCode;
                 txtCity.Text = obj.City;
-                txtHNo.Text = obj.STHNo;
-                txtStreet.Text = obj.Street;
-                txtDistrict.Text = obj.District;
-                txtRegion.Text = obj.Region;
-                txtPOBox.Text = obj.POBox;
-                txtSterm1.Text = obj.SearchTerm1;
-                txtSterm2.Text = obj.SearchTerm2;
-                txtLanguage.Text = obj.LanguageKey;
-                txtPhone.Text = obj.Phone;
-                txtFax.Text = obj.Fax;
-                txtEmail.Text = obj.Email;
-                txtTaxcode1.Text = obj.TaxCode1;
-                txtTaxCode2.Text = obj.TaxCode2;
-                txtDunsNumber.Text = obj.DunsNo;
-                txtVAT.Text = obj.VATRegNo;
-                txtIndustryKey.Text = obj.IndustryKey;
-                txtIBAN1.Text = obj.IBAN1;
-                txtBCK1.Text = obj.BankKey1;
-                txtBNKName1.Text = obj.BankName1;
-                txtBCity1.Text = obj.BankCity1;
-                txtBHNo1.Text = obj.BankStreet1;
-                txtBBranch1.Text = obj.BankBranch1;
-                txtBankKey1.Text = obj.BankKey1;
-                txtAccount1.Text = obj.BankAccNo1;
-                txtSwitCode1.Text = obj.BankSwiftCode1;
-                txtAHName1.Text = obj.AccHolderName1;
-                txtABInfo1.Text = obj.AdditionalBankInfo1;
-
-                txtIBAN2.Text = obj.IBAN2;
-                txtBCK2.Text = obj.BankKey2;
-                txtBNKName2.Text = obj.BankName2;
-                txtBCity2.Text = obj.BankCity2;
-                txtBHNo2.Text = obj.BankStreet2;
-                txtBBranch2.Text = obj.BankBranch2;
-                txtBankKey2.Text = obj.BankKey2;
-                txtAccount2.Text = obj.BankAccNo2;
-                txtSwitCode2.Text = obj.BankSwiftCode2;
-                txtAHName2.Text = obj.AccHolderName2;
-                txtABInfo2.Text = obj.AdditionalBankInfo2;
-
-                txtCCode1.Text = obj.CompanyCode;
-                txtRecon.Text = obj.ReconcilliationAccount;
-
-                txtPaymentTerms.Text = obj.TermsofPayment;
-                txtMSOrt2PK1.Text = obj.MSORT2PK1;
-                txtMSOrt2PK3.Text = obj.MSORT2PK3;
-                txtLTU.Text = obj.LTU;
-                txtWHTC.Text = obj.WHoldingTaxCounty;
-                txtWHTType.Text = obj.WHoldingTaxType;
-                txtWHTCode.Text = obj.WHoldingTaxCode;
-                txtRecipient.Text = obj.RecipientType;
-                txtWHTTID.Text = obj.WithHoldingTaxID;
-                txtCurrency.Text = obj.MMOrderCurrency;
-
-                txtCType.Text = obj.CompanyType;
-
-                txtCCate1.Text = obj.ComCate1;
-                txtCCate2.Text = obj.ComCate2;
-                txtCCate3.Text = obj.ComCate3;
+                 txtBenificaryName.Text= obj.BenificaryName;
+                txtBusinessName.Text = obj.BusinessName;
+               Common.SelectItemByValue(rblClassification,obj.Classification);
+                 Common.SelectItemByValue(rblType, obj.CompanyType);
+                 txtContactPerson.Text= obj.ContactPerson;
+                 txtEmail.Text= obj.Email;
+                 txtFaxNo.Text= obj.FaxNo;
+                Common.SelectItemByValue(rblNaturOfWork,obj.NatureOfWork);
+                txtNTN.Text= obj.NTNNo;
+               Common.SelectItemByValue(rblCurrency, obj.PaymentCurrency);
+               Common.SelectItemByValue(rblPaymentMethod, obj.PaymentMethod);
+                 txtPaymentTerms.Text= obj.PaymentTerms;
+                 txtPeriod.Text= obj.PeriodUpto;
+                txtContactNo.Text= obj.PhoneNo;
+                Common.SelectItemByValue(rblQualification, obj.Qualification);
+                if(obj.QuestionnaireCompleted.GetValueOrDefault())
+                    rblAttached.SelectedValue = "Yes";
+                else
+                    rblAttached.SelectedValue = "No";
+                txtNA.Checked = obj.RegNA.GetValueOrDefault();
+                Common.SelectItemByValue( rblOptions, obj.RequestType);
+                txtResion.Text= obj.Resion;
+                txtRoutingNo.Text= obj.RoutingNo;
+                txtState.Text= obj.State;
+                
+                 txtSwiftCode.Text= obj.SwiftCode;
+                txtSaleTaxReg.Text= obj.TaxRegNo;
+                hidUserID.Value = obj.UserID;
+                txtWHoldingTax.Text = obj.WHoldingTax;
+                
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
-                db.Disconnect();
+                
             }
         }
     }
