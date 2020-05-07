@@ -11,31 +11,24 @@ using WPCommon;
 
 namespace SAP_Vendor
 {
-    public partial class Print : System.Web.UI.Page
+    public partial class Print : PageBase
     {
-        BulletSQL db = new BulletSQL(WebConfig.ConnectionString);
-        VendorEntities dbVendor = new SAP_Vendor.Data.VendorEntities();
-        string query = "";
-        BPMExecution dalBPM = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                // dalBPM = new BPMExecution(Page, WebConfig.BPMConnectionString);
+                PageLoad();
                 lblError.Text = "";
                 if (!IsPostBack)
                 {
-                    hidRecordID.Value = Request.QueryString["requestid"].ToString();
+                    hidRecordID.Value = dalBPM.RecordID;
                     InitControls();
-                    //UserRemarks1.LoadRemarks("Vendor Creation",int.Parse(Request.QueryString["IncidentNo"].ToString()),WebConfig.BPMConnectionString);
-                    Query objQ = new Query(WebConfig.BPMConnectionString);
-                    int IncidentNo = objQ.GetIncidentNo("Vendor Creation", hidRecordID.Value);
-                    UserRemarks1.LoadRemarks("Vendor Creation", IncidentNo, WebConfig.BPMConnectionString);
+                   
+                    UserRemarks1.LoadRemarks(dalBPM);
                 }
             }
             catch (Exception ex)
-            {
-                db.Disconnect();
+            {               
                 lblError.Text = ex.Message;
             }
         }
@@ -45,12 +38,12 @@ namespace SAP_Vendor
             {
                 LoadForm();
                 BindFlowGrid();
-                BindAttachmentGrid();
+                BindAttachments(dgAttachment);
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
-                db.Disconnect();
+                
 
             }
         }
@@ -58,27 +51,27 @@ namespace SAP_Vendor
         {
             try
             {
-                //dsFlow.SelectCommand = "Select * From VendorFlow Where Request_ID = " + hidRecordID.Value + " order by approved_date desc";
+                //dsFlow.SelectCommand = "Select * From VendorFlow Where RequestID = " + hidRecordID.Value + " order by approved_date desc";
                 //dgFlow.DataBind();
 
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
-                db.Disconnect();
+                
             }
         }
         void BindAttachmentGrid()
         {
             try
             {
-                dsAttachment.SelectCommand = @"Select * From Vendor_Attachment Where Request_ID = " + hidRecordID.Value;
+                dsAttachment.SelectCommand = $@"Select * From SAP_VendorAttachment Where RequestID ='{hidRecordID.Value}'";
                 dgAttachment.DataBind();
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
-                db.Disconnect();
+                
             }
         }
         protected void dgAttachment_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -91,9 +84,9 @@ namespace SAP_Vendor
                         try
                         {
                             //int index = Convert.ToInt32(e.CommandArgument);
-                            //Vendor_Attachment obj = new Vendor_Attachment();
+                            //SAP_VendorAttachment obj = new SAP_VendorAttachment();
                             //dgAttachment.SelectedIndex = index;
-                            //db.DeleteObject((Vendor_Attachment)obj, Vendor_Attachment.P_ID, dgAttachment.SelectedValue.ToString());
+                            //db.DeleteObject((SAP_VendorAttachment)obj, SAP_VendorAttachment.P_ID, dgAttachment.SelectedValue.ToString());
                             //dgAttachment.SelectedIndex = -1;
                             //lblError.Text = "Record successfully deleted.";
                             //BindAttachmentGrid();
@@ -116,13 +109,13 @@ namespace SAP_Vendor
         {
             try
             {
-                WebConfig obj = new WebConfig();
+                
                 if (e.Row.RowType == DataControlRowType.DataRow)
                 {
                     DataRowView rowView = (DataRowView)e.Row.DataItem;
                     HyperLink lnk = (HyperLink)e.Row.FindControl("lnkAttachment");
                     lnk.Text = rowView["FileName"].ToString();
-                    string HttpFilePath = obj.GetApplicationPath() + @"/Upload Files/" + hidRecordID.Value + @"/" + lnk.Text;
+                    string HttpFilePath = @"Documents/" + hidRecordID.Value + @"/" + lnk.Text;
                     lnk.NavigateUrl = HttpFilePath;
                 }
             }
@@ -136,8 +129,8 @@ namespace SAP_Vendor
         {
             try
             {
-                SAP_VendorCreation obj = dbVendor.SAP_VendorCreation.Find(decimal.Parse(dalBPM.RecordID));
-                hidRecordID.Value = obj.RequestID.ToString();
+                SAP_VendorCreation obj = db.SAP_VendorCreation.Find(dalBPM.RecordID);
+                hidRecordID.Value = obj.RequestId;
                 txtIBAN.Text = obj.AccountNoIBAN;
                 txtAddress.Text = obj.Address;
                 txtBankAddress.Text = obj.BankAddress;
@@ -146,34 +139,34 @@ namespace SAP_Vendor
                 txtCity.Text = obj.City;
                 txtBenificaryName.Text = obj.BenificaryName;
                 txtBusinessName.Text = obj.BusinessName;
-                Common.SelectItemByValue(rblClassification, obj.Classification);
-                Common.SelectItemByValue(rblType, obj.CompanyType);
+                Common.SelectItemByValue(rblClassification, string.IsNullOrEmpty(obj.Classification) ? string.Empty : obj.Classification);
+                Common.SelectItemByValue(rblType, string.IsNullOrEmpty(obj.CompanyType) ? string.Empty : obj.CompanyType);
                 txtContactPerson.Text = obj.ContactPerson;
                 txtEmail.Text = obj.Email;
                 txtFaxNo.Text = obj.FaxNo;
-                Common.SelectItemByValue(rblNaturOfWork, obj.NatureOfWork);
+                Common.SelectItemByValue(rblNaturOfWork, string.IsNullOrEmpty(obj.NatureOfWork) ? string.Empty : obj.NatureOfWork);
                 txtNTN.Text = obj.NTNNo;
-                Common.SelectItemByValue(rblCurrency, obj.PaymentCurrency);
-                Common.SelectItemByValue(rblPaymentMethod, obj.PaymentMethod);
+                txtCurrency.Text = obj.PaymentCurrency;
+                Common.SelectItemByValue(rblPaymentMethod, string.IsNullOrEmpty(obj.PaymentMethod) ? string.Empty : obj.PaymentMethod);
                 txtPaymentTerms.Text = obj.PaymentTerms;
                 txtPeriod.Text = obj.PeriodUpto;
                 txtContactNo.Text = obj.PhoneNo;
-                Common.SelectItemByValue(rblQualification, obj.Qualification);
+                Common.SelectItemByValue(rblQualification, string.IsNullOrEmpty(obj.Qualification) ? string.Empty : obj.Qualification);
                 if (obj.QuestionnaireCompleted.GetValueOrDefault())
                     rblAttached.SelectedValue = "Yes";
                 else
                     rblAttached.SelectedValue = "No";
                 txtNA.Checked = obj.RegNA.GetValueOrDefault();
-                Common.SelectItemByValue(rblOptions, obj.RequestType);
-                txtResion.Text = obj.Resion;
+                Common.SelectItemByValue(rblOptions, string.IsNullOrEmpty(obj.RequestType) ? string.Empty : obj.RequestType);
+                txtReason.Text = obj.Reason;
                 txtRoutingNo.Text = obj.RoutingNo;
                 txtState.Text = obj.State;
 
                 txtSwiftCode.Text = obj.SwiftCode;
                 txtSaleTaxReg.Text = obj.TaxRegNo;
-                hidUserID.Value = obj.UserID;
-                txtWHoldingTax.Text = obj.WHoldingTax;
-                txtVendorID.Text = obj.SAPVendorID;
+                hidUserID.Value = obj.UserId;
+                txtWHoldingTax.Text = obj.WithholdingTax;
+                txtVendorID.Text = obj.SAPVendorId;
                 txtIssedBy.Text = obj.IssuedBy;
                 if (!obj.IssuedOn.HasValue)
                     txtIssuedOn.Text = obj.IssuedOn.Value.ToString("dd-MMM-yyyy");               
@@ -181,7 +174,7 @@ namespace SAP_Vendor
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
-                db.Disconnect();
+                
             }
         }
     }

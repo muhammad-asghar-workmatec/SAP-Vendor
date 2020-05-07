@@ -14,8 +14,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SAP_Vendor</RootNamespace>
     <AssemblyName>SAP Vendor</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44356</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -51,15 +52,24 @@
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\DLLs\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\DLLs\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -91,6 +101,52 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Documents.SpreadsheetStreaming">
+      <HintPath>..\DLLs\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.Design">
+      <HintPath>..\DLLs\Telerik.Web.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.Device.Detection">
+      <HintPath>..\DLLs\Telerik.Web.Device.Detection.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.Spreadsheet">
+      <HintPath>..\DLLs\Telerik.Web.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\DLLs\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins">
+      <HintPath>..\DLLs\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Core">
+      <HintPath>..\DLLs\Telerik.Windows.Documents.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Fixed">
+      <HintPath>..\DLLs\Telerik.Windows.Documents.Fixed.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow">
+      <HintPath>..\DLLs\Telerik.Windows.Documents.Flow.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf">
+      <HintPath>..\DLLs\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet">
+      <HintPath>..\DLLs\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml">
+      <HintPath>..\DLLs\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf">
+      <HintPath>..\DLLs\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip">
+      <HintPath>..\DLLs\Telerik.Windows.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Zip.Extensions">
+      <HintPath>..\DLLs\Telerik.Windows.Zip.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -106,11 +162,16 @@
     <Reference Include="Microsoft.AspNet.FriendlyUrls">
       <HintPath>packages\Microsoft.AspNet.FriendlyUrls.Core.1.0.2\lib\net45\Microsoft.AspNet.FriendlyUrls.dll</HintPath>
     </Reference>
-    <Reference Include="WPClient">
-      <HintPath>..\..\Projects\UEP2019\BPMSSolution\WPClient\bin\Release\WPClient.dll</HintPath>
+    <Reference Include="WPClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\WPClient.dll</HintPath>
     </Reference>
-    <Reference Include="WPCommon">
-      <HintPath>..\..\Projects\UEP2019\BPMSSolution\WPClient\bin\Release\WPCommon.dll</HintPath>
+    <Reference Include="WPCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DLLs\WPCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="WPExcel">
+      <HintPath>..\DLLs\WPExcel.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -119,24 +180,38 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Default\bootstrap.min.css" />
+    <Content Include="App_Themes\Default\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App_Themes\Default\Site.css" />
+    <Content Include="App_Themes\Default\stlECR.css" />
+    <Content Include="App_Themes\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="App_Themes\Print\bootstrap.min.css" />
+    <Content Include="App_Themes\Print\MOCPrioritization-stylesheet.css" />
+    <Content Include="App_Themes\Print\Risk-Matrix_stylesheet.css" />
+    <Content Include="App_Themes\Print\Site.css" />
+    <Content Include="App_Themes\Print\stlECR.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Data\ModelVendor.Context.tt">
+    <Content Include="Controls\Header.ascx" />
+    <Content Include="Data\VendorModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelVendor.Context.cs</LastGenOutput>
-      <DependentUpon>ModelVendor.edmx</DependentUpon>
+      <DependentUpon>VendorModel.edmx</DependentUpon>
+      <LastGenOutput>VendorModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Data\ModelVendor.tt">
+    <Content Include="Data\VendorModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelVendor.edmx</DependentUpon>
-      <LastGenOutput>ModelVendor.cs</LastGenOutput>
+      <DependentUpon>VendorModel.edmx</DependentUpon>
+      <LastGenOutput>VendorModel.cs</LastGenOutput>
     </Content>
     <Content Include="Default.aspx" />
     <Content Include="DM.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="Report.aspx" />
+    <Content Include="Settings.aspx" />
+    <Content Include="TaxTeam.aspx" />
     <Content Include="Finance.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -148,16 +223,678 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <EntityDeploy Include="Data\ModelVendor.edmx">
+    <Content Include="App_Themes\Default\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Themes\Default\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="App_Themes\Default\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="App_Themes\Default\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="App_Themes\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="App_Themes\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="App_Themes\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="App_Themes\fonts\glyphicons-halflings-regular.woff2" />
+    <EntityDeploy Include="Data\VendorModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelVendor.Designer.cs</LastGenOutput>
+      <LastGenOutput>VendorModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Data\ModelVendor.edmx.diagram">
-      <DependentUpon>ModelVendor.edmx</DependentUpon>
+    <Content Include="Data\VendorModel.edmx.diagram">
+      <DependentUpon>VendorModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\OMV.jpg" />
+    <Content Include="Lib\kendo\angular.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.af-ZA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.af.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.am-ET.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.am.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-AE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-BH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-DZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-EG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-IQ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-JO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-KW.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-LB.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-LY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-MA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-OM.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-QA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-SA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-SY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-TN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar-YE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ar.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.arn-CL.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.arn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.as-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.as.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.az-Cyrl-AZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.az-Cyrl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.az-Latn-AZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.az-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.az.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ba-RU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ba.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.be-BY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.be.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bg-BG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bg.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bn-BD.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bn-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bo-CN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bo.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.br-FR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.br.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bs-Cyrl-BA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bs-Cyrl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bs-Latn-BA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bs-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.bs.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ca-ES-valencia.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ca-ES.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ca.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.chr-Cher-US.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.chr-Cher.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.chr.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.co-FR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.co.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.cs-CZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.cs.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.cy-GB.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.cy.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.da-DK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.da.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.de-AT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.de-CH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.de-DE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.de-LI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.de-LU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.de.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.dsb-DE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.dsb.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.dv-MV.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.dv.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.el-GR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.el.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-029.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-AU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-BZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-CA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-GB.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-HK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-IE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-JM.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-MY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-NZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-PH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-SG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-TT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-US.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-ZA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en-ZW.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.en.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-419.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-AR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-BO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-CL.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-CO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-CR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-DO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-EC.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-ES.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-GT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-HN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-MX.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-NI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-PA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-PE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-PR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-PY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-SV.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-US.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-UY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es-VE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.es.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.et-EE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.et.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.eu-ES.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.eu.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fa-IR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fa.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ff-Latn-SN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ff-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ff.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fi-FI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fi.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fil-PH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fil.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fo-FO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fo.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-BE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-CA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-CD.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-CH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-CI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-CM.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-FR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-HT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-LU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-MA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-MC.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-ML.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-RE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr-SN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fr.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fy-NL.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.fy.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ga-IE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ga.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gd-GB.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gd.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gl-ES.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gn-PY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gsw-FR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gsw.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gu-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.gu.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ha-Latn-NG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ha-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ha.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.haw-US.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.haw.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.he-IL.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.he.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hi-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hi.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hr-BA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hr-HR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hr.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hsb-DE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hsb.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hu-HU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hu.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hy-AM.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.hy.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.id-ID.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.id.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ig-NG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ig.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ii-CN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ii.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.is-IS.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.is.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.it-CH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.it-IT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.it.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.iu-Cans-CA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.iu-Cans.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.iu-Latn-CA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.iu-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.iu.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ja-JP.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ja.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.jv-Latn-ID.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.jv-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.jv.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ka-GE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ka.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.kk-KZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.kk.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.kl-GL.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.kl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.km-KH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.km.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.kn-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.kn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ko-KR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ko.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.kok-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.kok.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ku-Arab-IQ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ku-Arab.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ku.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ky-KG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ky.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.lb-LU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.lb.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.lo-LA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.lo.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.lt-LT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.lt.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.lv-LV.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.lv.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mg-MG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mg.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mi-NZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mi.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mk-MK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mk.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ml-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ml.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mn-Cyrl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mn-MN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mn-Mong-CN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mn-Mong-MN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mn-Mong.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.moh-CA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.moh.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mr-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mr.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ms-BN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ms-MY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ms.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mt-MT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.mt.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.my-MM.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.my.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nb-NO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nb.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ne-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ne-NP.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ne.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nl-BE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nl-NL.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nn-NO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.no.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nqo-GN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nqo.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nso-ZA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.nso.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.oc-FR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.oc.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.om-ET.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.om.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.or-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.or.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pa-Arab-PK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pa-Arab.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pa-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pa.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pl-PL.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.prs-AF.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.prs.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ps-AF.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ps.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pt-AO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pt-BR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pt-PT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.pt.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.qut-GT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.qut.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.quz-BO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.quz-EC.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.quz-PE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.quz.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.rm-CH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.rm.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ro-MD.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ro-RO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ro.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ru-RU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ru-UA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ru.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.rw-RW.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.rw.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sa-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sa.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sah-RU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sah.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sd-Arab-PK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sd-Arab.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sd.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.se-FI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.se-NO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.se-SE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.se.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.si-LK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.si.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sk-SK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sk.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sl-SI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sma-NO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sma-SE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sma.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.smj-NO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.smj-SE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.smj.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.smn-FI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.smn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sms-FI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sms.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sn-Latn-ZW.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sn-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.so-SO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.so.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sq-AL.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sq.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Cyrl-BA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Cyrl-CS.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Cyrl-ME.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Cyrl-RS.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Cyrl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Latn-BA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Latn-CS.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Latn-ME.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Latn-RS.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sr.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.st-ZA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.st.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sv-FI.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sv-SE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sv.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sw-KE.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.sw.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.syr-SY.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.syr.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ta-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ta-LK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ta.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.te-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.te.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tg-Cyrl-TJ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tg-Cyrl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tg.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.th-TH.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.th.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ti-ER.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ti-ET.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ti.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tk-TM.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tk.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tn-BW.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tn-ZA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tr-TR.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tr.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ts-ZA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ts.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tt-RU.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tt.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tzm-Latn-DZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tzm-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tzm-Tfng-MA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tzm-Tfng.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.tzm.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ug-CN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ug.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.uk-UA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.uk.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ur-IN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ur-PK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.ur.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.uz-Cyrl-UZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.uz-Cyrl.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.uz-Latn-UZ.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.uz-Latn.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.uz.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.vi-VN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.vi.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.wo-SN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.wo.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.xh-ZA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.xh.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.yo-NG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.yo.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zgh-Tfng-MA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zgh-Tfng.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zgh.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-CHS.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-CHT.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-CN.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-Hans.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-Hant.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-HK.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-MO.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-SG.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh-TW.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zh.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zu-ZA.min.js" />
+    <Content Include="Lib\kendo\cultures\kendo.culture.zu.min.js" />
+    <Content Include="Lib\kendo\jquery.min.js" />
+    <Content Include="Lib\kendo\jszip.min.js" />
+    <Content Include="Lib\kendo\kendo.all.min.js" />
+    <Content Include="Lib\kendo\kendo.angular.min.js" />
+    <Content Include="Lib\kendo\kendo.angular2.min.js" />
+    <Content Include="Lib\kendo\kendo.autocomplete.min.js" />
+    <Content Include="Lib\kendo\kendo.binder.min.js" />
+    <Content Include="Lib\kendo\kendo.button.min.js" />
+    <Content Include="Lib\kendo\kendo.calendar.min.js" />
+    <Content Include="Lib\kendo\kendo.color.min.js" />
+    <Content Include="Lib\kendo\kendo.colorpicker.min.js" />
+    <Content Include="Lib\kendo\kendo.columnmenu.min.js" />
+    <Content Include="Lib\kendo\kendo.columnsorter.min.js" />
+    <Content Include="Lib\kendo\kendo.combobox.min.js" />
+    <Content Include="Lib\kendo\kendo.core.min.js" />
+    <Content Include="Lib\kendo\kendo.custom-common.min.js" />
+    <Content Include="Lib\kendo\kendo.custom-diagram.min.js" />
+    <Content Include="Lib\kendo\kendo.custom-digram.min.js" />
+    <Content Include="Lib\kendo\kendo.custom-form.min.js" />
+    <Content Include="Lib\kendo\kendo.custom-omv.min.js" />
+    <Content Include="Lib\kendo\kendo.custom.min.js" />
+    <Content Include="Lib\kendo\kendo.data.min.js" />
+    <Content Include="Lib\kendo\kendo.data.odata.min.js" />
+    <Content Include="Lib\kendo\kendo.data.signalr.min.js" />
+    <Content Include="Lib\kendo\kendo.data.xml.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.barcode.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.chart.funnel.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.chart.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.chart.polar.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.core.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.diagram.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.gauge.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.map.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.mobile.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.qrcode.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.sparkline.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.stock.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.themes.min.js" />
+    <Content Include="Lib\kendo\kendo.dataviz.treemap.min.js" />
+    <Content Include="Lib\kendo\kendo.datepicker.min.js" />
+    <Content Include="Lib\kendo\kendo.datetimepicker.min.js" />
+    <Content Include="Lib\kendo\kendo.dialog.min.js" />
+    <Content Include="Lib\kendo\kendo.dom.min.js" />
+    <Content Include="Lib\kendo\kendo.draganddrop.min.js" />
+    <Content Include="Lib\kendo\kendo.drawing.min.js" />
+    <Content Include="Lib\kendo\kendo.dropdownlist.min.js" />
+    <Content Include="Lib\kendo\kendo.editable.min.js" />
+    <Content Include="Lib\kendo\kendo.editor.min.js" />
+    <Content Include="Lib\kendo\kendo.excel.min.js" />
+    <Content Include="Lib\kendo\kendo.filebrowser.min.js" />
+    <Content Include="Lib\kendo\kendo.filtercell.min.js" />
+    <Content Include="Lib\kendo\kendo.filtermenu.min.js" />
+    <Content Include="Lib\kendo\kendo.fx.min.js" />
+    <Content Include="Lib\kendo\kendo.gantt.list.min.js" />
+    <Content Include="Lib\kendo\kendo.gantt.min.js" />
+    <Content Include="Lib\kendo\kendo.gantt.timeline.min.js" />
+    <Content Include="Lib\kendo\kendo.grid.min.js" />
+    <Content Include="Lib\kendo\kendo.groupable.min.js" />
+    <Content Include="Lib\kendo\kendo.imagebrowser.min.js" />
+    <Content Include="Lib\kendo\kendo.list.min.js" />
+    <Content Include="Lib\kendo\kendo.listview.min.js" />
+    <Content Include="Lib\kendo\kendo.maskedtextbox.min.js" />
+    <Content Include="Lib\kendo\kendo.mediaplayer.min.js" />
+    <Content Include="Lib\kendo\kendo.menu.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.actionsheet.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.application.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.button.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.buttongroup.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.collapsible.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.drawer.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.listview.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.loader.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.modalview.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.navbar.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.pane.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.popover.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.scroller.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.scrollview.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.shim.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.splitview.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.switch.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.tabstrip.min.js" />
+    <Content Include="Lib\kendo\kendo.mobile.view.min.js" />
+    <Content Include="Lib\kendo\kendo.multiselect.min.js" />
+    <Content Include="Lib\kendo\kendo.notification.min.js" />
+    <Content Include="Lib\kendo\kendo.numerictextbox.min.js" />
+    <Content Include="Lib\kendo\kendo.ooxml.min.js" />
+    <Content Include="Lib\kendo\kendo.pager.min.js" />
+    <Content Include="Lib\kendo\kendo.panelbar.min.js" />
+    <Content Include="Lib\kendo\kendo.pdf.min.js" />
+    <Content Include="Lib\kendo\kendo.pivot.configurator.min.js" />
+    <Content Include="Lib\kendo\kendo.pivot.fieldmenu.min.js" />
+    <Content Include="Lib\kendo\kendo.pivotgrid.min.js" />
+    <Content Include="Lib\kendo\kendo.popup.min.js" />
+    <Content Include="Lib\kendo\kendo.progressbar.min.js" />
+    <Content Include="Lib\kendo\kendo.reorderable.min.js" />
+    <Content Include="Lib\kendo\kendo.resizable.min.js" />
+    <Content Include="Lib\kendo\kendo.responsivepanel.min.js" />
+    <Content Include="Lib\kendo\kendo.router.min.js" />
+    <Content Include="Lib\kendo\kendo.scheduler.agendaview.min.js" />
+    <Content Include="Lib\kendo\kendo.scheduler.dayview.min.js" />
+    <Content Include="Lib\kendo\kendo.scheduler.min.js" />
+    <Content Include="Lib\kendo\kendo.scheduler.monthview.min.js" />
+    <Content Include="Lib\kendo\kendo.scheduler.recurrence.min.js" />
+    <Content Include="Lib\kendo\kendo.scheduler.timelineview.min.js" />
+    <Content Include="Lib\kendo\kendo.scheduler.view.min.js" />
+    <Content Include="Lib\kendo\kendo.selectable.min.js" />
+    <Content Include="Lib\kendo\kendo.slider.min.js" />
+    <Content Include="Lib\kendo\kendo.sortable.min.js" />
+    <Content Include="Lib\kendo\kendo.splitter.min.js" />
+    <Content Include="Lib\kendo\kendo.spreadsheet.min.js" />
+    <Content Include="Lib\kendo\kendo.tabstrip.min.js" />
+    <Content Include="Lib\kendo\kendo.timepicker.min.js" />
+    <Content Include="Lib\kendo\kendo.timezones.min.js" />
+    <Content Include="Lib\kendo\kendo.toolbar.min.js" />
+    <Content Include="Lib\kendo\kendo.tooltip.min.js" />
+    <Content Include="Lib\kendo\kendo.touch.min.js" />
+    <Content Include="Lib\kendo\kendo.treelist.min.js" />
+    <Content Include="Lib\kendo\kendo.treeview.draganddrop.min.js" />
+    <Content Include="Lib\kendo\kendo.treeview.min.js" />
+    <Content Include="Lib\kendo\kendo.upload.min.js" />
+    <Content Include="Lib\kendo\kendo.userevents.min.js" />
+    <Content Include="Lib\kendo\kendo.validator.min.js" />
+    <Content Include="Lib\kendo\kendo.view.min.js" />
+    <Content Include="Lib\kendo\kendo.virtuallist.min.js" />
+    <Content Include="Lib\kendo\kendo.web.min.js" />
+    <Content Include="Lib\kendo\kendo.webcomponents.min.js" />
+    <Content Include="Lib\kendo\kendo.window.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.bg-BG.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.cs-CZ.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.da-DK.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.de-AT.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.de-CH.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.de-DE.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.de-LI.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.en-AU.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.en-CA.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.en-GB.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.en-US.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-AR.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-BO.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-CL.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-CO.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-CR.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-DO.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-EC.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-ES.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-GT.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-HN.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-MX.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-NI.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-PA.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-PE.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-PR.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-PY.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-US.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-UY.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.es-VE.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fi-FI.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-BE.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-CA.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-CD.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-CH.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-CI.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-CM.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-FR.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-HT.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-LU.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-MA.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-MC.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-ML.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.fr-SN.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.he-IL.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.hy-AM.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.it-CH.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.it-IT.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.ja-JP.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.nb-NO.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.nl-BE.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.nl-NL.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.pl-PL.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.pt-BR.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.pt-PT.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.ro-RO.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.ru-RU.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.sk-SK.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.sv-SE.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.tr-TR.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.uk-UA.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.zh-CN.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.zh-HK.min.js" />
+    <Content Include="Lib\kendo\messages\kendo.messages.zh-TW.min.js" />
+    <Content Include="Lib\kendo\pako_deflate.min.js" />
+    <Content Include="Message.aspx" />
     <Content Include="Print.aspx" />
+    <Content Include="RadEditorDialogs\About.ascx" />
+    <Content Include="RadEditorDialogs\AccessibleTable.ascx" />
+    <Content Include="RadEditorDialogs\Border.ascx" />
+    <Content Include="RadEditorDialogs\CellProperties.ascx" />
+    <Content Include="RadEditorDialogs\CSDialog.ascx" />
+    <Content Include="RadEditorDialogs\DocumentManager.ascx" />
+    <Content Include="RadEditorDialogs\FileBrowser.ascx" />
+    <Content Include="RadEditorDialogs\FindAndReplace.ascx" />
+    <Content Include="RadEditorDialogs\FindReplaceSettings.ascx" />
+    <Content Include="RadEditorDialogs\FlashManager.ascx" />
+    <Content Include="RadEditorDialogs\FormatCodeBlock.ascx" />
+    <Content Include="RadEditorDialogs\Help.ascx" />
+    <Content Include="RadEditorDialogs\ImageEditor.ascx" />
+    <Content Include="RadEditorDialogs\ImageManager.ascx" />
+    <Content Include="RadEditorDialogs\ImageMap.ascx" />
+    <Content Include="RadEditorDialogs\InsertExternalVideo.ascx" />
+    <Content Include="RadEditorDialogs\InsertImage.ascx" />
+    <Content Include="RadEditorDialogs\InsertLink.ascx" />
+    <Content Include="RadEditorDialogs\InsertSelectDialog.ascx" />
+    <Content Include="RadEditorDialogs\InsertTable.ascx" />
+    <Content Include="RadEditorDialogs\InsertTableLight.ascx" />
+    <Content Include="RadEditorDialogs\LinkManager.ascx" />
+    <Content Include="RadEditorDialogs\MediaManager.ascx" />
+    <Content Include="RadEditorDialogs\MobileImageManager.ascx" />
+    <Content Include="RadEditorDialogs\MobileImageProperties.ascx" />
+    <Content Include="RadEditorDialogs\MobileLinkManager.ascx" />
+    <Content Include="RadEditorDialogs\MobileTableProperties.ascx" />
+    <Content Include="RadEditorDialogs\MozillaPasteHtmlDialog.ascx" />
+    <Content Include="RadEditorDialogs\MozillaPasteTextDialog.ascx" />
+    <Content Include="RadEditorDialogs\PageProperties.ascx" />
+    <Content Include="RadEditorDialogs\SetImageProperties.ascx" />
+    <Content Include="RadEditorDialogs\SilverlightManager.ascx" />
+    <Content Include="RadEditorDialogs\SizeMargins.ascx" />
+    <Content Include="RadEditorDialogs\StyleBuilder.ascx" />
+    <Content Include="RadEditorDialogs\TableLayouts.ascx" />
+    <Content Include="RadEditorDialogs\TableProperties.ascx" />
+    <Content Include="RadEditorDialogs\TableWizard.ascx" />
+    <Content Include="RadEditorDialogs\TemplateManager.ascx" />
+    <Content Include="RadEditorDialogs\XhtmlValidator.ascx" />
     <Content Include="Return.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -190,6 +927,7 @@
     <Content Include="Site.Master" />
     <Content Include="stlLoan.css" />
     <Content Include="SuccessfullySubmited.aspx" />
+    <Content Include="tools.xml" />
     <Content Include="UserRemarks.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -197,37 +935,88 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\BPMQuery.cs" />
+    <Compile Include="Controls\Header.ascx.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Header.ascx.designer.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RequestBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RequestListItemBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Data\SAP_VendorAttachment.cs">
+      <DependentUpon>VendorModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\SAP_VendorCreation.cs">
-      <DependentUpon>ModelVendor.tt</DependentUpon>
+      <DependentUpon>VendorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\VendorFlow.cs">
-      <DependentUpon>ModelVendor.tt</DependentUpon>
+    <Compile Include="Data\SAP_VendorCreationLog.cs">
+      <DependentUpon>VendorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Data\Vendor_Attachment.cs">
-      <DependentUpon>ModelVendor.tt</DependentUpon>
+    <Compile Include="Data\SAP_Vendor_Items.cs">
+      <DependentUpon>VendorModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Vendor_Attachment.cs" />
+    <Compile Include="Data\VendorModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VendorModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VendorModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VendorModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VendorModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VendorModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\VendorRepository.cs" />
+    <Compile Include="Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.aspx.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Settings.aspx.designer.cs">
+      <DependentUpon>Settings.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TaxTeam.aspx.cs">
+      <DependentUpon>TaxTeam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TaxTeam.aspx.designer.cs">
+      <DependentUpon>TaxTeam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\BulletSQL.cs" />
+    <Compile Include="Lib\Category.cs" />
+    <Compile Include="Lib\WebConfig.cs" />
+    <Compile Include="Lib\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Lib\PageListItemBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Message.aspx.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Message.aspx.designer.cs">
+      <DependentUpon>Message.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebConfig.cs" />
-    <Content Include="DBInfo.cs" />
-    <Content Include="VendorFlow.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BulletSQL.cs" />
-    <Compile Include="Data\ModelVendor.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelVendor.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ModelVendor.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelVendor.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\ModelVendor.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelVendor.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -267,7 +1056,6 @@
     <Compile Include="Return.aspx.designer.cs">
       <DependentUpon>Return.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SAP_Vendor_Creation.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -322,6 +1110,9 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -337,7 +1128,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53160</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44356/</IISUrl>
+          <IISUrl>http://localhost/vendorcreation</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

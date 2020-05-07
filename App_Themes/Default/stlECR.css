@@ -11,7 +11,7 @@
     right: 0px;
     left: 0px;*/
 }
-
+/*
 .PageModalButtonCreate {
     
     font-weight: bold;
@@ -35,7 +35,7 @@
 
 .RepFilterBG {
     background-color: white;
-}
+}*/
 /*.cbo{
    
 	
@@ -81,7 +81,7 @@ input{
     background-color: #008AE6;
     border-bottom: 1px solid;
     border-bottom-color: #daded8;
-    font-size: 16px;
+    font-size: 14px;
     padding-top: 5px;
     padding-bottom: 3px;
     padding-left: 10px;
@@ -120,7 +120,7 @@ input{
     text-align: left;
     color: #3D6D07;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 2;
 }
 
@@ -129,7 +129,7 @@ input{
     text-align: left;
     color: #3D6D07;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 2;
 }
 
@@ -193,7 +193,7 @@ input{
     -webkit-print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     letter-spacing: 2;
     height: 23px;
 }

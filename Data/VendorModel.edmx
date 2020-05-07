@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SAP_Vendor.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SAP_Vendor_Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="300" />
+          <Property Name="Value" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Enable" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="SAP_VendorAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FileName" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SAP_VendorCreation">
+          <Key>
+            <PropertyRef Name="RequestId" />
+          </Key>
+          <Property Name="RequestId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RequestType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="300" />
+          <Property Name="BusinessName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyType" Type="nvarchar" MaxLength="150" />
+          <Property Name="NTNNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxRegNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentCurrency" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegNA" Type="bit" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FaxNo" Type="nvarchar" MaxLength="61" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="250" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="100" />
+          <Property Name="NatureOfWork" Type="nvarchar" MaxLength="100" />
+          <Property Name="WithholdingTax" Type="nvarchar" MaxLength="100" />
+          <Property Name="Classification" Type="nvarchar" MaxLength="100" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="100" />
+          <Property Name="QuestionnaireCompleted" Type="bit" />
+          <Property Name="PeriodUpto" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="AccountNoIBAN" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoutingNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="SwiftCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="BenificaryName" Type="nvarchar" MaxLength="250" />
+          <Property Name="PaymentTerms" Type="nvarchar" MaxLength="300" />
+          <Property Name="Status" Type="int" />
+          <Property Name="EmailSent" Type="bit" />
+          <Property Name="EmailSentDate" Type="datetime" />
+          <Property Name="SAPVendorId" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssuedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="IssuedOn" Type="datetime" />
+          <Property Name="IncidentNo" Type="int" />
+          <Property Name="InitiatorId" Type="nvarchar" MaxLength="50" />
+          <Property Name="InitiatorName" Type="nvarchar" MaxLength="100" />
+          <Property Name="InitiatedDate" Type="datetime" />
+          <Property Name="TaskId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activity" Type="nvarchar" MaxLength="100" />
+          <Property Name="ActiveActivity" Type="nvarchar" MaxLength="100" />
+          <Property Name="ActiveUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActiveUserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ReturnEmails" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToEmails" Type="nvarchar" MaxLength="500" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SAP_VendorCreationLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RequestId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RequestType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Reason" Type="nvarchar" MaxLength="300" />
+          <Property Name="BusinessName" Type="nvarchar" MaxLength="250" />
+          <Property Name="Country" Type="nvarchar" MaxLength="50" />
+          <Property Name="PostalCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="CompanyType" Type="nvarchar" MaxLength="150" />
+          <Property Name="NTNNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="TaxRegNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PaymentCurrency" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegNA" Type="bit" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="300" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="FaxNo" Type="nvarchar" MaxLength="61" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="250" />
+          <Property Name="PaymentMethod" Type="nvarchar" MaxLength="100" />
+          <Property Name="NatureOfWork" Type="nvarchar" MaxLength="100" />
+          <Property Name="WithholdingTax" Type="nvarchar" MaxLength="100" />
+          <Property Name="Classification" Type="nvarchar" MaxLength="100" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="100" />
+          <Property Name="QuestionnaireCompleted" Type="bit" />
+          <Property Name="PeriodUpto" Type="nvarchar" MaxLength="50" />
+          <Property Name="BankAddress" Type="nvarchar" MaxLength="300" />
+          <Property Name="AccountNoIBAN" Type="nvarchar" MaxLength="100" />
+          <Property Name="RoutingNo" Type="nvarchar" MaxLength="100" />
+          <Property Name="SwiftCode" Type="nvarchar" MaxLength="100" />
+          <Property Name="BenificaryName" Type="nvarchar" MaxLength="250" />
+          <Property Name="PaymentTerms" Type="nvarchar" MaxLength="300" />
+          <Property Name="Status" Type="int" />
+          <Property Name="EmailSent" Type="bit" />
+          <Property Name="EmailSentDate" Type="datetime" />
+          <Property Name="SAPVendorId" Type="nvarchar" MaxLength="50" />
+          <Property Name="IssuedBy" Type="nvarchar" MaxLength="100" />
+          <Property Name="IssuedOn" Type="datetime" />
+          <Property Name="IncidentNo" Type="int" />
+          <Property Name="InitiatorId" Type="nvarchar" MaxLength="50" />
+          <Property Name="InitiatorName" Type="nvarchar" MaxLength="100" />
+          <Property Name="InitiatedDate" Type="datetime" />
+          <Property Name="TaskId" Type="nvarchar" MaxLength="50" />
+          <Property Name="Activity" Type="nvarchar" MaxLength="100" />
+          <Property Name="ActiveActivity" Type="nvarchar" MaxLength="100" />
+          <Property Name="ActiveUserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="ActiveUserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ReturnEmails" Type="nvarchar" MaxLength="500" />
+          <Property Name="ToEmails" Type="nvarchar" MaxLength="500" />
+          <Property Name="Remarks" Type="nvarchar(max)" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="100" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="SAP_VendorStoreContainer">
+          <EntitySet Name="SAP_Vendor_Items" EntityType="Self.SAP_Vendor_Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAP_VendorAttachment" EntityType="Self.SAP_VendorAttachment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAP_VendorCreation" EntityType="Self.SAP_VendorCreation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SAP_VendorCreationLog" EntityType="Self.SAP_VendorCreationLog" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SAP_Vendor" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VendorEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="SAP_VendorAttachment" EntityType="SAP_Vendor.SAP_VendorAttachment" />
+          <EntitySet Name="SAP_VendorCreation" EntityType="SAP_Vendor.SAP_VendorCreation" />
+          <EntitySet Name="SAP_VendorCreationLog" EntityType="SAP_Vendor.SAP_VendorCreationLog" />
+          <EntitySet Name="SAP_Vendor_Items" EntityType="SAP_Vendor.SAP_Vendor_Items" />
+        </EntityContainer>
+        <EntityType Name="SAP_VendorAttachment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FileName" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SAP_VendorCreation">
+          <Key>
+            <PropertyRef Name="RequestId" />
+          </Key>
+          <Property Name="RequestId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NTNNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxRegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegNA" Type="Boolean" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNo" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NatureOfWork" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WithholdingTax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Classification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionnaireCompleted" Type="Boolean" />
+          <Property Name="PeriodUpto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNoIBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoutingNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SwiftCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BenificaryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTerms" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="EmailSent" Type="Boolean" />
+          <Property Name="EmailSentDate" Type="DateTime" Precision="3" />
+          <Property Name="SAPVendorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedOn" Type="DateTime" Precision="3" />
+          <Property Name="IncidentNo" Type="Int32" />
+          <Property Name="InitiatorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InitiatorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InitiatedDate" Type="DateTime" Precision="3" />
+          <Property Name="TaskId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveActivity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnEmails" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToEmails" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SAP_VendorCreationLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RequestId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Reason" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyType" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="NTNNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TaxRegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentCurrency" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegNA" Type="Boolean" />
+          <Property Name="State" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNo" Type="String" MaxLength="61" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NatureOfWork" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WithholdingTax" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Classification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="QuestionnaireCompleted" Type="Boolean" />
+          <Property Name="PeriodUpto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BankAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AccountNoIBAN" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="RoutingNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SwiftCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BenificaryName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentTerms" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="EmailSent" Type="Boolean" />
+          <Property Name="EmailSentDate" Type="DateTime" Precision="3" />
+          <Property Name="SAPVendorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedBy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IssuedOn" Type="DateTime" Precision="3" />
+          <Property Name="IncidentNo" Type="Int32" />
+          <Property Name="InitiatorId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="InitiatorName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InitiatedDate" Type="DateTime" Precision="3" />
+          <Property Name="TaskId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Activity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveActivity" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveUserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActiveUserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ReturnEmails" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ToEmails" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="SAP_Vendor_Items">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Enable" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SAP_VendorStoreContainer" CdmEntityContainer="VendorEntities">
+          <EntitySetMapping Name="SAP_VendorAttachment">
+            <EntityTypeMapping TypeName="SAP_Vendor.SAP_VendorAttachment">
+              <MappingFragment StoreEntitySet="SAP_VendorAttachment">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FileName" ColumnName="FileName" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAP_VendorCreation">
+            <EntityTypeMapping TypeName="SAP_Vendor.SAP_VendorCreation">
+              <MappingFragment StoreEntitySet="SAP_VendorCreation">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ToEmails" ColumnName="ToEmails" />
+                <ScalarProperty Name="ReturnEmails" ColumnName="ReturnEmails" />
+                <ScalarProperty Name="ActiveUserName" ColumnName="ActiveUserName" />
+                <ScalarProperty Name="ActiveUserId" ColumnName="ActiveUserId" />
+                <ScalarProperty Name="ActiveActivity" ColumnName="ActiveActivity" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="InitiatedDate" ColumnName="InitiatedDate" />
+                <ScalarProperty Name="InitiatorName" ColumnName="InitiatorName" />
+                <ScalarProperty Name="InitiatorId" ColumnName="InitiatorId" />
+                <ScalarProperty Name="IncidentNo" ColumnName="IncidentNo" />
+                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
+                <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+                <ScalarProperty Name="SAPVendorId" ColumnName="SAPVendorId" />
+                <ScalarProperty Name="EmailSentDate" ColumnName="EmailSentDate" />
+                <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="BenificaryName" ColumnName="BenificaryName" />
+                <ScalarProperty Name="SwiftCode" ColumnName="SwiftCode" />
+                <ScalarProperty Name="RoutingNo" ColumnName="RoutingNo" />
+                <ScalarProperty Name="AccountNoIBAN" ColumnName="AccountNoIBAN" />
+                <ScalarProperty Name="BankAddress" ColumnName="BankAddress" />
+                <ScalarProperty Name="PeriodUpto" ColumnName="PeriodUpto" />
+                <ScalarProperty Name="QuestionnaireCompleted" ColumnName="QuestionnaireCompleted" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="WithholdingTax" ColumnName="WithholdingTax" />
+                <ScalarProperty Name="NatureOfWork" ColumnName="NatureOfWork" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="RegNA" ColumnName="RegNA" />
+                <ScalarProperty Name="PaymentCurrency" ColumnName="PaymentCurrency" />
+                <ScalarProperty Name="TaxRegNo" ColumnName="TaxRegNo" />
+                <ScalarProperty Name="NTNNo" ColumnName="NTNNo" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAP_VendorCreationLog">
+            <EntityTypeMapping TypeName="SAP_Vendor.SAP_VendorCreationLog">
+              <MappingFragment StoreEntitySet="SAP_VendorCreationLog">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ToEmails" ColumnName="ToEmails" />
+                <ScalarProperty Name="ReturnEmails" ColumnName="ReturnEmails" />
+                <ScalarProperty Name="ActiveUserName" ColumnName="ActiveUserName" />
+                <ScalarProperty Name="ActiveUserId" ColumnName="ActiveUserId" />
+                <ScalarProperty Name="ActiveActivity" ColumnName="ActiveActivity" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="InitiatedDate" ColumnName="InitiatedDate" />
+                <ScalarProperty Name="InitiatorName" ColumnName="InitiatorName" />
+                <ScalarProperty Name="InitiatorId" ColumnName="InitiatorId" />
+                <ScalarProperty Name="IncidentNo" ColumnName="IncidentNo" />
+                <ScalarProperty Name="IssuedOn" ColumnName="IssuedOn" />
+                <ScalarProperty Name="IssuedBy" ColumnName="IssuedBy" />
+                <ScalarProperty Name="SAPVendorId" ColumnName="SAPVendorId" />
+                <ScalarProperty Name="EmailSentDate" ColumnName="EmailSentDate" />
+                <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PaymentTerms" ColumnName="PaymentTerms" />
+                <ScalarProperty Name="BenificaryName" ColumnName="BenificaryName" />
+                <ScalarProperty Name="SwiftCode" ColumnName="SwiftCode" />
+                <ScalarProperty Name="RoutingNo" ColumnName="RoutingNo" />
+                <ScalarProperty Name="AccountNoIBAN" ColumnName="AccountNoIBAN" />
+                <ScalarProperty Name="BankAddress" ColumnName="BankAddress" />
+                <ScalarProperty Name="PeriodUpto" ColumnName="PeriodUpto" />
+                <ScalarProperty Name="QuestionnaireCompleted" ColumnName="QuestionnaireCompleted" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="Classification" ColumnName="Classification" />
+                <ScalarProperty Name="WithholdingTax" ColumnName="WithholdingTax" />
+                <ScalarProperty Name="NatureOfWork" ColumnName="NatureOfWork" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FaxNo" ColumnName="FaxNo" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="RegNA" ColumnName="RegNA" />
+                <ScalarProperty Name="PaymentCurrency" ColumnName="PaymentCurrency" />
+                <ScalarProperty Name="TaxRegNo" ColumnName="TaxRegNo" />
+                <ScalarProperty Name="NTNNo" ColumnName="NTNNo" />
+                <ScalarProperty Name="CompanyType" ColumnName="CompanyType" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="BusinessName" ColumnName="BusinessName" />
+                <ScalarProperty Name="Reason" ColumnName="Reason" />
+                <ScalarProperty Name="RequestType" ColumnName="RequestType" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SAP_Vendor_Items">
+            <EntityTypeMapping TypeName="SAP_Vendor.SAP_Vendor_Items">
+              <MappingFragment StoreEntitySet="SAP_Vendor_Items">
+                <ScalarProperty Name="Enable" ColumnName="Enable" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

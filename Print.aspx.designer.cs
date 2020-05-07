@@ -33,13 +33,22 @@ namespace SAP_Vendor
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Image1 control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::Telerik.Web.UI.RadScriptManager ScriptManager1;
+
+        /// <summary>
+        /// Header1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SAP_Vendor.Controls.Header Header1;
 
         /// <summary>
         /// lblError control.
@@ -60,13 +69,13 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.RadioButtonList rblOptions;
 
         /// <summary>
-        /// txtResion control.
+        /// txtReason control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtResion;
+        protected global::System.Web.UI.WebControls.TextBox txtReason;
 
         /// <summary>
         /// txtBusinessName control.
@@ -114,13 +123,13 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.RadioButtonList rblType;
 
         /// <summary>
-        /// rblCurrency control.
+        /// txtCurrency control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblCurrency;
+        protected global::System.Web.UI.WebControls.TextBox txtCurrency;
 
         /// <summary>
         /// txtAddress control.
@@ -366,6 +375,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.SqlDataSource dsAttachment;
 
         /// <summary>
+        /// lblErrorBottom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorBottom;
+
+        /// <summary>
         /// UserRemarks1 control.
         /// </summary>
         /// <remarks>
@@ -384,105 +402,6 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.HiddenField hidRecordID;
 
         /// <summary>
-        /// hidIsAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidIsAdd;
-
-        /// <summary>
-        /// txtMSOrt2PK1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMSOrt2PK1;
-
-        /// <summary>
-        /// txtTaxcode3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTaxcode3;
-
-        /// <summary>
-        /// txtTradingPart control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTradingPart;
-
-        /// <summary>
-        /// dsFlow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsFlow;
-
-        /// <summary>
-        /// hidRemarks control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hidRemarks;
-
-        /// <summary>
-        /// txtMSOrt2PK3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtMSOrt2PK3;
-
-        /// <summary>
-        /// txtWHTType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWHTType;
-
-        /// <summary>
-        /// txtWHTTID control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWHTTID;
-
-        /// <summary>
-        /// txtWHTC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWHTC;
-
-        /// <summary>
-        /// txtWHTCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtWHTCode;
-
-        /// <summary>
         /// hidUserID control.
         /// </summary>
         /// <remarks>
@@ -490,14 +409,5 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidUserID;
-
-        /// <summary>
-        /// _Script control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _Script;
     }
 }

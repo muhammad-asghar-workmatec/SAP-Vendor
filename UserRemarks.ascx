@@ -9,10 +9,11 @@
                                     <Columns>
                                         <asp:BoundField DataField="UserName" HeaderText="Name" 
                                             SortExpression="UserName">
-                                            <ItemStyle Width="100px" />
+                                            <ItemStyle Width="150px" />
                                             <HeaderStyle HorizontalAlign="Left" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="Action" HeaderText="Action" SortExpression="Action" >
+                                            <ItemStyle Width="150px" />
                                         <HeaderStyle HorizontalAlign="Left" />
                                         </asp:BoundField>
 <asp:BoundField DataField="Remarks" HeaderText="Remarks" SortExpression="Remarks">
@@ -20,6 +21,7 @@
 </asp:BoundField>
                                         <asp:BoundField DataField="CreatedDate" HeaderText="Time" 
                                             SortExpression="CreatedDate" DataFormatString="{0:dd/MM/yyyy hh:mm tt}">
+                                             <ItemStyle Width="180px" />
                                             <HeaderStyle HorizontalAlign="Left" />
                                         </asp:BoundField>
                                     </Columns>
@@ -33,8 +35,7 @@
          <asp:Label ID="lblErrorBottom" runat="server" Font-Bold="True" ForeColor="Red"></asp:Label>
     
     <asp:SqlDataSource ID="DSRemarks" runat="server" 
-        ConnectionString="<%$ appSettings:BPMConnectionString %>"
-        ProviderName="System.Data.SqlClient"                 
+         ConnectionString="<%$ ConnectionStrings:BPMConnectionString %>" ProviderName="<%$ ConnectionStrings:BPMConnectionString.ProviderName %>"                 
         SelectCommand="SELECT     T00001.T1F0022 AS Remarks, T00001.T1F0021 AS Action, ISNULL(T00009.T9F0007, T00001.T1F0005) AS UserName, T00009.T9F0002 AS JobTitle, 
                       T00001.T1F0008 AS CreatedDate, T00001.T1F0003 AS ActivityName
 FROM         T00001 RIGHT OUTER JOIN

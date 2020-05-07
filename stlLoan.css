@@ -40,7 +40,7 @@ left:0px;
 {
 	background-color: #F7F7FF;
 }
-.cbo{
+/*.cbo{
    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
 	font-size: 11px;
 	 }
@@ -49,11 +49,11 @@ input{
 	font-size: 11px;
  border: thin groove;
  text-transform: uppercase;
+}*/
+.Topbar1 {
+	background-color: #00a651;
 }
-.Topbar1{
-	background-color: #009900;
-}
-.TopBar
+/*.TopBar
 {	
 	background-color: #18387B;	
 	font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
@@ -120,7 +120,7 @@ input{
 	cursor: pointer;
 	width: auto;
 	height: 19px;
-}
+}*/
 .HMenu
 {
 	font-weight: bold;

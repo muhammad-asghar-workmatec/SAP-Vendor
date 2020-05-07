@@ -14,9 +14,9 @@ namespace SAP_Vendor.Data
     
     public partial class SAP_VendorCreation
     {
-        public decimal RequestID { get; set; }
+        public string RequestId { get; set; }
         public string RequestType { get; set; }
-        public string Resion { get; set; }
+        public string Reason { get; set; }
         public string BusinessName { get; set; }
         public string Country { get; set; }
         public string PostalCode { get; set; }
@@ -34,7 +34,7 @@ namespace SAP_Vendor.Data
         public string ContactPerson { get; set; }
         public string PaymentMethod { get; set; }
         public string NatureOfWork { get; set; }
-        public string WHoldingTax { get; set; }
+        public string WithholdingTax { get; set; }
         public string Classification { get; set; }
         public string Qualification { get; set; }
         public Nullable<bool> QuestionnaireCompleted { get; set; }
@@ -45,13 +45,25 @@ namespace SAP_Vendor.Data
         public string SwiftCode { get; set; }
         public string BenificaryName { get; set; }
         public string PaymentTerms { get; set; }
-        public string Status { get; set; }
-        public string EmailSent { get; set; }
+        public Nullable<int> Status { get; set; }
+        public Nullable<bool> EmailSent { get; set; }
         public Nullable<System.DateTime> EmailSentDate { get; set; }
-        public string SAPVendorID { get; set; }
+        public string SAPVendorId { get; set; }
         public string IssuedBy { get; set; }
         public Nullable<System.DateTime> IssuedOn { get; set; }
-        public string UserID { get; set; }
+        public Nullable<int> IncidentNo { get; set; }
+        public string InitiatorId { get; set; }
+        public string InitiatorName { get; set; }
+        public Nullable<System.DateTime> InitiatedDate { get; set; }
+        public string TaskId { get; set; }
+        public string Activity { get; set; }
+        public string ActiveActivity { get; set; }
+        public string ActiveUserId { get; set; }
+        public string ActiveUserName { get; set; }
+        public string ReturnEmails { get; set; }
+        public string ToEmails { get; set; }
+        public string Remarks { get; set; }
+        public string UserId { get; set; }
         public string UserName { get; set; }
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }

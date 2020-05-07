@@ -33,13 +33,22 @@ namespace SAP_Vendor
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Image1 control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::Telerik.Web.UI.RadScriptManager ScriptManager1;
+
+        /// <summary>
+        /// Header1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SAP_Vendor.Controls.Header Header1;
 
         /// <summary>
         /// lblError control.
@@ -60,13 +69,31 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.RadioButtonList rblOptions;
 
         /// <summary>
-        /// txtResion control.
+        /// RequiredFieldValidatorOptions control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtResion;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorOptions;
+
+        /// <summary>
+        /// txtReason control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtReason;
+
+        /// <summary>
+        /// RequiredFieldValidatorReason control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorReason;
 
         /// <summary>
         /// txtBusinessName control.
@@ -76,6 +103,15 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtBusinessName;
+
+        /// <summary>
+        /// RequiredFieldValidatorBusinessName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorBusinessName;
 
         /// <summary>
         /// txtNTN control.
@@ -114,13 +150,31 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.RadioButtonList rblType;
 
         /// <summary>
-        /// rblCurrency control.
+        /// RequiredFieldValidatorType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rblCurrency;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorType;
+
+        /// <summary>
+        /// ddlCurrency control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCurrency;
+
+        /// <summary>
+        /// RequiredFieldValidatorCurrency control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorCurrency;
 
         /// <summary>
         /// txtAddress control.
@@ -132,6 +186,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
 
         /// <summary>
+        /// RequiredFieldValidator2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+
+        /// <summary>
         /// txtCity control.
         /// </summary>
         /// <remarks>
@@ -139,6 +202,15 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCity;
+
+        /// <summary>
+        /// RequiredFieldValidatorCity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorCity;
 
         /// <summary>
         /// txtState control.
@@ -150,6 +222,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.TextBox txtState;
 
         /// <summary>
+        /// RequiredFieldValidatorState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorState;
+
+        /// <summary>
         /// txtPostalCode control.
         /// </summary>
         /// <remarks>
@@ -157,6 +238,15 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPostalCode;
+
+        /// <summary>
+        /// RequiredFieldValidatorPostalCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPostalCode;
 
         /// <summary>
         /// ddlCountry control.
@@ -168,6 +258,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.DropDownList ddlCountry;
 
         /// <summary>
+        /// RequiredFieldValidatorCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorCountry;
+
+        /// <summary>
         /// txtContactNo control.
         /// </summary>
         /// <remarks>
@@ -175,6 +274,15 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtContactNo;
+
+        /// <summary>
+        /// RequiredFieldValidatorContactNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorContactNo;
 
         /// <summary>
         /// txtFaxNo control.
@@ -195,6 +303,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
+        /// RequiredFieldValidatorEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorEmail;
+
+        /// <summary>
         /// txtContactPerson control.
         /// </summary>
         /// <remarks>
@@ -204,13 +321,31 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.TextBox txtContactPerson;
 
         /// <summary>
-        /// txtPaymentTerms control.
+        /// RequiredFieldValidatorContactPerson control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPaymentTerms;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorContactPerson;
+
+        /// <summary>
+        /// ddlPaymentTerms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlPaymentTerms;
+
+        /// <summary>
+        /// RequiredFieldValidatorPaymentTerms control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPaymentTerms;
 
         /// <summary>
         /// rblPaymentMethod control.
@@ -222,6 +357,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.RadioButtonList rblPaymentMethod;
 
         /// <summary>
+        /// RequiredFieldValidatorPaymentMethod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorPaymentMethod;
+
+        /// <summary>
         /// rblNaturOfWork control.
         /// </summary>
         /// <remarks>
@@ -229,6 +373,15 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblNaturOfWork;
+
+        /// <summary>
+        /// RequiredFieldValidatorNatureofWork control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorNatureofWork;
 
         /// <summary>
         /// ddlWitholdingTaxField control.
@@ -249,6 +402,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.RadioButtonList rblAttached;
 
         /// <summary>
+        /// RequiredFieldValidatorAttached control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorAttached;
+
+        /// <summary>
         /// rblClassification control.
         /// </summary>
         /// <remarks>
@@ -258,6 +420,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.RadioButtonList rblClassification;
 
         /// <summary>
+        /// RequiredFieldValidatorClassification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorClassification;
+
+        /// <summary>
         /// rblQualification control.
         /// </summary>
         /// <remarks>
@@ -265,6 +436,15 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButtonList rblQualification;
+
+        /// <summary>
+        /// RequiredFieldValidatorQualification control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorQualification;
 
         /// <summary>
         /// txtPeriod control.
@@ -330,6 +510,60 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.TextBox txtVendorID;
 
         /// <summary>
+        /// panelNewAttachment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow panelNewAttachment;
+
+        /// <summary>
+        /// fuFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAsyncUpload fuFile;
+
+        /// <summary>
+        /// txtFileDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtFileDesc;
+
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+
+        /// <summary>
+        /// btnUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpload;
+
+        /// <summary>
+        /// ValidationSummary2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary2;
+
+        /// <summary>
         /// dgAttachment control.
         /// </summary>
         /// <remarks>
@@ -354,7 +588,16 @@ namespace SAP_Vendor
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRemarks;
+        protected global::Telerik.Web.UI.RadEditor txtRemarks;
+
+        /// <summary>
+        /// RequiredFieldValidator3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
 
         /// <summary>
         /// optApprove control.
@@ -402,6 +645,15 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.Button btEmail;
 
         /// <summary>
+        /// btnNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnNew;
+
+        /// <summary>
         /// btSubmit control.
         /// </summary>
         /// <remarks>
@@ -409,6 +661,24 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btSubmit;
+
+        /// <summary>
+        /// ValidationSummary1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+
+        /// <summary>
+        /// lblErrorBottom control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorBottom;
 
         /// <summary>
         /// UserRemarks1 control.
@@ -429,15 +699,6 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.HiddenField hidRecordID;
 
         /// <summary>
-        /// dsFlow control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource dsFlow;
-
-        /// <summary>
         /// hidUserID control.
         /// </summary>
         /// <remarks>
@@ -445,14 +706,5 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hidUserID;
-
-        /// <summary>
-        /// _Script control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _Script;
     }
 }

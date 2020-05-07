@@ -12,43 +12,59 @@ using WPClient;
 using SAP_Vendor.Data;
 using Microsoft.Ajax.Utilities;
 using System.Data.Entity.Migrations;
+using SAP_Vendor.Controls;
+using System.Data.Entity;
+using Telerik.Web.UI;
+using WPCommon;
 
 namespace SAP_Vendor
 {
 
 
-    public partial class _Default : System.Web.UI.Page
-    {
-        BulletSQL db = new BulletSQL(WebConfig.ConnectionString);
-        VendorEntities dbVendor = new SAP_Vendor.Data.VendorEntities();
+    public partial class _Default : PageBase
+    {       
         string query = "";
-        BPMExecution dalBPM = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                dalBPM = new BPMExecution(Page, WebConfig.BPMConnectionString);
+               
                 lblError.Text = "";
-                _Script.InnerHtml = "";
+                PageLoad();
                 if (!IsPostBack)
                 {
                     if (!dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
                     {
-                        hidUserID.Value = dalBPM.UserID;
+
                         LoadControls();
-                        AddUpdateClaim();
-                        BindAttachment();
-                        GetGroupUsers();
+                        this.RequestId = dalBPM.RecordID;
+                        SAP_VendorCreation objMain = null;
+                        if (string.IsNullOrEmpty(dalBPM.RecordID))
+                        {
+                             objMain = db.AddVendorCreation(dalBPM.UserID, dalBPM.UserName);                                                        
+                        }
+                        else
+                        {
+                            objMain = db.GetVendorCreation(dalBPM.RecordID);
+                        }
+                        if (objMain != null)
+                        {
+                            this.RequestId = objMain.RequestId;
+                            LoadForm(objMain);
+                        }
+                        hidRecordID.Value = this.RequestId;
+                        BindAttachments(dgAttachment);
+                       // GetGroupUsers(ddlTo);
                     }
                     else
                     {
-                        btSubmit.Enabled = false;
+                        btnSubmit.Enabled = false;
                     }
                 }
             }
             catch (Exception ex)
             {
-                db.Disconnect();
+                
                 lblError.Text = ex.Message;
             }
         }
@@ -56,11 +72,15 @@ namespace SAP_Vendor
         {
             try
             {
-                db.Load(ddlCountry, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'country' and enable = '1' Order by Description");
+                db.BindListItems(ddlCountry, CATEGORY.COUNTRY);
+                db.BindListItems(ddlPaymentTerms, CATEGORY.PAYMENT);
+                db.BindListItems(ddlCurrency, CATEGORY.CURRENCY);
+                db.BindListItems(ddlWitholdingTaxField, CATEGORY.WITHOLDING_TAX_FIELD);
+                //db.Load(ddlCountry, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'country' and enable = '1' Order by Description");
                 //db.Load(ddlBankCountry1, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'country' and enable = '1' Order by Description");
                 //db.Load(ddlBankCountry2, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'country' and enable = '1' Order by Description");
-                //db.Load(ddlPaymentTerms, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'Payment' and enable = '1' Order by Description");
-                //db.Load(ddlCurrency, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'Currency' and enable = '1' Order by Description");
+                // db.Load(ddlPaymentTerms, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'Payment' and enable = '1' Order by Description");
+                // db.Load(ddlCurrency, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'Currency' and enable = '1' Order by Description");
                 //db.Load(ddlRecepientType, "Description", "Value", @"Select Description,Value from SAP_Vendor_Items Where category = 'Recipient' and enable = '1' Order by Description");
                 //ddlBankCountry1.Items.Insert(0, new ListItem("--Select--"));
                 //ddlBankCountry2.Items.Insert(0, new ListItem("--Select--"));
@@ -70,147 +90,197 @@ namespace SAP_Vendor
                 lblError.Text = ex.Message;
             }
         }
-        void AddUpdateClaim()
+     
+        private int GetNextIncidentNo()
         {
-            WebConfig obj = new WebConfig();
+            dalOU.ClearParameters();
+            dalOU.AddParameter("@ProcessName", dalBPM.ProcessName);
+            var nextIncidentNo = (int)dalOU.ExecuteScalarDefault("select LastIncidentNo+IncidentIncrement as nextIncidentNo from E_ProcessLastIncident where ProcessName=@ProcessName", 1);
+            return nextIncidentNo;
+        }
+        void Upload_FileUploaded(object sender, Telerik.Web.UI.FileUploadedEventArgs e)
+        {
+            //Bitmap bitmapImage = ResizeImage(RadAsyncUpload1.UploadedFiles[0].InputStream);
+            //System.IO.MemoryStream stream = new System.IO.MemoryStream();
+            //bitmapImage.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+            //RadBinaryImage1.DataValue = stream.ToArray();
+        }
+        protected void btnDraft_Click(object sender, EventArgs e)
+        {
             try
             {
-                query = @"Select RequestID From SAP_VendorCreation Where UserID = '" + hidUserID.Value + "' And Status = '0'";
-                if (db.IsRecordExist(query))
+                var obj = db.GetVendorCreation(requestId: this.RequestId);
+                this.SetData(obj);
+                if (db.Entry(obj).State == EntityState.Detached)
                 {
-                    hidRecordID.Value = db.ExecuteScalarDefault(query, "0").ToString();
+                    db.SAP_VendorCreation.Attach(obj);
                 }
-                else
-                {
-                    SAP_VendorCreation objMain = new SAP_VendorCreation();
-                    objMain.UserID = hidUserID.Value;
-                    objMain.Status = "0";
-                    dbVendor.SAP_VendorCreation.Add(objMain);
-                    dbVendor.SaveChanges();
-                    query = @"Select Max(RequestID) From SAP_VendorCreation";
-                    hidRecordID.Value = db.ExecuteScalarDefault(query, "0").ToString();
-                }
-                
+                db.Entry(obj).State = EntityState.Modified;
+                db.SaveChanges();
             }
             catch (Exception ex)
             {
-                db.Disconnect();
-                lblError.Text = ex.Message;
+                this.ErrorMessage = ex.Message;
             }
         }
+        protected void btnClear_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //if (dalBPM.TaskStatus == BPMExecution.TASK_STATUS_NEW)
+                //{
+                //    int nextIncidentNo = GetNextIncidentNo();
+                //    TQMain objMain = view1.ClearTQMain(requestId: this.RequestId, nextIncidentNo, dalBPM.UserID, dalBPM.UserName);
+                //    this.RequestId = objMain.RequestId;
+                //}
 
-        protected void dgAttachment_RowCommand(object sender, GridViewCommandEventArgs e)
+            }
+            catch (Exception ex)
+            {
+
+                this.ErrorMessage = ex.Message;
+            }
+        }
+        
+        protected void btUpload_Click(object sender, EventArgs e)
         {
             try
             {
-                switch (e.CommandName)
+                if (fuFile.UploadedFiles.Count > 0)
                 {
-                    case "AEDelete":
-                        try
-                        {
-                            int index = Convert.ToInt32(e.CommandArgument);
-                            Vendor_Attachment obj = new Vendor_Attachment();
-                            
-                            dgAttachment.SelectedIndex = index;
-                            obj.ID =decimal.Parse(dgAttachment.SelectedValue.ToString());
-                            dbVendor.Vendor_Attachment.Remove(obj);
-                            dbVendor.SaveChanges();
-                            dgAttachment.SelectedIndex = -1;
-                            lblError.Text = "Record successfully deleted.";
-                            BindAttachment();
-                        }
-                        catch (Exception ex)
-                        {
-                            lblError.Text = ex.Message;
-                        }
-                        break;
+                    foreach (UploadedFile file in fuFile.UploadedFiles)
+                    {
+                        this.Upload(fileUpload: file, description: txtFileDesc.Text, dalBPM.UserID, dalBPM.UserName);
+                    }
+                    txtFileDesc.Text = "";
+                    panelNewAttachment.Visible = !panelNewAttachment.Visible;
+                    BindAttachments(dgAttachment);
                 }
             }
             catch (Exception ex)
             {
-                lblError.Text = ex.Message;
+                this.ErrorMessage = ex.Message;
             }
         }
-        void BindAttachment()
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(this.ErrorMessage))
+                this.lblError.Text = this.ErrorMessage;
+            lblErrorBottom.Text = this.lblError.Text;
+        }
+        void LoadForm(SAP_VendorCreation obj)
         {
             try
-            {
-                dsAttachment.SelectCommand = @"Select * From Vendor_Attachment Where Request_ID = " + hidRecordID.Value;
-                dgAttachment.DataBind();
+            {              
+                hidRecordID.Value = obj.RequestId;
+                txtIBAN.Text = obj.AccountNoIBAN;
+                txtAddress.Text = obj.Address;
+                txtBankAddress.Text = obj.BankAddress;
+                Common.SelectItemByText(ddlCountry,string.IsNullOrEmpty(obj.Country)?string.Empty:obj.Country);
+                txtPostalCode.Text = obj.PostalCode;
+                txtCity.Text = obj.City;
+                txtBenificaryName.Text = obj.BenificaryName;
+                txtBusinessName.Text = obj.BusinessName;
+                Common.SelectItemByValue(rblClassification, string.IsNullOrEmpty(obj.Classification) ? string.Empty : obj.Classification);
+                Common.SelectItemByValue(rblType, string.IsNullOrEmpty(obj.CompanyType) ? string.Empty : obj.CompanyType);
+                txtContactPerson.Text = obj.ContactPerson;
+                txtEmail.Text = obj.Email;
+                txtFaxNo.Text = obj.FaxNo;
+                Common.SelectItemByValue(rblNaturOfWork, string.IsNullOrEmpty(obj.NatureOfWork) ? string.Empty : obj.NatureOfWork);
+                txtNTN.Text = obj.NTNNo;
+                Common.SelectItemByText(ddlCurrency, string.IsNullOrEmpty(obj.PaymentCurrency) ? string.Empty : obj.PaymentCurrency);
+                Common.SelectItemByValue(rblPaymentMethod, string.IsNullOrEmpty(obj.PaymentMethod) ? string.Empty : obj.PaymentMethod);
+                Common.SelectItemByText(ddlPaymentTerms, string.IsNullOrEmpty(obj.PaymentTerms) ? string.Empty : obj.PaymentTerms);
+                txtPeriod.Text = obj.PeriodUpto;
+                txtContactNo.Text = obj.PhoneNo;
+                Common.SelectItemByValue(rblQualification, string.IsNullOrEmpty(obj.Qualification) ? string.Empty : obj.Qualification);
+                if (obj.QuestionnaireCompleted.GetValueOrDefault())
+                    rblAttached.SelectedValue = "Yes";
+                else
+                    rblAttached.SelectedValue = "No";
+                txtNA.Checked = obj.RegNA.GetValueOrDefault();
+                Common.SelectItemByValue(rblOptions, string.IsNullOrEmpty(obj.RequestType) ? string.Empty : obj.RequestType);
+                txtReason.Text = obj.Reason;
+                txtRoutingNo.Text = obj.RoutingNo;
+                txtState.Text = obj.State;
+
+                txtSwiftCode.Text = obj.SwiftCode;
+                txtSaleTaxReg.Text = obj.TaxRegNo;               
+                Common.SelectItemByText(ddlWitholdingTaxField, string.IsNullOrEmpty(obj.WithholdingTax) ? string.Empty : obj.WithholdingTax);
+               // txtVendorID.Text = obj.SAPVendorId;
+
+                // lblEmail.Text = obj.Email_Sent.Equals("1") ? "Yes" : "No";
             }
             catch (Exception ex)
             {
                 lblError.Text = ex.Message;
+
             }
         }
-        protected void dgAttachment_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void SetData(SAP_VendorCreation obj)
         {
-            try
-            {
-                WebConfig obj = new WebConfig();
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    DataRowView rowView = (DataRowView)e.Row.DataItem;
-                    HyperLink lnk = (HyperLink)e.Row.FindControl("lnkAttachment");
-                    lnk.Text = rowView["FileName"].ToString();
-                    string HttpFilePath = obj.GetApplicationPath() + @"/Upload Files/" + hidRecordID.Value + @"/" + lnk.Text;
-                    lnk.NavigateUrl = HttpFilePath;
-                }
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
+            if(obj==null)
+                 obj = db.SAP_VendorCreation.Find(hidRecordID.Value);
+            obj.RequestId = hidRecordID.Value;
+            obj.AccountNoIBAN = txtIBAN.Text;
+            obj.Address = txtAddress.Text;
+            obj.BankAddress = txtBankAddress.Text;
+            if (ddlCountry.SelectedIndex != -1)
+                obj.Country = ddlCountry.SelectedItem.Text;
+            obj.PostalCode = txtPostalCode.Text;
+            obj.City = txtCity.Text;
+            obj.BenificaryName = txtBenificaryName.Text;
+            obj.BusinessName = txtBusinessName.Text;
+            if (rblClassification.SelectedIndex != -1)
+                obj.Classification = rblClassification.SelectedValue;
+            if (rblType.SelectedIndex != -1)
+                obj.CompanyType = rblType.SelectedValue;
+            obj.ContactPerson = txtContactPerson.Text;
+            obj.Email = txtEmail.Text;
+            obj.FaxNo = txtFaxNo.Text;
+            if (rblNaturOfWork.SelectedIndex != -1)
+                obj.NatureOfWork = rblNaturOfWork.SelectedValue;
+            obj.NTNNo = txtNTN.Text;
+            if (ddlCurrency.SelectedIndex != -1)
+                obj.PaymentCurrency = ddlCurrency.SelectedItem.Text;
+            if (rblPaymentMethod.SelectedIndex != -1)
+                obj.PaymentMethod = rblPaymentMethod.SelectedValue;
+            if (ddlPaymentTerms.SelectedIndex != -1)
+                obj.PaymentTerms = ddlPaymentTerms.SelectedItem.Text;
+            obj.PeriodUpto = txtPeriod.Text;
+            obj.PhoneNo = txtContactNo.Text;
+            if (rblQualification.SelectedIndex != -1)
+                obj.Qualification = rblQualification.SelectedValue;
+            if (rblAttached.SelectedIndex != -1)
+                obj.QuestionnaireCompleted = rblAttached.SelectedValue == "Yes";
+            obj.RegNA = txtNA.Checked;
+            if (rblOptions.SelectedIndex != -1)
+                obj.RequestType = rblOptions.SelectedValue;
+            obj.Reason = txtReason.Text;
+            obj.RoutingNo = txtRoutingNo.Text;
+            obj.State = txtState.Text;
+            if (ddlWitholdingTaxField.SelectedIndex != -1)
+                obj.WithholdingTax = ddlWitholdingTaxField.SelectedItem.Text;
+            obj.SwiftCode = txtSwiftCode.Text;
+            obj.TaxRegNo = txtSaleTaxReg.Text;
+            obj.UpdatedDate = DateTime.Now;
+            obj.CreatedDate = DateTime.Now;
+            obj.UserId = dalBPM.UserID;
+            obj.UserName = dalBPM.UserName;
+            obj.Remarks = txtRemarks.Content;
         }
-        protected void btSubmit_Click(object sender, EventArgs e)
+        protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            SAP_VendorCreation obj = dbVendor.SAP_VendorCreation.Find(decimal.Parse(hidRecordID.Value));
+            SAP_VendorCreation obj = db.SAP_VendorCreation.Find(hidRecordID.Value);
             try
             {
                 if (!Validation())
                     return;
-                if (obj == null)
-                    obj = new SAP_VendorCreation();
-                obj.RequestID =decimal.Parse(hidRecordID.Value);
-                obj.AccountNoIBAN = txtIBAN.Text;
-                obj.Address = txtAddress.Text;
-                obj.BankAddress = txtBankAddress.Text;
-                obj.Country = ddlCountry.SelectedItem.Value;
-                obj.PostalCode = txtPostalCode.Text;
-                obj.City = txtCity.Text;
-                obj.BenificaryName =txtBenificaryName.Text;
-                obj.BusinessName =txtBusinessName.Text;
-                obj.Classification = rblClassification.SelectedValue;
-                obj.CompanyType = rblType.SelectedValue;
-                obj.ContactPerson=txtContactPerson.Text;
-                obj.Email =txtEmail.Text;
-                obj.FaxNo =txtFaxNo.Text;
-                obj.NatureOfWork = rblNaturOfWork.SelectedValue;
-                obj.NTNNo =txtNTN.Text;
-                obj.PaymentCurrency = rblCurrency.SelectedValue;
-                obj.PaymentMethod =rblPaymentMethod.SelectedValue;
-                obj.PaymentTerms =txtPaymentTerms.Text;
-                obj.PeriodUpto =txtPeriod.Text;
-                obj.PhoneNo =txtContactNo.Text;
-                obj.Qualification =rblQualification.SelectedValue;
-                obj.QuestionnaireCompleted = rblAttached.SelectedValue == "Yes";
-                obj.RegNA = txtNA.Checked;
-                obj.RequestType = rblOptions.SelectedValue;              
-                obj.Resion =txtResion.Text;
-                obj.RoutingNo =txtRoutingNo.Text;
-                obj.State =txtState.Text;
-                obj.Status ="1";
-                obj.SwiftCode =txtSwiftCode.Text;
-                obj.TaxRegNo =txtSaleTaxReg.Text;
-                obj.UpdatedDate = DateTime.Now;
-                obj.CreatedDate = DateTime.Now;
-                obj.UserID = dalBPM.UserID;
-                obj.UserName = dalBPM.UserName;
-                obj.AccountNoIBAN = txtIBAN.Text;
-                obj.WHoldingTax = ddlWitholdingTaxField.SelectedValue;               
-                dbVendor.SaveChanges();
-                db.ClearParameters();
-                AddFlow(hidRecordID.Value);
+                this.SetData(obj);
+                obj.Status =1;               
+                          
+                db.SaveChanges();
+               
 
 
                 string Incident_Summary = "Vendor " + txtBusinessName.Text.Replace("'", "''");
@@ -218,10 +288,43 @@ namespace SAP_Vendor
                 dalBPM.SetVarValue("IEmail", dalBPM.UserEmail);
                 dalBPM.SetVarValue("I_User", dalBPM.UserID);
                 dalBPM.SetVarValue("RecordKey", hidRecordID.Value);
-                dalBPM.SetVarValue("HOD", ddlTo.Value);
-                int IncidentNo = dalBPM.SubmitTask(Incident_Summary, hidRecordID.Value, "Initiated", txtRemarks.Text);
+               // dalBPM.SetVarValue("HOD", ddlTo.SelectedValue);
+                int IncidentNo = dalBPM.SubmitTask(Incident_Summary, hidRecordID.Value, "Initiated", txtRemarks.Content);
                 if (IncidentNo > 0)
                 {
+                    
+                        if (!obj.InitiatedDate.HasValue || obj.IncidentNo == 0)
+                        {
+                            obj.InitiatedDate = DateTime.Now;
+                            obj.UpdatedDate = obj.InitiatedDate;
+                        }
+                        else
+                            obj.UpdatedDate = DateTime.Now;
+                        obj.Status = 1;
+                        obj.IncidentNo = dalBPM.IncidentNo;
+                        obj.Activity = dalBPM.ActivityName;
+                        obj.TaskId = dalBPM.TaskID;
+                        obj.UserId = dalBPM.UserID.Trim();
+                        obj.UserName = dalBPM.UserName;
+                        obj.Remarks = "";
+                       
+                        if (db.Entry(obj).State == EntityState.Detached)
+                        {
+                            db.SAP_VendorCreation.Attach(obj);
+                        }
+                        db.Entry(obj).State = EntityState.Modified;
+                        var log = db.GetVendorCreationLog(main: obj, activity: dalBPM.ActivityName, taskId: dalBPM.TaskID);
+                        if (log.Id == 0)
+                            db.SAP_VendorCreationLog.Add(log);
+                        else
+                        {
+                            if (db.Entry(log).State == EntityState.Detached)
+                            {
+                                db.SAP_VendorCreationLog.Attach(log);
+                            }
+                            db.Entry(log).State = EntityState.Modified;
+                        }
+                        db.SaveChanges();                      
                     Response.Redirect("SuccessfullySubmited.aspx");
                 }
             }
@@ -532,11 +635,11 @@ namespace SAP_Vendor
                 //    _result = false;
                 //}
 
-                if (ddlTo.SelectedIndex == 0)
-                {
-                    lblError.Text = "Please select manager for approval.";
-                    _result = false;
-                }
+                //if (ddlTo.SelectedIndex == 0)
+                //{
+                //    lblError.Text = "Please select manager for approval.";
+                //    _result = false;
+                //}
 
                 //if (txtCCate1.Text.Equals(""))
                 //{
@@ -557,25 +660,7 @@ namespace SAP_Vendor
             return _result;
         }
 
-        void GetGroupUsers()
-        {
-            try
-            {
-                WebConfig obj = new WebConfig();
-                string _Group = ConfigurationManager.AppSettings["ApproverGroup"].ToString();
-                System.Data.SqlClient.SqlDataReader dr = obj.GetGroupUsers(_Group);
-                ddlTo.DataSource = dr;
-                ddlTo.DataTextField = "T9F0007";
-                ddlTo.DataValueField = "T4F0003";
-                ddlTo.DataBind();
-                dr.Close();
-                ddlTo.Items.Insert(0, new ListItem("--Select--"));
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
-        }
+       
         void AddFlow(string ClaimID)
         {
             try
@@ -587,44 +672,19 @@ namespace SAP_Vendor
                 throw new Exception(ex.Message);
             }
         }
-        protected void btUpload_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Vendor_Attachment obj = new Vendor_Attachment();
-                if (fuFile.HasFile)
-                {
 
-                    string path;
-                    path = Server.MapPath(".");
-                    string _folderPath = path + @"\Upload Files\" + hidRecordID.Value;
-                    DirectoryInfo _folder = new DirectoryInfo(_folderPath);
-                    if (!_folder.Exists)
-                        _folder.Create();
-                    fuFile.SaveAs(_folderPath + @"\" + fuFile.FileName);
-                    obj.Request_ID =decimal.Parse(hidRecordID.Value);
-                    obj.FileName = fuFile.FileName;
-                    dbVendor.Vendor_Attachment.Add(obj);
-                    dbVendor.SaveChanges();
-                    BindAttachment();
-                }
-            }
-            catch (Exception ex)
-            {
-                db.Disconnect();
-                lblError.Text = ex.Message;
-            }
-        }
-        protected void txtFax13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         protected void lnkBankDetails_Click(object sender, EventArgs e)
         {
             //if (spnBank.Visible)
             //    spnBank.Visible = false;
             //else
             //    spnBank.Visible = true;
+        }
+        protected void btNewFile_Click(object sender, EventArgs e)
+        {
+            //btnNew.Visible = false;
+            panelNewAttachment.Visible = !panelNewAttachment.Visible;
+            
         }
     }
 

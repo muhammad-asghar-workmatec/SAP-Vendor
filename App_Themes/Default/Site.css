@@ -7,7 +7,7 @@
     width: 100%;
     height: 34px !important;-webkit-print-color-adjust: exact;
     padding: 6px 12px;
-    font-size: 16px !important;-webkit-print-color-adjust: exact;
+    font-size: 14px !important;-webkit-print-color-adjust: exact;
     line-height: 1.42857143;
     color: #555;
     background-color: #fff;
@@ -23,19 +23,19 @@
 
 .RadUpload .ruBrowse {
     height: 34px !important;-webkit-print-color-adjust: exact;
-    font-size: 16px !important;-webkit-print-color-adjust: exact;
+    font-size: 14px !important;-webkit-print-color-adjust: exact;
 }
 
 
-input[type=text].form-control, input[type=datetime].form-control, input[type=password].form-control, span.form-control, label.form-control {
+/*input[type=text].form-control, input[type=datetime].form-control, input[type=password].form-control, span.form-control, label.form-control {*/
     /*display: block;*/
-    width: 100%;
-    min-height: 34px !important;-webkit-print-color-adjust: exact;
-    height: 100% !important;-webkit-print-color-adjust: exact;
-    padding: 6px 12px;
-    font-size: 16px !important;-webkit-print-color-adjust: exact;
+    /*width: 100%;
+    min-height: 34px !important;-webkit-print-color-adjust: exact;*/
+    /*height: 100% !important;-webkit-print-color-adjust: exact;*/
+    /*padding: 6px 12px;
+    font-size: 14px !important;-webkit-print-color-adjust: exact;*/
     /*line-height: 1.42857143;*/
-    color: #555;
+    /*color: #555;
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
@@ -45,7 +45,7 @@ input[type=text].form-control, input[type=datetime].form-control, input[type=pas
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
+}*/
 
 span.form-control:after, label.form-control:after, div.div-control:after {
     content: url('../../images/check.png');
@@ -53,7 +53,7 @@ span.form-control:after, label.form-control:after, div.div-control:after {
     right: 0;
 }
 
-textarea.form-control {
+/*textarea.form-control {
     width: 100%;
     min-height: 34px !important;
     padding: 6px 12px;
@@ -67,13 +67,13 @@ textarea.form-control {
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-}
+}*/
 
 .div-control {
     width: 100%;
     min-height: 34px !important;
     padding: 6px 12px;
-    font-size: 16px !important;
+    font-size: 14px !important;
     -webkit-print-color-adjust: exact;
     color: #555;
     background-color: #fff;
@@ -115,7 +115,7 @@ textarea.form-control {
     margin-bottom: 10px;
 }
 label {
-    font-size: 16px !important;-webkit-print-color-adjust: exact;
+    font-size: 14px !important;-webkit-print-color-adjust: exact;
     font-weight: normal !important;-webkit-print-color-adjust: exact;
 }
 .cbo {
@@ -123,7 +123,7 @@ label {
     width: 100%;
     height: 34px !important;-webkit-print-color-adjust: exact;
     padding: 6px 12px;
-    font-size: 16px !important;-webkit-print-color-adjust: exact;
+    font-size: 14px !important;-webkit-print-color-adjust: exact;
     /*font-size: 14px;
     line-height: 1.42857143;*/
     color: #555;
@@ -341,7 +341,7 @@ A {
     border-top: rgba(0,0,0,.075) 2px solid;
     border-left: rgba(0,0,0,.075) 2px solid;
     border-bottom: rgba(0,0,0,.075) 2px solid;
-    font-size: 16px;
+    font-size: 14px !important;
     text-align: left;
     border-color: rgba(0,0,0,.075);
 }
@@ -444,7 +444,7 @@ A {
 }
 
 .Link, .link, .hlink, .lb {
-    font-size: 16px;
+    font-size: 14px !important;
     font-weight: bold;
     color: White;
     cursor: pointer;
@@ -615,7 +615,7 @@ A {
     text-decoration: none;
     clear: none;
     height: 30px;
-    font-size: 16px !important;-webkit-print-color-adjust: exact;
+    font-size: 14px !important;-webkit-print-color-adjust: exact;
     vertical-align: middle;
     overflow: visible;
     border-right: #daded8 1px solid;
@@ -676,14 +676,14 @@ A {
     border-top: rgba(0,0,0,.075) 2px solid;
     border-left: rgba(0,0,0,.075) 2px solid;
     border-bottom: rgba(0,0,0,.075) 2px solid;
-    font-size: 16px;
+    font-size: 14px !important;
     text-align: left;
     border-color: rgba(0,0,0,.075);
 }
 /* Responsive: Portrait tablets and up */
 /*@media screen and (max-width: 1400px) {*/
     .DivBody {
-        width: 99%
+        width: 1024px
     }
 /*}*/
 
@@ -703,7 +703,9 @@ A {
 }
 
 .DivContent {
-    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #F7F7FF;
 }
 
 .tdBorderLine {
@@ -759,5 +761,5 @@ textarea {
 
 .allowed-attachments-list {
     font-style: italic;
-    font-size: 16px;
+    font-size: 14px !important;
 }

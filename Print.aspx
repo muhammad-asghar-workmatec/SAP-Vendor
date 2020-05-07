@@ -1,72 +1,50 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Print.aspx.cs" Inherits="SAP_Vendor.Print" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Print.aspx.cs" Inherits="SAP_Vendor.Print" StylesheetTheme="Default" %>
 
 <%@ Register Src="~/UserRemarks.ascx" TagPrefix="uc1" TagName="UserRemarks" %>
+<%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
+<%@ Register Src="~/Controls/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>Maximo Vendor Creation Form</title>
+   <title>Maximo Vendor Creation Form</title>
     <link href="stlLoan.css" rel="stylesheet" type="text/css" />
 
-    <script type="text/javascript" language="JavaScript" src="Script/lw_layers.js"></script>
-
-    <script type="text/javascript" language="JavaScript" src="Script/lw_menu.js"></script>
-
-    <script type="text/javascript" language="JavaScript" src="Script/popcalendar.js"></script>
-
-    <script type="text/javascript" language="JavaScript" src="Script/Common.js"></script>
-
-
-    
- 
     <style type="text/css">
         .style1
         {
-            height: 24px;
+            height: 40px;
         }
         </style>
+    <script type="text/javascript" src="Scripts/jquery-3.3.1.min.js"></script>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <table border="1" width="950px" cellspacing="0" cellpadding="0" id="table1" align="center">
-            <tr>
-                <td>
-                    <table border="0" width="100%" cellspacing="0" cellpadding="0" id="table2">
-                        <tr>
-                            <td bordercolor="#33cc33" bordercolorlight="#009966">
-                                <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/OMV.jpg" /></td>
-                        </tr>
-                        <tr class="TopBar" height="36px">
-                            <td style="width: 956px">
-                                &nbsp;New Vendor Creation Form</td>
-                        </tr>
-                        <tr class="Topbar1">
-                            <td style="width: 956px">
-                                &nbsp;</td>
-                        </tr>
-                        <tr class="RepFilterBG">
-                            <td>
-                                <table>
-                                    <tr>
-                                        <td style="width: 43px" valign="top">
-                                            &nbsp;</td>
-                                        <td style="width: 943px">
-                                            <table cellpadding="0" cellspacing="0" style="width: 100%">
-                                                <colgroup>
-                                                    <col class="TableColumn" />
-                                                    <col />
-                                                    <col class="TableColumn" />
-                                                </colgroup>
-                                                                                                <tr>
-                                                    <td align="left" style="height: 22px; width: 145px;">
+    <form id="form1" runat="server" enctype="multipart/form-data">
+                <telerik:RadScriptManager ID="ScriptManager1" runat="server">
+        </telerik:RadScriptManager>
+                <div class="DivBody">
+            <div class="DivHeader">
+                <uc1:Header runat="server" ID="Header1" />
+            </div>
+  
+  
+           <div class="DivContent">
+                <div class="RepFilterBG" style="text-align: left; ">
+                    <div class="clearfix"></div>
+                           
+                
+                                            <table style="width: 100%;">
+                                                
+                                                <tr>
+                                                    <td align="left" style="height: 40px; ">
                                                     </td>
                                                     <td class="style1" colspan="3">
                                                         <asp:Label ID="lblError" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label></td>
                                                 </tr>
- <tr>
-                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                 <tr>
+                                                    <td align="left" style="height: 40px; ">
                                                       </td>
-                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                    <td class="style1" style="height: 40px; " colspan="3" align="left">
                                                         <asp:RadioButtonList Enabled="false"  ID="rblOptions" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="New" Value="New" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Change" Value="Change"></asp:ListItem>
@@ -76,40 +54,39 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="height: 24px; width: 231px;">
-                                                        Resion :
+                                                    <td align="left" style="height: 40px; ">
+                                                        Reason :
                                                     </td>
-                                                    <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtResion" runat="server" Width="620px" ReadOnly="true"></asp:TextBox>
+                                                    <td class="style1" style="height: 40px;" colspan="3">
+                                                        <asp:TextBox ID="txtReason" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
                                                         &nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                    <td align="left" style="height: 40px;">
                                                      Business Name :</td>
-                                                    <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtBusinessName" runat="server" Width="620px" ReadOnly="true"></asp:TextBox>
+                                                    <td class="style1" style="height: 40px;" colspan="3">
+                                                        <asp:TextBox ID="txtBusinessName" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
                                                         </td>
                                                 </tr>
-                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                  <tr>
+                                                    <td align="left" style=" height: 40px">
                                                         NTN# :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtNTN" runat="server" Width="210px" ReadOnly="true"></asp:TextBox></td>
+                                                    <td class="style1" style="width: 186px; height: 40px">
+                                                        <asp:TextBox ID="txtNTN" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                     <td>
                                                         Sale Tax Reg# :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtSaleTaxReg" runat="server" Width="210px" ReadOnly="true"></asp:TextBox>
-                                                    &nbsp;&nbsp;
-                                                        <br />
-                                                        <asp:CheckBox ID="txtNA" runat="server" Text="Not Applicable"></asp:CheckBox>
+                                                    <td style="height: 40px">
+                                                        <asp:TextBox ID="txtSaleTaxReg" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
+                                                    
                                                     </td>
                                                    
                                                 </tr>
+                                                 <tr><td colspan="4" style="text-align:right"><asp:CheckBox ID="txtNA" Enabled="false" runat="server" Text="Not Applicable"></asp:CheckBox></td></tr>
                                                 <tr>
-                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                    <td align="left" style="height: 40px; ">
                                                         Type :
                                                       </td>
-                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                    <td class="style1" style="height: 40px;" colspan="3" align="left">
                                                         <asp:RadioButtonList Enabled="false"  ID="rblType" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Supplier" Value="Supplier" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Vendor Return" Value="Vendor Return"></asp:ListItem>                        
@@ -117,32 +94,29 @@
                                                     </td>
                                                 </tr>
                                                  <tr>
-                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                    <td align="left" style="height: 40px; ">
                                                         Payment Currency:
                                                       </td>
-                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblCurrency" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
-                                                            <asp:ListItem Text="PKR" Value="PKR" Selected="True"></asp:ListItem>
-                                                            <asp:ListItem Text="USD" Value="USD"></asp:ListItem>                        
-                                                        </asp:RadioButtonList>
+                                                    <td class="style1" style="height: 40px;" colspan="3" align="left">
+                                                         <asp:TextBox ID="txtCurrency" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                  <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Address :</td>
-                                                  <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtAddress" runat="server" Width="620px" ReadOnly="true"></asp:TextBox></td>                                                   
+                                                  <td class="style1" style="height: 40px;" colspan="3">
+                                                        <asp:TextBox ID="txtAddress" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>                                                   
                                                 </tr>
                                                
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 22px">
+                                                    <td align="left" style=" height: 22px">
                                                         City :</td>
                                                     <td class="style1" style="width: 186px">
-                                                        <asp:TextBox ID="txtCity" runat="server" Width="210px" ReadOnly="true"></asp:TextBox></td>
+                                                        <asp:TextBox ID="txtCity" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                     <td>
                                                         State :</td>
                                                     <td style="height: 22px">
-                                                        <asp:TextBox ID="txtState" runat="server" Width="210px" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox ID="txtState" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
 
                                                     </td>
                                                         
@@ -151,51 +125,51 @@
                                                         Postal Code :
                                                     </td>
                                                     <td style="height: 22px">
-                                                        <asp:TextBox ID="txtPostalCode" runat="server" Width="210px" ReadOnly="true"></asp:TextBox></td>
+                                                        <asp:TextBox ID="txtPostalCode" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                     <td align="left">
                                                                                                                 Country :</td>
                                                     <td class="style1" style="width: 186px">
-                                                      <asp:TextBox ID="txtCountry" runat="server" Width="210px" ReadOnly="true"></asp:TextBox>
+                                                      <asp:TextBox ID="txtCountry" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Contact No :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtContactNo" runat="server" Width="210px" ReadOnly="true"></asp:TextBox></td>
+                                                    <td class="style1" style="width: 186px; height: 40px">
+                                                        <asp:TextBox ID="txtContactNo" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                     <td>
                                                         Fax No :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtFaxNo" runat="server" Width="210px" ReadOnly="true"></asp:TextBox>
+                                                    <td style="height: 40px">
+                                                        <asp:TextBox ID="txtFaxNo" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Email :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px" colspan="3">
-                                                        <asp:TextBox ID="txtEmail" runat="server" Width="620px" ReadOnly="true"></asp:TextBox></td>
+                                                    <td class="style1" style="width: 186px; height: 40px" colspan="3">
+                                                        <asp:TextBox ID="txtEmail" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                     <td class="auto-style1">
                                                         &nbsp;</td>
-                                                    <td style="height: 24px">
+                                                    <td style="height: 40px">
                                                         &nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Contact Person :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px" colspan="3">
-                                                        <asp:TextBox ID="txtContactPerson" runat="server" Width="620px" ReadOnly="true"></asp:TextBox></td>                                                    
+                                                    <td class="style1" style="width: 186px; height: 40px" colspan="3">
+                                                        <asp:TextBox ID="txtContactPerson" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>                                                    
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Payment Terms :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px" colspan="3">
-                                                        <asp:TextBox ID="txtPaymentTerms" runat="server" Width="620px" ReadOnly="true"></asp:TextBox></td>                                                    
+                                                    <td class="style1" style="width: 186px; height: 40px" colspan="3">
+                                                        <asp:TextBox ID="txtPaymentTerms" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>                                                    
                                                 </tr>
                                                  <tr>
-                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                    <td align="left" style="height: 40px; ">
                                                         Payment Method :
                                                       </td>
-                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                    <td class="style1" style="height: 40px;" colspan="3" align="left">
                                                         <asp:RadioButtonList Enabled="false"  ID="rblPaymentMethod" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Cheque" Value="Cheque" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Wire transfer" Value="Wire transfer"></asp:ListItem>                        
@@ -203,10 +177,10 @@
                                                     </td>
                                                 </tr>
                                                  <tr>
-                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                    <td align="left" style="height: 40px; ">
                                                         Nature of Work :
                                                       </td>
-                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                    <td class="style1" style="height: 40px;" colspan="3" align="left">
                                                         <asp:RadioButtonList Enabled="false"  ID="rblNaturOfWork" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Supplies" Value="Supplies" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Services/Contract" Value="Services/Contract"></asp:ListItem> 
@@ -215,18 +189,18 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="height: 22px; width: 231px;">
-                                                     Witholding Tax Field :</td>
+                                                    <td align="left" style="height: 22px; ">
+                                                     Withholding Tax Field :</td>
                                                     <td class="style1" style="width: 186px">                                                        
-                                                        <asp:TextBox ID="txtWHoldingTax" runat="server" Width="210px" ReadOnly="true"></asp:TextBox>
+                                                        <asp:TextBox ID="txtWHoldingTax" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
                                                     </td>
                                                     
                                                 </tr>
                                                  <tr>
-                                                    <td align="left" style="height: 24px;" colspan="2">
+                                                    <td align="left" style="height: 40px;" colspan="2">
                                                         Pre-qualification Questionnaire Completed and Attached :
                                                       </td>
-                                                    <td class="style1" style="height: 24px;" colspan="2" align="left">
+                                                    <td class="style1" style="height: 40px;" colspan="2" align="left">
                                                         <asp:RadioButtonList Enabled="false"  ID="rblAttached" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Yes" Value="Yes" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="No" Value="No"></asp:ListItem>                        
@@ -234,10 +208,10 @@
                                                     </td>
                                                 </tr>
                                                  <tr>
-                                                    <td align="left" style="height: 24px;">
+                                                    <td align="left" style="height: 40px;">
                                                         Pre-qualification Classification :
                                                       </td>
-                                                    <td class="style1" style="height: 24px;" colspan="3" align="left">
+                                                    <td class="style1" style="height: 40px;" colspan="3" align="left">
                                                         <asp:RadioButtonList Enabled="false"  ID="rblClassification" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="High(>$300K)" Value="High(>$300K)" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Medium(>$10K <=$300K)" Value="Medium(>$10K <=$300K)"></asp:ListItem> 
@@ -246,10 +220,10 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="height: 24px; width: 231px;">
+                                                    <td align="left" style="height: 40px; ">
                                                         Pre-qualification :
                                                       </td>
-                                                    <td class="style1" style="height: 24px;" colspan="1" align="left">
+                                                    <td class="style1" style="height: 40px;" colspan="1" align="left">
                                                         <asp:RadioButtonList Enabled="false" ID="rblQualification" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Confirmed" Value="Confirmed" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Probation" Value="Probation"></asp:ListItem>                                                                 
@@ -257,155 +231,136 @@
                                                     </td>
                                                      <td>
                                                         Probation Period Upto :</td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtPeriod" runat="server" Width="210px" ReadOnly="true"></asp:TextBox>
+                                                    <td style="height: 40px">
+                                                        <asp:TextBox ID="txtPeriod" runat="server" Width="210px" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
                                                     </td>
                                                 </tr>
-                                               <tr><td colspan="4" style="font-size: medium">Incase of foregion vendors only</td></tr>                                                                                              
+                                               <tr><td colspan="4" style="font-size: medium;color:dodgerblue">Incase of foregion vendors only</td></tr>                                                                                              
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Bank Name & Address :</td>
-                                                      <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtBankAddress" runat="server" Width="620px"  ReadOnly="true"></asp:TextBox></td>
+                                                      <td class="style1" style="height: 40px;" colspan="3">
+                                                        <asp:TextBox ID="txtBankAddress" runat="server" Width="100%"  ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                     
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
-                                                        Account#/IBAN# :</td>
-                                                   <td class="style1" style="height: 24px;" colspan="3">
-                                                       <asp:TextBox ID="txtIBAN" runat="server" Width="620px" ReadOnly="true"></asp:TextBox></td>                                                    
+                                                    <td align="left" style=" height: 40px">
+                                                        Account#/IBAN :</td>
+                                                   <td class="style1" style="height: 40px;" colspan="3">
+                                                       <asp:TextBox ID="txtIBAN" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>                                                    
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Routing# :</td>
-                                                    <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtRoutingNo" runat="server" Width="620px" ReadOnly="true"></asp:TextBox></td>                                                   
+                                                    <td class="style1" style="height: 40px;" colspan="3">
+                                                        <asp:TextBox ID="txtRoutingNo" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>                                                   
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Swift Code :                                                     </td>
-                                                   <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtSwiftCode" runat="server" Width="620px" ReadOnly="true"></asp:TextBox></td>                                                  
+                                                   <td class="style1" style="height: 40px;" colspan="3">
+                                                        <asp:TextBox ID="txtSwiftCode" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>                                                  
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 231px; height: 24px">
+                                                    <td align="left" style=" height: 40px">
                                                         Vendor/Benificary Name :</td>
-                                                       <td class="style1" style="height: 24px;" colspan="3">
-                                                        <asp:TextBox ID="txtBenificaryName" runat="server" Width="620px" ReadOnly="true"></asp:TextBox></td>
+                                                       <td class="style1" style="height: 40px;" colspan="3">
+                                                        <asp:TextBox ID="txtBenificaryName" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                    
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
+                                                </tr>           <tr>
+                                                    <td align="left" style="height: 40px">
                                                         SAP Vendor ID :</td>
                                                     <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtVendorID" runat="server" ReadOnly="True"></asp:TextBox></td>
-                                                    <td style="height: 24px">
+                                                        <asp:TextBox ID="txtVendorID" runat="server" ReadOnly="True" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
+                                                    <td style="height: 40px">
                                                         &nbsp;</td>
-                                                    <td style="height: 24px">
+                                                    <td style="height: 40px">
                                                         &nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" style="width: 145px; height: 24px">
+                                                    <td align="left" style="height: 40px">
                                                         Issued By :</td>
-                                                    <td class="style1" style="width: 186px; height: 24px">
-                                                        <asp:TextBox ID="txtIssedBy" runat="server" ReadOnly="True"></asp:TextBox></td>
-                                                    <td style="height: 24px">
+                                                    <td class="style1" style="height: 40px">
+                                                        <asp:TextBox ID="txtIssedBy" runat="server" ReadOnly="True" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
+                                                    <td style="height: 40px">
                                                         Issued On : </td>
-                                                    <td style="height: 24px">
-                                                        <asp:TextBox ID="txtIssuedOn" runat="server" ReadOnly="True"></asp:TextBox></td>
-                                                </tr>
-                                                <tr>
-                                                    <td align="left" style="width: 145px; height: 14px">
-                                                        &nbsp;</td>
-                                                    <td class="Line" style="width: 186px; height: 14px">
-                                                        &nbsp;</td>
-                                                    <td class="Line" style="height: 14px">
-                                                    </td>
-                                                    <td class="Line" style="height: 14px">
-                                                        &nbsp;</td>
+                                                    <td style="height: 40px">
+                                                        <asp:TextBox ID="txtIssuedOn" runat="server" ReadOnly="True" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
                                                     <td align="left" class="Line" colspan="4" style="height: 26px">
                                                         Attachment (If any) :</td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" class="Line" colspan="4" style="height: 26px">
-                                                        <asp:GridView ID="dgAttachment" runat="server" AllowSorting="True" AutoGenerateColumns="False"
-                                                            CellPadding="4" DataKeyNames="ID" DataSourceID="dsAttachment" ForeColor="#333333"
-                                                            GridLines="None" OnRowDataBound="dgAttachment_RowDataBound" PageSize="20" ShowFooter="True"
-                                                            Width="100%">
-                                                            <RowStyle BackColor="White" />
-                                                            <Columns>
-                                                                <asp:TemplateField HeaderText="File Name">
-                                                                    <FooterTemplate>
-                                                                    </FooterTemplate>
-                                                                    <ItemTemplate>
-                                                                        <asp:HyperLink ID="lnkAttachment" runat="server" Target="_blank">HyperLink</asp:HyperLink>
-                                                                    </ItemTemplate>
-                                                                    <HeaderStyle HorizontalAlign="Left" />
-                                                                    <ItemStyle HorizontalAlign="Left" />
-                                                                </asp:TemplateField>
-                                                            </Columns>
-                                                            <FooterStyle BackColor="Navy" Font-Bold="True" />
-                                                            <PagerStyle BackColor="Navy" ForeColor="White" HorizontalAlign="Right" />
-                                                            <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                                                            <HeaderStyle BackColor="Navy" Font-Bold="True" ForeColor="White" />
-                                                            <EditRowStyle BackColor="#2461BF" />
-                                                            <AlternatingRowStyle BackColor="White" />
-                                                        </asp:GridView>
-                                                        <asp:SqlDataSource ID="dsAttachment" runat="server" ConnectionString="<%$ appSettings:ConnectionString %>">
+                                                    <td align="left" colspan="4" style="">
+                                                       <asp:GridView ID="dgAttachment" runat="server" AllowSorting="True" AutoGenerateColumns="False"
+                                                           CellPadding="4" DataKeyNames="Id" PageSize="20" Style="position: relative" Width="100%" CssClass="Grid"
+                                                           OnRowCommand="Attachments_RowCommand" OnRowDataBound="Attachments_RowDataBound">
+    <RowStyle BackColor="White" />
+    <FooterStyle BackColor="Navy" Font-Bold="True" />
+    <Columns>
+        <asp:TemplateField HeaderText="File Name">
+            <ItemTemplate>
+                <asp:HyperLink ID="lnkAttachment" runat="server" Target="_blank">HyperLink</asp:HyperLink>
+            </ItemTemplate>
+            <FooterTemplate>
+            </FooterTemplate>
+            <ItemStyle HorizontalAlign="Left" Width="150px" />
+            <HeaderStyle HorizontalAlign="Left" />
+        </asp:TemplateField>
+        <asp:BoundField DataField="Description" HeaderText="Description">
+            <HeaderStyle HorizontalAlign="Left" />
+        </asp:BoundField>
+        <asp:BoundField DataField="UserName" HeaderText="UserName" ItemStyle-Width="120px">
+            <HeaderStyle HorizontalAlign="Left" />
+        </asp:BoundField>
+        <asp:BoundField DataField="CreatedDate" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-Width="80px">
+            <HeaderStyle HorizontalAlign="Left" />
+        </asp:BoundField>
+      
+    </Columns>
+    <RowStyle BackColor="White" />
+    <FooterStyle BackColor="Navy" Font-Bold="True" />
+    <EditRowStyle BackColor="#2461BF" />
+    <SelectedRowStyle BackColor="White" Font-Bold="True" ForeColor="#333333" />
+    <PagerStyle BackColor="Navy" ForeColor="White" HorizontalAlign="Right" />
+    <HeaderStyle BackColor="Navy" Font-Bold="True" ForeColor="White" />
+    <AlternatingRowStyle BackColor="White" />
+</asp:GridView>
+                                                        <asp:SqlDataSource ID="dsAttachment" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>">
                                                         </asp:SqlDataSource>
+                                                        &nbsp;
                                                     </td>
-                                                </tr>
-                                                    <tr class="RepFilterHD">
-                                                <td align="left" class="style7">
-                                                    Process Flow</td>
-                                                <td align="left" class="Line" style="width: 185px">
-                                                    &nbsp;</td>
-                                                <td class="Line" style="height: 26px">
-                                                    &nbsp;</td>
-                                                <td align="right" class="Line" style="height: 26px">
-                                                    &&nbsp;</td>
-                                            </tr>
-                                            <tr>
-                                                <td align="left"  colspan="4">
-                                                    <uc1:UserRemarks ID="UserRemarks1" runat="server" />
-                                                </td>
-                                            </tr>
-                                            </table>
+                                                    <td align="left" style="">
+                                                    </td>
+                                                </tr>                     
+                                    <tr><td colspan="4" style="text-align:right;height:40px">
+                                        <asp:Label ID="lblErrorBottom" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
                                         </td>
-                                    </tr>
+                                        </tr>
+                                     <tr><td colspan="4" style="">                                                 
+                    <div class="FlowBar">
+                        <div style="width: 100%">
+                            &nbsp;Process Flow
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <uc1:UserRemarks ID="UserRemarks1" runat="server" />
+                                         </td>
+                                         </tr>
                                 </table>
                                 <asp:HiddenField ID="hidRecordID" runat="server" />
-                                <asp:HiddenField ID="hidIsAdd" runat="server" />
-                                                        <asp:TextBox ID="txtMSOrt2PK1" runat="server" 
-                                    ReadOnly="True" Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtTaxcode3" runat="server" 
-                                    ReadOnly="True" Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtTradingPart" runat="server" 
-                                    ReadOnly="True" Visible="False"></asp:TextBox>
-                                <asp:SqlDataSource ID="dsFlow" runat="server" 
-                                    ConnectionString="<%$ appSettings:ConnectionString %>" 
-                                    ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
-                                <asp:HiddenField ID="hidRemarks" runat="server" />
-                                                        <asp:TextBox ID="txtMSOrt2PK3" runat="server" 
-                                    ReadOnly="True" Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtWHTType" runat="server" 
-                                    ReadOnly="True" Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtWHTTID" runat="server" 
-                                    ReadOnly="True" Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtWHTC" runat="server" 
-                                    Visible="False"></asp:TextBox>
-                                                        <asp:TextBox ID="txtWHTCode" runat="server" 
-                                    Visible="False"></asp:TextBox><asp:HiddenField ID="hidUserID" runat="server" />
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-        </table>
-        <div id="_Script" runat="server">
+                               
+                                <asp:HiddenField ID="hidUserID" runat="server" />
+                           
+                                       
+                        
+                  
+                    
+                </div>
+                    </div>
         </div>
     </form>
 </body>
 </html>
+
