@@ -31,56 +31,44 @@
             <div class="DivContent">
                 <div class="RepFilterBG" style="text-align: left">
                     <div class="clearfix"></div>
-                    <div>
-                        <asp:Label ID="lblError" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
-                    </div>
-                    <br />
-                    <div class="clearfix"></div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="txtDateFrom" class="col-sm-3">Date From :  </label>
-                                <div class="col-sm-9">
-                                    <telerik:RadDatePicker ID="txtDateFrom" runat="server"></telerik:RadDatePicker>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="txtDateTo" class="col-sm-3">
-                                    Date To :
-                                </label>
-                                <div class="col-sm-9">
-                                    <telerik:RadDatePicker ID="txtDateTo" runat="server"></telerik:RadDatePicker>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label for="txtDateFrom" class="col-sm-3">Business Name :  </label>
-                                <div class="col-sm-9">
-                                    <asp:TextBox ID="txtBusinessName" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">   
-                                 <label for="txtCRFNo" class="col-sm-3">SAP Vendor ID :  </label>
-                                <div class="col-sm-9">
-                                    <asp:TextBox ID="txtVendorId" runat="server" CssClass="form-control"></asp:TextBox>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div style="text-align: right; padding-right: 5px; padding-top: 10px">
+                                             <table style="width: 100%;">
+                                                
+                                                     <tr>
+                                                    <td align="left" style="height: 40px; ">
+                                                    </td>
+                                                    <td class="style1" colspan="3">
+                                                        <asp:Label ID="lblError" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label></td>
+                                                </tr>
+                                                 <tr><td class="style1">Date From :</td><td>
+                                                      <telerik:RadDatePicker ID="txtDateFrom" runat="server"></telerik:RadDatePicker>
+                                                              </td>
+                      <td class="style1"> Date To :</td><td>  <telerik:RadDatePicker ID="txtDateTo" runat="server"></telerik:RadDatePicker></td></tr>
+                                                 <tr><td class="style1">Business Name :</td><td> <asp:TextBox ID="txtBusinessName" runat="server" CssClass="form-control"></asp:TextBox></td>
+                                                     <td align="left" style="height: 40px; ">
+                                                        Type :
+                                                      </td>
+                                                    <td class="style1" style="height: 40px; " colspan="3" align="left">
+                                                        <asp:RadioButtonList ID="rblType" runat="server" RepeatLayout="Table" CellPadding="8" Width="350px" RepeatDirection="Horizontal">
+                                                             <asp:ListItem Text="All" Value="All" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Supplier" Value="Supplier"></asp:ListItem>
+                                                            <asp:ListItem Text="Vendor Return" Value="Vendor Return"></asp:ListItem>                        
+                                                        </asp:RadioButtonList>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorType" runat="server" ControlToValidate="rblType" ErrorMessage="Vendor Type is required." Text="" Display="None" ValidationGroup="A"></asp:RequiredFieldValidator>
+                                                    </td>
+                                                 </tr>
+                                                 <tr><td class="style1"></td><td colspan="3" style="text-align: right; padding-right: 5px; padding-top: 10px"><div>
                         <asp:Button ID="btnShow" runat="server" CssClass="btn btn-primary"
                             Text="Show" OnClick="btnShow_Click" />
                           <asp:Button ID="btnExport" runat="server" CssClass="btn btn-primary"
                             Text="Export to Excel" OnClick="ButtonExcel_Click" />
-                    </div>
+                    </div></td></tr>
+                                                 </table>
+
+                                
+                           
+                      
+
+                    
                     <br />
                     <div class="clearfix"></div>
                     <div class="clearfix"></div>
@@ -88,7 +76,7 @@
                            <telerik:RadGrid ID="radGrid" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataSourceID="DSGrid" Skin="Bootstrap" OnItemDataBound="radGrid_ItemDataBound" RenderMode="Lightweight" CellSpacing="-1" GridLines="Both" >
 
 <GroupingSettings CollapseAllTooltip="Collapse all groups"></GroupingSettings>
-                            <ExportSettings FileName="eTQ Data">
+                            <ExportSettings FileName="Vendors Data">
                             </ExportSettings>
                             <ClientSettings AllowColumnsReorder="True" AllowDragToGroup="True" ReorderColumnsOnClient="True">
                             </ClientSettings>
@@ -101,7 +89,7 @@
                                 </telerik:GridTemplateColumn>     
                                     <telerik:GridBoundColumn DataField="IncidentNo" HeaderText="Ref #" SortExpression="IncidentNo" />
                                      
-                                        <telerik:GridTemplateColumn HeaderText="Aging" SortExpression="Aging">
+<%--                                        <telerik:GridTemplateColumn HeaderText="Aging" SortExpression="Aging">
                                         <ItemTemplate>
                                             <asp:Label ID="lblAging" Text="" runat="server"></asp:Label>
                                         </ItemTemplate>
@@ -112,7 +100,7 @@
                                             <asp:Label ID="lblCurrentAging" Text="" runat="server"></asp:Label>
                                         </ItemTemplate>
                                          <ItemStyle Width="100px"></ItemStyle>
-                                    </telerik:GridTemplateColumn>
+                                    </telerik:GridTemplateColumn>--%>
                                        <telerik:GridBoundColumn DataField="RequestType" FilterControlAltText="Filter RequestType column" HeaderText="Request Type" SortExpression="RequestType" UniqueName="RequestType">
                                        </telerik:GridBoundColumn>
                                        <telerik:GridBoundColumn DataField="Reason" FilterControlAltText="Filter Reason column" HeaderText="Reason" SortExpression="Reason" UniqueName="Reason">
@@ -172,14 +160,7 @@
                                        <telerik:GridBoundColumn DataField="PaymentTerms" FilterControlAltText="Filter PaymentTerms column" HeaderText="PaymentTerms" SortExpression="PaymentTerms" UniqueName="PaymentTerms">
                                        </telerik:GridBoundColumn>
                                        <telerik:GridBoundColumn DataField="Status" DataType="System.Int32" FilterControlAltText="Filter Status column" HeaderText="Status" SortExpression="Status" UniqueName="Status">
-                                       </telerik:GridBoundColumn>
-                                       
-                                       <telerik:GridBoundColumn DataField="SAPVendorId" FilterControlAltText="Filter SAPVendorId column" HeaderText="SAPVendorId" SortExpression="SAPVendorId" UniqueName="SAPVendorId">
-                                       </telerik:GridBoundColumn>
-                                       <telerik:GridBoundColumn DataField="IssuedBy" FilterControlAltText="Filter IssuedBy column" HeaderText="IssuedBy" SortExpression="IssuedBy" UniqueName="IssuedBy">
-                                       </telerik:GridBoundColumn>
-                                       <telerik:GridBoundColumn DataField="IssuedOn" DataType="System.DateTime" FilterControlAltText="Filter IssuedOn column" HeaderText="IssuedOn" SortExpression="IssuedOn" UniqueName="IssuedOn">
-                                       </telerik:GridBoundColumn>                                       
+                                       </telerik:GridBoundColumn>                                                                                                                
                                        <telerik:GridBoundColumn DataField="InitiatorName" FilterControlAltText="Filter InitiatorName column" HeaderText="InitiatorName" SortExpression="Initiator" UniqueName="InitiatorName">
                                        </telerik:GridBoundColumn>
                                        <telerik:GridBoundColumn DataField="InitiatedDate" DataType="System.DateTime" FilterControlAltText="Filter InitiatedDate column" HeaderText="Initiated Date" SortExpression="InitiatedDate" UniqueName="InitiatedDate">

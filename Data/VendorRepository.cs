@@ -80,6 +80,7 @@ namespace SAP_Vendor.Data
                 {
                     string requestId = Guid.NewGuid().ToString();
                     objMain = new SAP_VendorCreation();
+                    objMain.RequestType = "New";
                     objMain.InitiatorId = initiatorId;
                     objMain.InitiatorName = initiatorName;                   
                     objMain.Status = 60;
@@ -106,6 +107,7 @@ namespace SAP_Vendor.Data
                 {
                     this.Entry(objMain).State = EntityState.Detached;
                     objMain = new SAP_VendorCreation();
+                    objMain.RequestType = "New";
                     objMain.RequestId = requestId;
                     objMain.InitiatorId = initiatorId;
                     objMain.InitiatorName = initiatorName;

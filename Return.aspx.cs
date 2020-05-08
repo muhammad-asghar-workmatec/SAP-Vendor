@@ -24,15 +24,24 @@ namespace SAP_Vendor
                
                 lblError.Text = "";
                 PageLoad();
-                if (!IsPostBack)
+                if (!IsPostBack && dalBPM != null)
                 {
-                    if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
-                        btSubmit.Enabled = false;
-                    hidUserID.Value = dalBPM.UserID;
-                    hidRecordID.Value = dalBPM.RecordID;
-                    UserRemarks1.LoadRemarks(dalBPM);
-                    LoadControls();
-                    //GetGroupUsers(ddlTo);
+                    if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_IN_QUEUE) || dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_RETURN) || dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
+                    {
+                        Response.Redirect("~/CompletedView.aspx?" + EncryptQueryString, false);
+                        return;
+                    }
+                    else
+                    {
+                        if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
+                            btSubmit.Enabled = false;
+                        hidUserID.Value = dalBPM.UserID;
+                        hidRecordID.Value = dalBPM.RecordID;
+                        this.Header1.TaskId = dalBPM.TaskID;
+                        UserRemarks1.LoadRemarks(dalBPM);
+                        LoadControls();
+                        //GetGroupUsers(ddlTo);
+                    }
                 }
             }
             catch (Exception ex)
@@ -140,40 +149,47 @@ namespace SAP_Vendor
                 if (obj == null)
                     obj = new SAP_VendorCreation();
                obj.RequestId =  hidRecordID.Value;
-                txtIBAN.Text = obj.AccountNoIBAN;
-                txtAddress.Text = obj.Address;
-                txtBankAddress.Text = obj.BankAddress;
-                Common.SelectItemByText(ddlCountry, string.IsNullOrEmpty(obj.Country) ? string.Empty : obj.Country);
-                txtPostalCode.Text = obj.PostalCode;
-                txtCity.Text = obj.City;
-                txtBenificaryName.Text = obj.BenificaryName;
-                txtBusinessName.Text = obj.BusinessName;
-                Common.SelectItemByValue(rblClassification, string.IsNullOrEmpty(obj.Classification) ? string.Empty : obj.Classification);
-                Common.SelectItemByValue(rblType, string.IsNullOrEmpty(obj.CompanyType) ? string.Empty : obj.CompanyType);
-                txtContactPerson.Text = obj.ContactPerson;
-                txtEmail.Text = obj.Email;
-                txtFaxNo.Text = obj.FaxNo;
-                Common.SelectItemByValue(rblNaturOfWork, string.IsNullOrEmpty(obj.NatureOfWork) ? string.Empty : obj.NatureOfWork);
-                txtNTN.Text = obj.NTNNo;
-                Common.SelectItemByText(ddlCurrency, string.IsNullOrEmpty(obj.PaymentCurrency) ? string.Empty : obj.PaymentCurrency);
-                Common.SelectItemByValue(rblPaymentMethod, string.IsNullOrEmpty(obj.PaymentMethod) ? string.Empty : obj.PaymentMethod);
-                Common.SelectItemByText(ddlPaymentTerms, string.IsNullOrEmpty(obj.PaymentTerms) ? string.Empty : obj.PaymentTerms);
-                txtPeriod.Text = obj.PeriodUpto;
-                txtContactNo.Text = obj.PhoneNo;
-                Common.SelectItemByValue(rblQualification, string.IsNullOrEmpty(obj.Qualification) ? string.Empty : obj.Qualification);
-                if (obj.QuestionnaireCompleted.GetValueOrDefault())
-                    rblAttached.SelectedValue = "Yes";
-                else
-                    rblAttached.SelectedValue = "No";
-                txtNA.Checked = obj.RegNA.GetValueOrDefault();
-                Common.SelectItemByValue(rblOptions, string.IsNullOrEmpty(obj.RequestType) ? string.Empty : obj.RequestType);
-                txtReason.Text = obj.Reason;
-                txtRoutingNo.Text = obj.RoutingNo;
-                txtState.Text = obj.State;
-
-                txtSwiftCode.Text = obj.SwiftCode;
-                txtSaleTaxReg.Text = obj.TaxRegNo;
-                Common.SelectItemByText(ddlWitholdingTaxField, string.IsNullOrEmpty(obj.WithholdingTax) ? string.Empty : obj.WithholdingTax);
+                obj.AccountNoIBAN = txtIBAN.Text;
+                obj.Address = txtAddress.Text;
+                obj.BankAddress = txtBankAddress.Text;
+                if (ddlCountry.SelectedIndex != -1)
+                    obj.Country = ddlCountry.SelectedItem.Text;
+                obj.PostalCode = txtPostalCode.Text;
+                obj.City = txtCity.Text;
+                obj.BenificaryName = txtBenificaryName.Text;
+                obj.BusinessName = txtBusinessName.Text;
+                if (rblClassification.SelectedIndex != -1)
+                    obj.Classification = rblClassification.SelectedValue;
+                if (rblType.SelectedIndex != -1)
+                    obj.CompanyType = rblType.SelectedValue;
+                obj.ContactPerson = txtContactPerson.Text;
+                obj.Email = txtEmail.Text;
+                obj.FaxNo = txtFaxNo.Text;
+                if (rblNaturOfWork.SelectedIndex != -1)
+                    obj.NatureOfWork = rblNaturOfWork.SelectedValue;
+                obj.NTNNo = txtNTN.Text;
+                if (ddlCurrency.SelectedIndex != -1)
+                    obj.PaymentCurrency = ddlCurrency.SelectedItem.Text;
+                if (rblPaymentMethod.SelectedIndex != -1)
+                    obj.PaymentMethod = rblPaymentMethod.SelectedValue;
+                if (ddlPaymentTerms.SelectedIndex != -1)
+                    obj.PaymentTerms = ddlPaymentTerms.SelectedItem.Text;
+                obj.PeriodUpto = txtPeriod.Text;
+                obj.PhoneNo = txtContactNo.Text;
+                if (rblQualification.SelectedIndex != -1)
+                    obj.Qualification = rblQualification.SelectedValue;
+                if (rblAttached.SelectedIndex != -1)
+                    obj.QuestionnaireCompleted = rblAttached.SelectedValue == "Yes";
+                obj.RegNA = txtNA.Checked;
+                if (rblOptions.SelectedIndex != -1)
+                    obj.RequestType = rblOptions.SelectedValue;
+                obj.Reason = txtReason.Text;
+                obj.RoutingNo = txtRoutingNo.Text;
+                obj.State = txtState.Text;
+                if (ddlWitholdingTaxField.SelectedIndex != -1)
+                    obj.WithholdingTax = ddlWitholdingTaxField.SelectedItem.Text;
+                obj.SwiftCode = txtSwiftCode.Text;
+                obj.TaxRegNo = txtSaleTaxReg.Text;
                 obj.UpdatedDate = DateTime.Now;
                 obj.UserId = dalBPM.UserID;
                 obj.UserName = dalBPM.UserName;
@@ -185,7 +201,7 @@ namespace SAP_Vendor
                 dalBPM.SetVarValue("INCIDENT_SUMMARY", Incident_Summary);
                // dalBPM.SetVarValue("HOD", ddlTo.SelectedValue);
                 dalBPM.SubmitTask("Resubmitted", txtRemarks.Text);
-                Response.Redirect("SuccessfullySubmited.aspx");
+                 Response.Redirect("~/View.aspx?TaskID=" + dalBPM.TaskID, false);
             }
             catch (Exception ex)
             {

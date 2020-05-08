@@ -96,13 +96,22 @@ namespace SAP_Vendor
         protected global::System.Web.UI.WebControls.TextBox txtBusinessName;
 
         /// <summary>
-        /// txtVendorId control.
+        /// rblType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtVendorId;
+        protected global::System.Web.UI.WebControls.RadioButtonList rblType;
+
+        /// <summary>
+        /// RequiredFieldValidatorType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorType;
 
         /// <summary>
         /// btnShow control.

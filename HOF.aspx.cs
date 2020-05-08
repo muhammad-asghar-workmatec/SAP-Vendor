@@ -13,7 +13,7 @@ using WPCommon;
 
 namespace SAP_Vendor
 {
-    public partial class DM : PageBase
+    public partial class HOF : PageBase
     {
 
         string query = "";
@@ -24,14 +24,23 @@ namespace SAP_Vendor
                
                 lblError.Text = "";
                 PageLoad();
-                if (!IsPostBack)
+                if (!IsPostBack && dalBPM != null)
                 {
-                    if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
-                        btSubmit.Enabled = false;
-                    hidUserID.Value = dalBPM.UserID;
-                    hidRecordID.Value = dalBPM.RecordID;
-                    UserRemarks1.LoadRemarks(dalBPM);
-                    InitControls();
+                    if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_IN_QUEUE) || dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_RETURN) || dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
+                    {
+                        Response.Redirect("~/CompletedView.aspx?" + EncryptQueryString, false);
+                        return;
+                    }
+                    else
+                    {
+                        if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
+                            btSubmit.Enabled = false;
+                        hidUserID.Value = dalBPM.UserID;
+                        hidRecordID.Value = dalBPM.RecordID;
+                        this.Header1.TaskId = dalBPM.TaskID;
+                        UserRemarks1.LoadRemarks(dalBPM);
+                        InitControls();
+                    }
                 }
             }
             catch (Exception ex)
@@ -135,6 +144,8 @@ namespace SAP_Vendor
                 {
                     AppStatus = "1";
                     _Action = "Approve";
+                    dalBPM.SetVarValue("Message", "Your vendor " + txtBusinessName.Text + " request has been has been approved." + txtRemarks.Text);
+                    dalBPM.SetVarValue("Subject", "Vendor Approved");
                 }
                 else if (optReject.Checked)
                 {
@@ -180,7 +191,7 @@ namespace SAP_Vendor
                         db.Entry(log).State = EntityState.Modified;
                     }
                     db.SaveChanges();
-                    Response.Redirect("SuccessfullySubmited.aspx");
+                     Response.Redirect("~/View.aspx?TaskID=" + dalBPM.TaskID, false);
                 }
             }
             catch (Exception ex)

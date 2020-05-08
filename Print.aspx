@@ -16,6 +16,51 @@
             height: 40px;
         }
         </style>
+    <style type="text/css">
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                line-height: 1.4em;
+                word-spacing: 1px;
+                letter-spacing: 0.2px;               
+                color: #000;
+                -webkit-print-color-adjust: exact;
+            }
+            .TopBar {                    
+                color: #FFFFFF !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .TopBar span {                    
+                color: #FFFFFF !important;
+                -webkit-print-color-adjust: exact;
+            }
+            .Grid TH {
+                background-color: #008AE6 !important;
+                color: #FFFFFF !important;
+                border: #008AE6 1px solid !important;                              
+                -webkit-print-color-adjust: exact;
+            }
+            .ActivityBar {
+                background-color: #008AE6 !important;
+                color: #FFFFFF !important;
+                border: #008AE6 1px solid !important;                              
+                -webkit-print-color-adjust: exact;
+            }
+            .ActivityBar span {     
+                background-color: #008AE6 !important;
+                color: #FFFFFF !important;
+                -webkit-print-color-adjust: exact;
+            }
+           .Grid TH a{
+                color: #FFFFFF !important;                                  
+                -webkit-print-color-adjust: exact;
+            }
+           .no-print{
+               display:none;
+           }
+        }
+    </style>
     <script type="text/javascript" src="Scripts/jquery-3.3.1.min.js"></script>
 </head>
 <body>
@@ -45,7 +90,7 @@
                                                     <td align="left" style="height: 40px; ">
                                                       </td>
                                                     <td class="style1" style="height: 40px; " colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblOptions" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList ID="rblOptions" runat="server" RepeatLayout="Table" CellPadding="8" Width="400px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="New" Value="New" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Change" Value="Change"></asp:ListItem>
                                                             <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
@@ -87,7 +132,7 @@
                                                         Type :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblType" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblType" runat="server" RepeatLayout="Table" CellPadding="8" Width="250px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Supplier" Value="Supplier" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Vendor Return" Value="Vendor Return"></asp:ListItem>                        
                                                         </asp:RadioButtonList>
@@ -170,7 +215,7 @@
                                                         Payment Method :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblPaymentMethod" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblPaymentMethod" runat="server" RepeatLayout="Table" CellPadding="8" Width="250px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Cheque" Value="Cheque" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Wire transfer" Value="Wire transfer"></asp:ListItem>                        
                                                         </asp:RadioButtonList>
@@ -181,7 +226,7 @@
                                                         Nature of Work :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblNaturOfWork" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblNaturOfWork" runat="server" RepeatLayout="Table" CellPadding="8" Width="350px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Supplies" Value="Supplies" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Services/Contract" Value="Services/Contract"></asp:ListItem> 
                                                             <asp:ListItem Text="Other" Value="Other"></asp:ListItem> 
@@ -201,7 +246,7 @@
                                                         Pre-qualification Questionnaire Completed and Attached :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="2" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblAttached" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblAttached" runat="server" RepeatLayout="Table" CellPadding="8" Width="150px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Yes" Value="Yes" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="No" Value="No"></asp:ListItem>                        
                                                         </asp:RadioButtonList>
@@ -212,7 +257,7 @@
                                                         Pre-qualification Classification :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblClassification" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblClassification" runat="server" RepeatLayout="Table" CellPadding="8" Width="500px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="High(>$300K)" Value="High(>$300K)" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Medium(>$10K <=$300K)" Value="Medium(>$10K <=$300K)"></asp:ListItem> 
                                                             <asp:ListItem Text="Low(<=$10K)" Value="Low(<=$10K)"></asp:ListItem>  
@@ -224,7 +269,7 @@
                                                         Pre-qualification :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="1" align="left">
-                                                        <asp:RadioButtonList Enabled="false" ID="rblQualification" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false" ID="rblQualification" runat="server" RepeatLayout="Table" CellPadding="8" Width="250px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Confirmed" Value="Confirmed" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Probation" Value="Probation"></asp:ListItem>                                                                 
                                                         </asp:RadioButtonList>
@@ -288,8 +333,8 @@
                                                         <asp:TextBox ID="txtIssuedOn" runat="server" ReadOnly="True" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" class="Line" colspan="4" style="height: 26px">
-                                                        Attachment (If any) :</td>
+                                                    <td align="left"  colspan="4">
+                                                        Attachments (If any) </td>
                                                 </tr>
                                                 <tr>
                                                     <td align="left" colspan="4" style="">
@@ -331,10 +376,9 @@
                                                         </asp:SqlDataSource>
                                                         &nbsp;
                                                     </td>
-                                                    <td align="left" style="">
-                                                    </td>
+                                                   
                                                 </tr>                     
-                                    <tr><td colspan="4" style="text-align:right;height:40px">
+                                    <tr><td colspan="4" style="text-align:right;height:20px">
                                         <asp:Label ID="lblErrorBottom" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
                                         </td>
                                         </tr>
@@ -362,5 +406,10 @@
         </div>
     </form>
 </body>
+          <script language="javascript" type="text/javascript" >
+          setTimeout(() => {
+              window.print();
+          }, 1)
+          </script>  
 </html>
 

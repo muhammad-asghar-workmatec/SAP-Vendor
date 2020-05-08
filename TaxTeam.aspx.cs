@@ -25,14 +25,23 @@ namespace SAP_Vendor
                
                 lblError.Text = "";
                 PageLoad();
-                if (!IsPostBack)
+                if (!IsPostBack && dalBPM != null)
                 {
-                    if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
-                        btSubmit.Enabled = false;
-                    hidUserID.Value = dalBPM.UserID;
-                    hidRecordID.Value = dalBPM.RecordID;
-                    UserRemarks1.LoadRemarks(dalBPM);
-                    InitControls();
+                    if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_IN_QUEUE) || dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_RETURN) || dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
+                    {
+                        Response.Redirect("~/CompletedView.aspx?" + EncryptQueryString, false);
+                        return;
+                    }
+                    else
+                    {
+                        if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
+                            btSubmit.Enabled = false;
+                        hidUserID.Value = dalBPM.UserID;
+                        hidRecordID.Value = dalBPM.RecordID;
+                        this.Header1.TaskId = dalBPM.TaskID;
+                        UserRemarks1.LoadRemarks(dalBPM);
+                        InitControls();
+                    }
                 }
             }
             catch (Exception ex)
@@ -134,7 +143,7 @@ namespace SAP_Vendor
                 obj.Address = txtAddress.Text;
                 obj.BankAddress = txtBankAddress.Text;
                 if (ddlCountry.SelectedIndex != -1)
-                    obj.Country = ddlCountry.SelectedValue;
+                    obj.Country = ddlCountry.SelectedItem.Text;
                 obj.PostalCode = txtPostalCode.Text;
                 obj.City = txtCity.Text;
                 obj.BenificaryName = txtBenificaryName.Text;
@@ -150,10 +159,11 @@ namespace SAP_Vendor
                     obj.NatureOfWork = rblNaturOfWork.SelectedValue;
                 obj.NTNNo = txtNTN.Text;
                 if (ddlCurrency.SelectedIndex != -1)
-                    obj.PaymentCurrency = ddlCurrency.SelectedValue;
-                obj.PaymentMethod = rblPaymentMethod.SelectedValue;
+                    obj.PaymentCurrency = ddlCurrency.SelectedItem.Text;
+                if (rblPaymentMethod.SelectedIndex != -1)
+                    obj.PaymentMethod = rblPaymentMethod.SelectedValue;
                 if (ddlPaymentTerms.SelectedIndex != -1)
-                    obj.PaymentTerms = ddlPaymentTerms.SelectedValue;
+                    obj.PaymentTerms = ddlPaymentTerms.SelectedItem.Text;
                 obj.PeriodUpto = txtPeriod.Text;
                 obj.PhoneNo = txtContactNo.Text;
                 if (rblQualification.SelectedIndex != -1)
@@ -167,10 +177,9 @@ namespace SAP_Vendor
                 obj.RoutingNo = txtRoutingNo.Text;
                 obj.State = txtState.Text;
                 if (ddlWitholdingTaxField.SelectedIndex != -1)
-                    obj.WithholdingTax = ddlWitholdingTaxField.SelectedValue;
-                obj.Status = 1;
+                    obj.WithholdingTax = ddlWitholdingTaxField.SelectedItem.Text;
                 obj.SwiftCode = txtSwiftCode.Text;
-                obj.TaxRegNo = txtSaleTaxReg.Text;                
+                obj.TaxRegNo = txtSaleTaxReg.Text;
                 obj.UpdatedDate = DateTime.Now;
                 obj.IssuedBy = dalBPM.UserID;
                 obj.IssuedOn = DateTime.Now;
@@ -179,7 +188,7 @@ namespace SAP_Vendor
                 if (optApprove.Checked)
                 {
                     AppStatus = "1";
-                    _Action = "Approve";
+                    _Action = "Forward";
                 }
                 else if (optReject.Checked)
                 {
@@ -224,7 +233,7 @@ namespace SAP_Vendor
                         db.Entry(log).State = EntityState.Modified;
                     }
                     db.SaveChanges();
-                    Response.Redirect("SuccessfullySubmited.aspx");
+                     Response.Redirect("~/View.aspx?TaskID=" + dalBPM.TaskID, false);
                 }
 
             }

@@ -4,7 +4,7 @@
                                     CellPadding="4" DataSourceID="DSRemarks"
                                     Height="15px" PageSize="20" 
             Style="position: relative" Width="100%" CssClass="Grid" 
-        Visible="False">
+        Visible="False" OnRowDataBound="dgProcess_RowDataBound">
                                     <FooterStyle BackColor="Navy" Font-Bold="True" />
                                     <Columns>
                                         <asp:BoundField DataField="UserName" HeaderText="Name" 
@@ -16,9 +16,21 @@
                                             <ItemStyle Width="150px" />
                                         <HeaderStyle HorizontalAlign="Left" />
                                         </asp:BoundField>
-<asp:BoundField DataField="Remarks" HeaderText="Remarks" SortExpression="Remarks">
-                                        <HeaderStyle HorizontalAlign="Left" />
-</asp:BoundField>
+                                                    <asp:TemplateField>
+                <ItemTemplate>
+ <telerik:RadEditor RenderMode="Lightweight" runat="server" ID="radEditorRemarks" Width="99%" CssClass="" AutoResizeHeight="true" BackColor="White" EditType="Inline" Enabled="false"  ExternalDialogsPath="~/RadEditorDialogs/" EditModes="Preview">       
+        <ExportSettings FileName="export" OpenInNewWindow="true">
+            <Docx PageHeader="" />
+        </ExportSettings>
+        <Content>
+           
+        </Content>
+
+        <TrackChangesSettings CanAcceptTrackChanges="False"></TrackChangesSettings>
+    </telerik:RadEditor>
+                </ItemTemplate>
+            </asp:TemplateField>
+                                      
                                         <asp:BoundField DataField="CreatedDate" HeaderText="Time" 
                                             SortExpression="CreatedDate" DataFormatString="{0:dd/MM/yyyy hh:mm tt}">
                                              <ItemStyle Width="180px" />

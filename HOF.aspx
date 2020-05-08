@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DM.aspx.cs" Inherits="SAP_Vendor.DM" StylesheetTheme="Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HOF.aspx.cs" Inherits="SAP_Vendor.HOF" StylesheetTheme="Default" %>
 
 <%@ Register Src="~/UserRemarks.ascx" TagPrefix="uc1" TagName="UserRemarks" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
@@ -44,7 +44,7 @@
                                                     <td align="left" style="height: 40px; ">
                                                       </td>
                                                     <td class="style1" style="height: 40px; " colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblOptions" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList ID="rblOptions" Enabled="false" runat="server" RepeatLayout="Table" CellPadding="8" Width="400px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="New" Value="New" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Change" Value="Change"></asp:ListItem>
                                                             <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
@@ -86,7 +86,7 @@
                                                         Type :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblType" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblType" runat="server" RepeatLayout="Table" CellPadding="8" Width="250px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Supplier" Value="Supplier" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Vendor Return" Value="Vendor Return"></asp:ListItem>                        
                                                         </asp:RadioButtonList>
@@ -169,7 +169,7 @@
                                                         Payment Method :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblPaymentMethod" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblPaymentMethod" runat="server" RepeatLayout="Table" CellPadding="8" Width="250px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Cheque" Value="Cheque" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Wire transfer" Value="Wire transfer"></asp:ListItem>                        
                                                         </asp:RadioButtonList>
@@ -180,7 +180,7 @@
                                                         Nature of Work :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblNaturOfWork" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblNaturOfWork" runat="server" RepeatLayout="Table" CellPadding="8" Width="350px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Supplies" Value="Supplies" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Services/Contract" Value="Services/Contract"></asp:ListItem> 
                                                             <asp:ListItem Text="Other" Value="Other"></asp:ListItem> 
@@ -200,7 +200,7 @@
                                                         Pre-qualification Questionnaire Completed and Attached :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="2" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblAttached" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblAttached" runat="server" RepeatLayout="Table" CellPadding="8" Width="150px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Yes" Value="Yes" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="No" Value="No"></asp:ListItem>                        
                                                         </asp:RadioButtonList>
@@ -211,7 +211,7 @@
                                                         Pre-qualification Classification :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="3" align="left">
-                                                        <asp:RadioButtonList Enabled="false"  ID="rblClassification" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false"  ID="rblClassification" runat="server" RepeatLayout="Table" CellPadding="8" Width="500px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="High(>$300K)" Value="High(>$300K)" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Medium(>$10K <=$300K)" Value="Medium(>$10K <=$300K)"></asp:ListItem> 
                                                             <asp:ListItem Text="Low(<=$10K)" Value="Low(<=$10K)"></asp:ListItem>  
@@ -223,7 +223,7 @@
                                                         Pre-qualification :
                                                       </td>
                                                     <td class="style1" style="height: 40px;" colspan="1" align="left">
-                                                        <asp:RadioButtonList Enabled="false" ID="rblQualification" runat="server" RepeatLayout="Table" CellPadding="3" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList Enabled="false" ID="rblQualification" runat="server" RepeatLayout="Table" CellPadding="8" Width="250px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="Confirmed" Value="Confirmed" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Probation" Value="Probation"></asp:ListItem>                                                                 
                                                         </asp:RadioButtonList>
@@ -268,11 +268,11 @@
                                                    
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" class="Line" colspan="4" style="height: 26px">
-                                                        Attachment (If any) :</td>
+                                                    <td align="left" colspan="4" style="height: 40px">
+                                                        Attachments (If any)</td>
                                                 </tr>
-                                                <tr>
-                                                    <td align="left" colspan="4" style="">
+                                              <tr>
+                                                    <td align="left" colspan="4">
                                                        <asp:GridView ID="dgAttachment" runat="server" AllowSorting="True" AutoGenerateColumns="False"
                                                            CellPadding="4" DataKeyNames="Id" PageSize="20" Style="position: relative" Width="100%" CssClass="Grid"
                                                            OnRowCommand="Attachments_RowCommand" OnRowDataBound="Attachments_RowDataBound">
@@ -297,7 +297,7 @@
         <asp:BoundField DataField="CreatedDate" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-Width="80px">
             <HeaderStyle HorizontalAlign="Left" />
         </asp:BoundField>
-      
+
     </Columns>
     <RowStyle BackColor="White" />
     <FooterStyle BackColor="Navy" Font-Bold="True" />
@@ -309,13 +309,11 @@
 </asp:GridView>
                                                         <asp:SqlDataSource ID="dsAttachment" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>">
                                                         </asp:SqlDataSource>
-                                                        &nbsp;
+                                                       
                                                     </td>
-                                                    <td align="left" style="">
-                                                    </td>
+                                                   
                                                 </tr>
-                                                
-                                                 <tr><td>Remarks : <span class="required">*</span></td><td colspan="3">
+                                                <tr><td>Remarks : <span class="required">*</span></td><td colspan="3" style="padding-top:5px">
                                                      <telerik:RadEditor RenderMode="Lightweight" EditModes="Design" EditType="Normal" runat="server" ID="txtRemarks" Width="99%" Height="150px" ToolsFile="~/tools.xml" CssClass="centered-editor" Font-Size="Small" ExternalDialogsPath="~/RadEditorDialogs/" BorderStyle="Solid" BorderColor="#cccccc" BorderWidth="1px">
                                         <ImageManager ViewPaths="~/Documents" UploadPaths="~/Documents" DeletePaths="~/Documents" />
                                         <TemplateManager ViewPaths="~/Documents" UploadPaths="~/Documents" DeletePaths="~/Documents" />
@@ -349,17 +347,13 @@
                                                                 Text="Submit" OnClick="btSubmit_Click" 
                                                             ValidationGroup="A" /></td>
                                                 </tr>
-                                                <tr><td colspan="4" style="text-align:right;height:40px">
-     <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="BulletList" ShowSummary="false" ValidationGroup="A"  ShowValidationErrors="true" ShowMessageBox="true"/>
-                                                         </td>
-                                    </tr>
-                                    <tr><td colspan="4" style="text-align:right;height:40px">
+                                                <tr><td colspan="4" style="text-align:right;height:20px">
+     <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="BulletList" ShowSummary="false" ValidationGroup="A"  ShowValidationErrors="true" ShowMessageBox="true"/>                                    
                                         <asp:Label ID="lblErrorBottom" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
                                         </td>
                                         </tr>
-                                     <tr><td colspan="4" style="">
-                                                           <br />
-                    <div class="clearfix"></div>
+                                     <tr><td colspan="4" style="">                                                        
+                  
                     <div class="FlowBar" style="height: 30px">
                         <div style="width: 100%">
                             &nbsp;Process Flow

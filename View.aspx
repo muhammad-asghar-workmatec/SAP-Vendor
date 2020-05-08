@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Finance.aspx.cs" Inherits="SAP_Vendor.Finance" StylesheetTheme="Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="View.aspx.cs" Inherits="SAP_Vendor.View" StylesheetTheme="Default" %>
 
 <%@ Register Src="~/UserRemarks.ascx" TagPrefix="uc1" TagName="UserRemarks" %>
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
@@ -17,6 +17,19 @@
         }
         </style>
     <script type="text/javascript" src="Scripts/jquery-3.3.1.min.js"></script>
+     <script language="javascript" type="text/javascript">
+         setTimeout(() => {
+             var win = window.open("", "_top", "", "true");
+             win.opener = true;
+             win.close();
+             return false;
+         }, 5000)
+     </script>
+    <script language="javascript" type="text/javascript">
+        setTimeout(() => {
+            window.close(); return false;
+        }, 5000)
+    </script>
 </head>
 <body>
     <form id="form1" runat="server" enctype="multipart/form-data">
@@ -27,10 +40,13 @@
                 <uc1:Header runat="server" ID="Header1" />
             </div>
   
-            <div class="DivContent">
+  
+           <div class="DivContent">
                 <div class="RepFilterBG" style="text-align: left; ">
                     <div class="clearfix"></div>
-                                 <table style="width: 100%;">
+                           
+                
+                                            <table style="width: 100%;">
                                                 
                                                 <tr>
                                                     <td align="left" style="height: 40px; ">
@@ -42,7 +58,7 @@
                                                     <td align="left" style="height: 40px; ">
                                                       </td>
                                                     <td class="style1" style="height: 40px; " colspan="3" align="left">
-                                                        <asp:RadioButtonList ID="rblOptions" Enabled="false" runat="server" RepeatLayout="Table" CellPadding="8" Width="400px" RepeatDirection="Horizontal">
+                                                        <asp:RadioButtonList ID="rblOptions" runat="server" RepeatLayout="Table" CellPadding="8" Width="400px" RepeatDirection="Horizontal">
                                                             <asp:ListItem Text="New" Value="New" Selected="True"></asp:ListItem>
                                                             <asp:ListItem Text="Change" Value="Change"></asp:ListItem>
                                                             <asp:ListItem Text="Active" Value="Active"></asp:ListItem>
@@ -65,7 +81,7 @@
                                                         <asp:TextBox ID="txtBusinessName" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox>
                                                         </td>
                                                 </tr>
-                                                 <tr>
+                                                  <tr>
                                                     <td align="left" style=" height: 40px">
                                                         NTN# :</td>
                                                     <td class="style1" style="width: 186px; height: 40px">
@@ -264,13 +280,32 @@
                                                        <td class="style1" style="height: 40px;" colspan="3">
                                                         <asp:TextBox ID="txtBenificaryName" runat="server" Width="100%" ReadOnly="true" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                    
+                                                </tr>           <tr>
+                                                    <td align="left" style="height: 40px">
+                                                        SAP Vendor ID :</td>
+                                                    <td class="style1" style="width: 186px; height: 24px">
+                                                        <asp:TextBox ID="txtVendorID" runat="server" ReadOnly="True" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
+                                                    <td style="height: 40px">
+                                                        &nbsp;</td>
+                                                    <td style="height: 40px">
+                                                        &nbsp;</td>
                                                 </tr>
                                                 <tr>
-                                                    <td align="left" colspan="4" style="height: 40px">
-                                                        Attachments (If any)</td>
+                                                    <td align="left" style="height: 40px">
+                                                        Issued By :</td>
+                                                    <td class="style1" style="height: 40px">
+                                                        <asp:TextBox ID="txtIssedBy" runat="server" ReadOnly="True" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
+                                                    <td style="height: 40px">
+                                                        Issued On : </td>
+                                                    <td style="height: 40px">
+                                                        <asp:TextBox ID="txtIssuedOn" runat="server" ReadOnly="True" CssClass="form-control" ValidateRequestMode="Enabled" ValidationGroup="A" ></asp:TextBox></td>
                                                 </tr>
-                                              <tr>
-                                                    <td align="left" colspan="4">
+                                                <tr>
+                                                    <td align="left"  colspan="4">
+                                                        Attachments (If any) </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" colspan="4" style="">
                                                        <asp:GridView ID="dgAttachment" runat="server" AllowSorting="True" AutoGenerateColumns="False"
                                                            CellPadding="4" DataKeyNames="Id" PageSize="20" Style="position: relative" Width="100%" CssClass="Grid"
                                                            OnRowCommand="Attachments_RowCommand" OnRowDataBound="Attachments_RowDataBound">
@@ -295,7 +330,7 @@
         <asp:BoundField DataField="CreatedDate" HeaderText="Date" DataFormatString="{0:dd/MM/yyyy}" ItemStyle-Width="80px">
             <HeaderStyle HorizontalAlign="Left" />
         </asp:BoundField>
-
+      
     </Columns>
     <RowStyle BackColor="White" />
     <FooterStyle BackColor="Navy" Font-Bold="True" />
@@ -307,45 +342,16 @@
 </asp:GridView>
                                                         <asp:SqlDataSource ID="dsAttachment" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>">
                                                         </asp:SqlDataSource>
-                                                       
+                                                        &nbsp;
                                                     </td>
                                                    
-                                                </tr>
-                                                <tr><td>Remarks : <span class="required">*</span></td><td colspan="3" style="padding-top:5px">
-                                                     <telerik:RadEditor RenderMode="Lightweight" EditModes="Design" EditType="Normal" runat="server" ID="txtRemarks" Width="99%" Height="150px" ToolsFile="~/tools.xml" CssClass="centered-editor" Font-Size="Small" ExternalDialogsPath="~/RadEditorDialogs/" BorderStyle="Solid" BorderColor="#cccccc" BorderWidth="1px">
-                                        <ImageManager ViewPaths="~/Documents" UploadPaths="~/Documents" DeletePaths="~/Documents" />
-                                        <TemplateManager ViewPaths="~/Documents" UploadPaths="~/Documents" DeletePaths="~/Documents" />
-                                        <DocumentManager ViewPaths="~/Documents" UploadPaths="~/Documents" DeletePaths="~/Documents" />
-                                        <ExportSettings FileName="export" OpenInNewWindow="true">
-                                            <Docx PageHeader="" />
-                                        </ExportSettings>
-                                        <Content>
-                                        </Content>
-
-                                        <TrackChangesSettings CanAcceptTrackChanges="False"></TrackChangesSettings>
-                                    </telerik:RadEditor>
-                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtRemarks" ErrorMessage="Remarks is required." Text="" Display="None" ValidationGroup="A"></asp:RequiredFieldValidator>
-                                                                                                      </td></tr>
-                                                 
-                                              <tr>
-                                                  <td align="left">
-                                                    </td>
-                                                    <td align="left">                                                       
-                                                    </td>
-                                                  <td></td>
-                                                  <td  colspan="1" style="height:40px;text-align:right">                                                  
-                                <asp:Button ID="btSubmit" runat="server" CssClass="btn btn-primary"
-                                    Text="Submit" ValidationGroup="A"
-                                    OnClick="btSubmit_Click" />
-                                                  </td></tr> 
-                                       <tr><td colspan="4" style="text-align:right;height:20px">
-     <asp:ValidationSummary ID="ValidationSummary1" runat="server" DisplayMode="BulletList" ShowSummary="false" ValidationGroup="A"  ShowValidationErrors="true" ShowMessageBox="true"/>                                    
+                                                </tr>                     
+                                    <tr><td colspan="4" style="text-align:right;height:20px">
                                         <asp:Label ID="lblErrorBottom" runat="server" ForeColor="Red" Font-Bold="True"></asp:Label>
                                         </td>
                                         </tr>
-                                     <tr><td colspan="4" style="">                                                        
-                  
-                    <div class="FlowBar" style="height: 30px">
+                                     <tr><td colspan="4" style="">                                                 
+                    <div class="FlowBar">
                         <div style="width: 100%">
                             &nbsp;Process Flow
                         </div>
@@ -354,6 +360,12 @@
                     <uc1:UserRemarks ID="UserRemarks1" runat="server" />
                                          </td>
                                          </tr>
+                                                <tr><td colspan="4" style="text-align:center">
+                                                     <div style="color: Green; font-size: larger; text-align: center">
+            Successfully Submitted!
+    <asp:Button ID="Button1" runat="server" Text="Close" UseSubmitBehavior="false" OnClientClick="window.close();return false;" Width="100px" CssClass="btn btn-primary" />
+        </div>
+                                                    </td></tr>
                                 </table>
                                 <asp:HiddenField ID="hidRecordID" runat="server" />
                                

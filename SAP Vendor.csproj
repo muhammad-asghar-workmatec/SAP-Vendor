@@ -207,8 +207,10 @@
       <LastGenOutput>VendorModel.cs</LastGenOutput>
     </Content>
     <Content Include="Default.aspx" />
-    <Content Include="DM.aspx" />
+    <Content Include="HOF.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="CompletedView.aspx" />
+    <Content Include="View.aspx" />
     <Content Include="Report.aspx" />
     <Content Include="Settings.aspx" />
     <Content Include="TaxTeam.aspx" />
@@ -977,6 +979,20 @@
       <DependentUpon>VendorModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\VendorRepository.cs" />
+    <Compile Include="CompletedView.aspx.cs">
+      <DependentUpon>CompletedView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompletedView.aspx.designer.cs">
+      <DependentUpon>CompletedView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View.aspx.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View.aspx.designer.cs">
+      <DependentUpon>View.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Report.aspx.cs">
       <DependentUpon>Report.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1024,12 +1040,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DM.aspx.cs">
-      <DependentUpon>DM.aspx</DependentUpon>
+    <Compile Include="HOF.aspx.cs">
+      <DependentUpon>HOF.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="DM.aspx.designer.cs">
-      <DependentUpon>DM.aspx</DependentUpon>
+    <Compile Include="HOF.aspx.designer.cs">
+      <DependentUpon>HOF.aspx</DependentUpon>
     </Compile>
     <Compile Include="Finance.aspx.cs">
       <DependentUpon>Finance.aspx</DependentUpon>

@@ -31,11 +31,15 @@ namespace SAP_Vendor
                
                 lblError.Text = "";
                 PageLoad();
-                if (!IsPostBack)
+                if (!IsPostBack && dalBPM != null)
                 {
-                    if (!dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
+                    if (dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_IN_QUEUE) || dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_RETURN) || dalBPM.TaskStatus.Equals(BPMExecution.TASK_STATUS_COMPLETE))
                     {
-
+                        Response.Redirect("~/CompletedView.aspx?" + EncryptQueryString, false);
+                        return;
+                    }
+                    else
+                    {                       
                         LoadControls();
                         this.RequestId = dalBPM.RecordID;
                         SAP_VendorCreation objMain = null;
@@ -56,10 +60,7 @@ namespace SAP_Vendor
                         BindAttachments(dgAttachment);
                        // GetGroupUsers(ddlTo);
                     }
-                    else
-                    {
-                        btnSubmit.Enabled = false;
-                    }
+                    
                 }
             }
             catch (Exception ex)
@@ -127,12 +128,12 @@ namespace SAP_Vendor
         {
             try
             {
-                //if (dalBPM.TaskStatus == BPMExecution.TASK_STATUS_NEW)
-                //{
-                //    int nextIncidentNo = GetNextIncidentNo();
-                //    TQMain objMain = view1.ClearTQMain(requestId: this.RequestId, nextIncidentNo, dalBPM.UserID, dalBPM.UserName);
-                //    this.RequestId = objMain.RequestId;
-                //}
+                if (dalBPM.TaskStatus == BPMExecution.TASK_STATUS_NEW)
+                {                  
+                    var objMain =db.ClearVendorCreation(requestId: this.RequestId, dalBPM.UserID, dalBPM.UserName);
+                    this.RequestId = objMain.RequestId;
+                    this.LoadForm(objMain);
+                }
 
             }
             catch (Exception ex)
@@ -306,7 +307,7 @@ namespace SAP_Vendor
                         obj.TaskId = dalBPM.TaskID;
                         obj.UserId = dalBPM.UserID.Trim();
                         obj.UserName = dalBPM.UserName;
-                        obj.Remarks = "";
+                        obj.Remarks = txtRemarks.Content;
                        
                         if (db.Entry(obj).State == EntityState.Detached)
                         {
@@ -324,8 +325,10 @@ namespace SAP_Vendor
                             }
                             db.Entry(log).State = EntityState.Modified;
                         }
-                        db.SaveChanges();                      
-                    Response.Redirect("SuccessfullySubmited.aspx");
+                        db.SaveChanges();
+                    //  Response.Redirect("~/View.aspx?TaskID=" + dalBPM.TaskID, false);
+                    Response.Redirect("~/SuccessfullySubmited.aspx", false);
+                    
                 }
             }
             catch (Exception ex)

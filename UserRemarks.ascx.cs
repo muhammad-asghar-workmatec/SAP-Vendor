@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Telerik.Web.UI;
 
 namespace SAP_Vendor
 {
@@ -43,6 +44,19 @@ namespace SAP_Vendor
             catch (Exception ex)
             {
                 lblErrorBottom.Text = ex.Message;
+            }
+        }
+        protected void dgProcess_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row != null && e.Row.DataItem != null)
+            {
+                var radEditorRemarks = (RadEditor)e.Row.FindControl("radEditorRemarks");
+                var row = ((System.Data.DataRowView)e.Row.DataItem).Row;
+                if (radEditorRemarks != null && row != null)
+                {
+                    string Remarks = row["Remarks"] as string;
+                    radEditorRemarks.Content = Remarks;
+                }
             }
         }
     }

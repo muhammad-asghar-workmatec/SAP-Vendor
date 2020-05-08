@@ -68,13 +68,13 @@ namespace SAP_Vendor
             {
                 items.Add($"BusinessName like'%{txtBusinessName.Text.Trim()}%'");
             }
-            if (!string.IsNullOrWhiteSpace(txtVendorId.Text))
+            if (rblType.SelectedIndex>0)
             {
-                items.Add($"SAPVendorId like'%{txtVendorId.Text.Trim()}%'");
+                items.Add($"CompanyType ='{rblType.SelectedValue}'");
             }
             //var m = new TQMain();
 
-            string query = "SELECT *, DATEDIFF(day, GETDATE(), InitiatedDate) as Aging, DATEDIFF(day, GETDATE(), UpdatedDate) as CurrentAging FROM SAP_VendorCreation ";
+            string query = "SELECT * FROM SAP_VendorCreation ";
             if (items.Count > 0)
             {
                 query += " where " + string.Join(" and ", items);
@@ -126,47 +126,47 @@ namespace SAP_Vendor
                 if (row != null)
                 {
 
-                    var lblAging = (Label)e.Item.FindControl("lblAging");
-                    var lblCurrentAging = (Label)e.Item.FindControl("lblCurrentAging");
-                    if (lblAging != null && lblCurrentAging != null)
-                    {
-                        DateTime? InitiatedDate = (DateTime?)row["InitiatedDate"];
+                    //var lblAging = (Label)e.Item.FindControl("lblAging");
+                    //var lblCurrentAging = (Label)e.Item.FindControl("lblCurrentAging");
+                    //if (lblAging != null && lblCurrentAging != null)
+                    //{
+                    //    DateTime? InitiatedDate = (DateTime?)row["InitiatedDate"];
 
-                        double aging = 0;
-                        double currentAging = 0;
-                        int Status = (int)row["Status"];
-                       // string activeActivity = (string)row["ActiveActivity"];
-                        DateTime? UpdatedDate = (DateTime?)row["UpdatedDate"];
+                    //    double aging = 0;
+                    //    double currentAging = 0;
+                    //    int Status = (int)row["Status"];
+                    //   // string activeActivity = (string)row["ActiveActivity"];
+                    //    DateTime? UpdatedDate = (DateTime?)row["UpdatedDate"];
 
-                        if (Status == 3 || Status == -1)
-                        {
+                    //    if (Status == 3 || Status == -1)
+                    //    {
 
-                            aging = Math.Ceiling(UpdatedDate.Value.Subtract(InitiatedDate.Value).TotalDays);
-                            currentAging = 0;
+                    //        aging = Math.Ceiling(UpdatedDate.Value.Subtract(InitiatedDate.Value).TotalDays);
+                    //        currentAging = 0;
 
-                        }
-                        else//Activity Active
-                        {
-                            aging = Math.Ceiling(DateTime.Now.Subtract(InitiatedDate.Value).TotalDays);
-                            currentAging = Math.Ceiling(DateTime.Now.Subtract(UpdatedDate.Value).TotalDays);
-                        }
-                        if (aging > 1)
-                            lblAging.Text = aging.ToString() + " days";
-                        else
-                            lblAging.Text = aging.ToString() + " day";
+                    //    }
+                    //    else//Activity Active
+                    //    {
+                    //        aging = Math.Ceiling(DateTime.Now.Subtract(InitiatedDate.Value).TotalDays);
+                    //        currentAging = Math.Ceiling(DateTime.Now.Subtract(UpdatedDate.Value).TotalDays);
+                    //    }
+                    //    if (aging > 1)
+                    //        lblAging.Text = aging.ToString() + " days";
+                    //    else
+                    //        lblAging.Text = aging.ToString() + " day";
 
-                        if (currentAging > 1)
-                            lblCurrentAging.Text = currentAging.ToString() + " days";
-                        else if (currentAging > 0)
-                            lblCurrentAging.Text = currentAging.ToString() + " day";
-                    }
+                    //    if (currentAging > 1)
+                    //        lblCurrentAging.Text = currentAging.ToString() + " days";
+                    //    else if (currentAging > 0)
+                    //        lblCurrentAging.Text = currentAging.ToString() + " day";
+                    //}
                     var link = (HyperLink)e.Item.FindControl("linkView");
                    // var radEditorRemarks = (RadEditor)e.Item.FindControl("radEditorRemarks");
                     if (link != null)
                     {
 
                         string TaskId = row["TaskId"] as string;                        
-                            link.NavigateUrl = UrlHelpers.ToAbsolute("~/print.aspx?TaskID=" + TaskId);
+                            link.NavigateUrl = UrlHelpers.ToAbsolute("~/CompletedView.aspx?TaskID=" + TaskId);
                         //string Remarks = row["Remarks"] as string;
                         //radEditorRemarks.Content = Remarks;
                     }

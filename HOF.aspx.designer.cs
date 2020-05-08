@@ -11,7 +11,7 @@ namespace SAP_Vendor
 {
 
 
-    public partial class Finance
+    public partial class HOF
     {
 
         /// <summary>
@@ -364,6 +364,33 @@ namespace SAP_Vendor
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+
+        /// <summary>
+        /// optApprove control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton optApprove;
+
+        /// <summary>
+        /// optReject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton optReject;
+
+        /// <summary>
+        /// optReturn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton optReturn;
 
         /// <summary>
         /// btSubmit control.
